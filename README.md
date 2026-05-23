@@ -1,11 +1,5 @@
 # NagrikAI - Comprehensive Documentation
 
-<div align="center">
-  <img src="https://img.shields.io/badge/Status-Active-brightgreen" alt="Status Active" />
-  <img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS-blue" alt="Platform" />
-  <img src="https://img.shields.io/badge/Backend-Node.js%20%7C%20Supabase-orange" alt="Backend" />
-</div>
-
 Welcome to the official repository for **NagrikAI**! This repository holds the comprehensive documentation, architecture, and step-by-step implementation plans for building the NagrikAI platform. 
 
 This guide is specifically designed for a **4-5 person development team** to successfully build the MVP phase in 1-2 months.
