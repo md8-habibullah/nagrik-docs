@@ -1,4 +1,6 @@
-# Bangladesh News & Alerts\n\n## News Sources & Strategy
+# Bangladesh News & Alerts
+
+## News Sources & Strategy
 
 ```
 Free RSS feeds (no API cost):
@@ -112,7 +114,7 @@ async function categorizeArticle(title: string): Promise<string> {
 
 ## Flutter News Feed
 
-```dart
+````dart
 // lib/features/news/presentation/news_screen.dart
 
 class NewsScreen extends ConsumerWidget {
@@ -150,3 +152,4 @@ class NewsScreen extends ConsumerWidget {
   }
 }
 ```\n\n
+````

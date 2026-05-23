@@ -1,4 +1,6 @@
-# Auth & User Profiles\n\n## Authentication Flow
+# Auth & User Profiles
+
+## Authentication Flow
 
 ```
 Registration:
@@ -131,7 +133,7 @@ class OnboardingProfileScreen extends ConsumerStatefulWidget {
 
 ## Bangladesh Division/District/Thana Dropdown
 
-```dart
+````dart
 // Bundled in app - no API needed
 // assets/data/bd_geo.json
 
@@ -158,3 +160,4 @@ class OnboardingProfileScreen extends ConsumerStatefulWidget {
   ]
 }
 ```\n\n
+````

@@ -1,4 +1,6 @@
-# Flutter App - Full Implementation\n\n## Project Structure
+# Flutter App - Full Implementation
+
+## Project Structure
 
 ```
 nagrik_ai/
@@ -92,12 +94,12 @@ dependencies:
   # Voice & STT
   speech_to_text: ^6.6.0
   permission_handler: ^11.3.0
-  record: ^5.1.0              # audio recording for panic
+  record: ^5.1.0 # audio recording for panic
 
   # Maps
   flutter_map: ^6.1.0
   latlong2: ^0.9.0
-  flutter_map_cache: ^1.1.0   # offline tile caching
+  flutter_map_cache: ^1.1.0 # offline tile caching
   geolocator: ^11.0.0
   geocoding: ^3.0.0
 
@@ -111,9 +113,9 @@ dependencies:
   flutter_local_notifications: ^17.0.0
 
   # Emergency / Panic
-  shake: ^2.2.0               # shake gesture detection
-  url_launcher: ^6.2.5        # for phone calls
-  just_audio: ^0.9.37         # panic alarm sound
+  shake: ^2.2.0 # shake gesture detection
+  url_launcher: ^6.2.5 # for phone calls
+  just_audio: ^0.9.37 # panic alarm sound
 
   # UI & Animations
   lottie: ^3.0.0
@@ -213,7 +215,7 @@ dev_dependencies:
 
 ## iOS Info.plist - Required Permissions
 
-```xml
+````xml
 <!-- Add to ios/Runner/Info.plist -->
 <key>NSMicrophoneUsageDescription</key>
 <string>NagrikAI ব্যবহারকারীর ভয়েস ইনপুট এবং ইমার্জেন্সি রেকর্ডিংয়ের জন্য মাইক্রোফোন প্রয়োজন।</string>
@@ -252,3 +254,4 @@ We use **Riverpod** because it is compile-safe and handles asynchronous state (l
 1. **BLoC instead of Riverpod?**
    - *Pros*: BLoC is extremely structured and great for massive enterprise apps.
    - *Cons*: Highly boilerplate-heavy. For a 1-month MVP, creating Events, States, and Blocs for every tiny feature will slow the team down. Riverpod offers the safety of BLoC with the simplicity of Provider.
+````

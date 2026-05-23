@@ -1,4 +1,6 @@
-# Offline Mode Implementation\n\n## Phase 1 Offline Strategy
+# Offline Mode Implementation
+
+## Phase 1 Offline Strategy
 
 For your 1-2 month MVP: **cached maps + risk zones + helplines**.
 Full offline voice AI comes in a later phase (requires ~2GB on-device model).
@@ -7,17 +9,17 @@ Full offline voice AI comes in a later phase (requires ~2GB on-device model).
 
 ## What Works Offline
 
-| Feature | Offline Support | How |
-|---|---|---|
-| Map display | ✅ Yes | Cached OSM tiles (flutter_map_cache) |
-| Risk zones | ✅ Yes | Cached in SQLite, updated on connect |
-| Helpline directory | ✅ Yes | Bundled in app assets |
-| Police/hospital list | ✅ Yes | Cached in SQLite |
-| Past reports | ✅ Yes | SQLite |
-| Panic button (SMS) | ✅ Yes | Works without internet |
-| Voice AI agent | ❌ No | Requires OpenRouter API |
-| News feed | ❌ No | Requires internet |
-| Live places search | ❌ No | Requires Google Places API |
+| Feature              | Offline Support | How                                  |
+| -------------------- | --------------- | ------------------------------------ |
+| Map display          | ✅ Yes          | Cached OSM tiles (flutter_map_cache) |
+| Risk zones           | ✅ Yes          | Cached in SQLite, updated on connect |
+| Helpline directory   | ✅ Yes          | Bundled in app assets                |
+| Police/hospital list | ✅ Yes          | Cached in SQLite                     |
+| Past reports         | ✅ Yes          | SQLite                               |
+| Panic button (SMS)   | ✅ Yes          | Works without internet               |
+| Voice AI agent       | ❌ No           | Requires OpenRouter API              |
+| News feed            | ❌ No           | Requires internet                    |
+| Live places search   | ❌ No           | Requires Google Places API           |
 
 ---
 
@@ -95,7 +97,7 @@ Future<void> preCacheDhakaTiles() async {
 
 ## Offline Queue - Submit When Back Online
 
-```dart
+````dart
 // When offline, store reports locally and sync when connected
 
 class OfflineQueueService {
@@ -148,3 +150,4 @@ For users without internet, we must ensure basic functionality works.
 1. **Google Maps SDK instead of flutter_map?**
    - *Pros*: Google Maps has higher quality POI data.
    - *Cons*: Google Maps SDK does not allow you to cache map tiles for true offline use without internet, and it costs money. `flutter_map` (OpenStreetMap) is 100% free and allows aggressive offline caching.
+````

@@ -1,4 +1,6 @@
-# Agent Visual UI - Live Sandbox Screen\n\n## The Core UX Concept
+# Agent Visual UI - Live Sandbox Screen
+
+## The Core UX Concept
 
 The "Agent Sandbox" is the most important screen. When a user taps the microphone:
 
@@ -262,7 +264,7 @@ class ReasoningTickerWidget extends ConsumerWidget {
 
 ## Live Form Auto-fill Widget
 
-```dart
+````dart
 // lib/features/agent/presentation/widgets/live_form_widget.dart
 
 class LiveFormWidget extends ConsumerStatefulWidget {
@@ -394,3 +396,4 @@ class _LiveFormWidgetState extends ConsumerState<LiveFormWidget> {
   }
 }
 ```\n\n
+````

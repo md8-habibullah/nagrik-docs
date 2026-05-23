@@ -1,4 +1,6 @@
-# Node.js Backend - Full API\n\n## Project Structure
+# Node.js Backend - Full API
+
+## Project Structure
 
 ```
 nagrik-ai-backend/
@@ -72,36 +74,39 @@ JWT_SECRET=your-secret-key-here
 ```typescript
 // src/app.ts
 
-import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
-import rateLimit from 'express-rate-limit';
-import { authMiddleware } from './middleware/auth.middleware';
+import express from "express";
+import cors from "cors";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
+import { authMiddleware } from "./middleware/auth.middleware";
 
 const app = express();
 
 app.use(helmet());
-app.use(cors({ origin: '*' })); // restrict in production
-app.use(express.json({ limit: '10mb' }));
+app.use(cors({ origin: "*" })); // restrict in production
+app.use(express.json({ limit: "10mb" }));
 
 // Rate limiting
-app.use('/api/', rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-  message: 'Too many requests, please try again.',
-}));
+app.use(
+  "/api/",
+  rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    message: "Too many requests, please try again.",
+  }),
+);
 
 // Public routes
-app.use('/api/auth', authRouter);
+app.use("/api/auth", authRouter);
 
 // Protected routes (require JWT)
-app.use('/api/agent', authMiddleware, agentRouter);
-app.use('/api/reports', authMiddleware, reportsRouter);
-app.use('/api/places', authMiddleware, placesRouter);
-app.use('/api/emergency', authMiddleware, emergencyRouter);
-app.use('/api/news', newsRouter);           // Public
-app.use('/api/risk-zones', riskZonesRouter); // Public
-app.use('/api/law', authMiddleware, lawRouter);
+app.use("/api/agent", authMiddleware, agentRouter);
+app.use("/api/reports", authMiddleware, reportsRouter);
+app.use("/api/places", authMiddleware, placesRouter);
+app.use("/api/emergency", authMiddleware, emergencyRouter);
+app.use("/api/news", newsRouter); // Public
+app.use("/api/risk-zones", riskZonesRouter); // Public
+app.use("/api/law", authMiddleware, lawRouter);
 
 export default app;
 ```
@@ -113,24 +118,27 @@ export default app;
 ```typescript
 // src/middleware/auth.middleware.ts
 
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
   process.env.SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_KEY!
+  process.env.SUPABASE_SERVICE_KEY!,
 );
 
 export const authMiddleware = async (req, res, next) => {
-  const token = req.headers.authorization?.replace('Bearer ', '');
+  const token = req.headers.authorization?.replace("Bearer ", "");
 
   if (!token) {
-    return res.status(401).json({ error: 'No token provided' });
+    return res.status(401).json({ error: "No token provided" });
   }
 
-  const { data: { user }, error } = await supabase.auth.getUser(token);
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser(token);
 
   if (error || !user) {
-    return res.status(401).json({ error: 'Invalid token' });
+    return res.status(401).json({ error: "Invalid token" });
   }
 
   req.user = user;
@@ -142,7 +150,7 @@ export const authMiddleware = async (req, res, next) => {
 
 ## Reports API
 
-```typescript
+````typescript
 // src/routes/reports.ts
 
 router.post('/', async (req, res) => {
@@ -181,3 +189,4 @@ router.get('/my', async (req, res) => {
   res.json({ reports });
 });
 ```\n\n
+````

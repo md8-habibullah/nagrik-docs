@@ -1,4 +1,6 @@
-# Panic Button System\n\n## Panic Trigger Methods
+# Panic Button System
+
+## Panic Trigger Methods
 
 Three simultaneous trigger methods - any one activates panic mode:
 
@@ -223,7 +225,11 @@ bool containsPanicKeyword(String transcript) {
   final lower = transcript.toLowerCase();
   return PANIC_KEYWORDS.any((kw) => lower.contains(kw));
 }
-```\n\n## Location Tracking & Risk Zones\n\n## Location Architecture
+```
+
+## Location Tracking & Risk Zones
+
+## Location Architecture
 
 ```
 Foreground (app open):
@@ -373,20 +379,24 @@ bool _isPointInPolygon(
 
 const DHAKA_RISK_ZONES = [
   {
-    id: 'dhaka-old-town-flood',
-    name_bn: 'পুরান ঢাকা বন্যা ঝুঁকি',
-    level: 'high',
-    type: 'flood',
-    boundary: [/* GeoJSON coordinates */],
-    description: 'বর্ষাকালে জলাবদ্ধতার উচ্চ ঝুঁকি',
+    id: "dhaka-old-town-flood",
+    name_bn: "পুরান ঢাকা বন্যা ঝুঁকি",
+    level: "high",
+    type: "flood",
+    boundary: [
+      /* GeoJSON coordinates */
+    ],
+    description: "বর্ষাকালে জলাবদ্ধতার উচ্চ ঝুঁকি",
   },
   {
-    id: 'mirpur-crime-zone',
-    name_bn: 'মিরপুর ছিনতাই সতর্কতা',
-    level: 'medium',
-    type: 'crime',
-    boundary: [/* polygon */],
-    description: 'রাতে চলাচলে সতর্ক থাকুন',
+    id: "mirpur-crime-zone",
+    name_bn: "মিরপুর ছিনতাই সতর্কতা",
+    level: "medium",
+    type: "crime",
+    boundary: [
+      /* polygon */
+    ],
+    description: "রাতে চলাচলে সতর্ক থাকুন",
   },
   // ... more zones
 ];
@@ -426,7 +436,11 @@ Future<void> requestBatteryOptimizationExclusion() async {
     }
   }
 }
-```\n\n## Emergency Routing System\n\n## Emergency Detection - Automatic
+```
+
+## Emergency Routing System
+
+## Emergency Detection - Automatic
 
 AI automatically detects emergencies from voice:
 
@@ -546,7 +560,7 @@ Future<void> callHelpline(String number) async {
 
 ## Emergency Adapter (No-API Fallback)
 
-```typescript
+````typescript
 // When no official API available for a department:
 // Send structured email/webhook instead
 
@@ -593,3 +607,4 @@ The panic button must work even if the app is closed (running in the background)
 1. **Volume Button Intercept instead of Shake?**
    - *Pros*: Less accidental triggers than shaking.
    - *Cons*: Android/iOS strictly forbid overriding hardware buttons when the app is in the background. It will likely get rejected from the Play Store. Shake detection relies on accelerometer data, which is permitted in the background.
+````

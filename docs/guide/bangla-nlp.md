@@ -1,6 +1,9 @@
-# Bangla NLP & Dialect Handling\n\n## The Challenge
+# Bangla NLP & Dialect Handling
+
+## The Challenge
 
 Bangladesh has major dialect variations:
+
 - Standard Bangla (ঢাকা / formal)
 - Chittagong dialect (চট্টগ্রামের ভাষা) - heavily modified phonetics
 - Sylhet dialect (সিলেটি) - distinct vocabulary
@@ -34,42 +37,60 @@ Step 2: LLM Normalization (Raw Text → Canonical Data)
 ```typescript
 // src/services/google-stt.service.ts
 
-async function transcribeWithGoogleSTT(
-  audioBase64: string
-): Promise<string> {
+async function transcribeWithGoogleSTT(audioBase64: string): Promise<string> {
   const client = new SpeechClient();
 
   const [response] = await client.recognize({
     config: {
-      encoding: 'LINEAR16',
+      encoding: "LINEAR16",
       sampleRateHertz: 16000,
-      languageCode: 'bn-BD',           // Bengali Bangladesh
-      alternativeLanguageCodes: ['bn-IN'], // Also try India Bengali
-      model: 'latest_long',
+      languageCode: "bn-BD", // Bengali Bangladesh
+      alternativeLanguageCodes: ["bn-IN"], // Also try India Bengali
+      model: "latest_long",
       useEnhanced: true,
       enableAutomaticPunctuation: true,
       enableWordTimeOffsets: false,
-      speechContexts: [{
-        phrases: [
-          // Civic terms (boost recognition)
-          'রাস্তা', 'ড্রেন', 'পানি', 'বিদ্যুৎ', 'আগুন',
-          'পুলিশ', 'হাসপাতাল', 'থানা', 'গর্ত', 'নালা',
-          // Common misspoken civic terms
-          'হানী', 'পাতি', 'বিদুত',
-          // Area names in Dhaka
-          'মিরপুর', 'গুলশান', 'মতিঝিল', 'ধানমন্ডি',
-          'বনানী', 'উত্তরা', 'মোহাম্মদপুর', 'রামপুরা',
-        ],
-        boost: 15.0,  // Boost probability for civic terms
-      }],
+      speechContexts: [
+        {
+          phrases: [
+            // Civic terms (boost recognition)
+            "রাস্তা",
+            "ড্রেন",
+            "পানি",
+            "বিদ্যুৎ",
+            "আগুন",
+            "পুলিশ",
+            "হাসপাতাল",
+            "থানা",
+            "গর্ত",
+            "নালা",
+            // Common misspoken civic terms
+            "হানী",
+            "পাতি",
+            "বিদুত",
+            // Area names in Dhaka
+            "মিরপুর",
+            "গুলশান",
+            "মতিঝিল",
+            "ধানমন্ডি",
+            "বনানী",
+            "উত্তরা",
+            "মোহাম্মদপুর",
+            "রামপুরা",
+          ],
+          boost: 15.0, // Boost probability for civic terms
+        },
+      ],
     },
     audio: { content: audioBase64 },
   });
 
-  return response.results
-    ?.map(r => r.alternatives?.[0]?.transcript)
-    .filter(Boolean)
-    .join(' ') ?? '';
+  return (
+    response.results
+      ?.map((r) => r.alternatives?.[0]?.transcript)
+      .filter(Boolean)
+      .join(" ") ?? ""
+  );
 }
 ```
 
@@ -105,7 +126,7 @@ Category: electricity, Sub: dangerous_wire
 
 ## Text-to-Speech (TTS) - AI Response in Bangla
 
-```dart
+````dart
 // For AI responses that should be spoken back to user
 // Use Google TTS or device TTS
 
@@ -130,3 +151,4 @@ class TTSService {
   }
 }
 ```\n\n
+````

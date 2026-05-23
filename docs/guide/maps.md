@@ -1,4 +1,6 @@
-# Maps, Places & Navigation\n\n## Maps Strategy
+# Maps, Places & Navigation
+
+## Maps Strategy
 
 **Primary:** \`flutter_map\` + OpenStreetMap tiles (FREE, no quota)
 **Facilities search:** Google Places API (via backend proxy)
@@ -195,7 +197,7 @@ function mapPlaceType(type: string): string {
 
 ## Bangladesh Police Stations - Static Database
 
-```typescript
+````typescript
 // src/data/bd_police_stations.ts
 // Static JSON seeded at startup - no external API cost
 
@@ -242,3 +244,4 @@ export const BD_HELPLINES = {
   rapid_action: '01769-691100', // RAB
 };
 ```\n\n
+````

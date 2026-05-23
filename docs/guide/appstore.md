@@ -1,4 +1,6 @@
-# Apple App Store - Full Submission Guide\n\n## Requirements
+# Apple App Store - Full Submission Guide
+
+## Requirements
 
 - **Mac computer** required for iOS builds
 - **Apple Developer Account** ($99/year)
@@ -122,7 +124,7 @@ Marketing URL: https://nagrik.ai
 
 ## TestFlight → Production
 
-```
+````
 1. Upload IPA via Xcode or Transporter app
 2. Add internal testers (team, max 25 internal)
 3. External TestFlight beta (up to 10,000 testers, needs review)
@@ -130,3 +132,4 @@ Marketing URL: https://nagrik.ai
 5. Phased release: 1% → 2% → 5% → 10% → 50% → 100%
    (each phase monitored for crash rate)
 ```\n\n
+````

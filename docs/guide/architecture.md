@@ -1,4 +1,6 @@
-# Tech Stack - Final Decisions\n\n## Why These Choices?
+# Tech Stack - Final Decisions
+
+## Why These Choices?
 
 Every choice below is optimized for: **1-2 month MVP timeline**, **4-5 person team**, **Bangla language support**, **competition demo quality**, and **real production scalability**.
 
@@ -7,8 +9,8 @@ Every choice below is optimized for: **1-2 month MVP timeline**, **4-5 person te
 ## Frontend
 
 ```
-Flutter 3.x (Dart)
-├── State Management:    Riverpod 2.x (best for async/streaming)
+Flutter (Dart)
+├── State Management:    Riverpod (best for async/streaming)
 ├── Navigation:          GoRouter
 ├── HTTP Client:         Dio + Retrofit
 ├── Local DB:            Drift (SQLite wrapper, type-safe)
@@ -32,7 +34,7 @@ Flutter 3.x (Dart)
 ## Backend
 
 ```
-Node.js 20 LTS + Express 5
+Node.js + Express
 ├── Language:            TypeScript (strict mode)
 ├── ORM:                 Prisma (Supabase PostgreSQL)
 ├── Auth:                Supabase Auth (JWT + OAuth)
@@ -50,7 +52,7 @@ Node.js 20 LTS + Express 5
 ## Database
 
 ```
-Supabase (PostgreSQL 15)
+Supabase (PostgreSQL)
 ├── Primary:             Cloud PostgreSQL (Supabase)
 ├── Local (on device):   Drift/SQLite (offline cache)
 ├── Sessions:            Supabase Auth
@@ -66,7 +68,7 @@ OpenRouter API (via backend proxy - NEVER call from app)
 ├── Primary Model:       google/gemini-1.5-pro (best Bangla, cheapest)
 ├── Reasoning Model:     anthropic/claude-3.5-sonnet (complex tasks)
 ├── Fallback:            google/gemini-flash-1.5 (fast, cheap)
-├── Speech-to-Text:      Google Cloud STT v1p1beta1 (Bangla-BD locale)
+├── Speech-to-Text:      Google Cloud STT (Bangla-BD locale)
 ├── News:                RSS feeds (no cost)
 └── Maps Places:         Google Places API (for facility search)
 ```
@@ -96,7 +98,11 @@ OpenRouter API (via backend proxy - NEVER call from app)
 4. **Same performance** for your use case (no 3D rendering)
 5. **Strong package ecosystem** for all needed features
 
-> ⚠️ **Important:** The hackathon proposal said Kotlin. Flutter is the right call for your team size and timeline. The core thesis is unchanged - only the implementation language changes.\n\n## System Architecture\n\n## High-Level Architecture
+> ⚠️ **Important:** The hackathon proposal said Kotlin. Flutter is the right call for your team size and timeline. The core thesis is unchanged - only the implementation language changes.
+
+## System Architecture
+
+## High-Level Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -200,26 +206,31 @@ Device stores:
 ```
 
 > ⛔ Never put API keys in Flutter code. Always proxy through your Node.js backend.\n\n
+
 ## Bit-by-Bit Implementation: Why This Stack?
 
-For a team of 4-5 developers building an MVP in 1-2 months, **velocity** and **type-safety** are the most critical metrics. 
+For a team of 4-5 developers building an MVP in 1-2 months, **velocity** and **type-safety** are the most critical metrics.
 
 ### Why Flutter?
+
 - **Single Codebase**: Writing separate Android (Kotlin) and iOS (Swift) apps would double development time. Flutter compiles to native ARM code, ensuring high performance (60fps) for animations like the Voice Orb.
 - **Rich UI**: Flutter's declarative UI makes building the "Live Agent Sandbox" extremely fast.
 
 ### Why Node.js + Express?
+
 - **JavaScript Everywhere**: If your team knows JS/Dart, Node is much faster to iterate on than Python/Django or Go.
 - **Async I/O**: Node is inherently non-blocking, which is perfect for proxying requests to OpenRouter and Google STT simultaneously.
 
 ### Why Supabase (PostgreSQL)?
+
 - **Zero Backend Configuration**: Setting up a custom Postgres server, Auth system, and Row Level Security (RLS) takes weeks. Supabase gives you this out-of-the-box in 1 day.
 - **Relational Integrity**: Civic reports need strict schemas (Users -> Reports -> Locations). NoSQL (like Firebase/Firestore) makes complex geographical querying (e.g., finding all reports within a 5km radius) very difficult and expensive.
 
 ## Alternative Approaches to Consider
+
 1. **Firebase instead of Supabase?**
-   - *Pros*: Firebase Auth and Crashlytics are industry standard.
-   - *Cons*: Firestore geographical queries require complex workarounds (GeoHashes). Supabase uses PostGIS, which natively supports `ST_Distance` queries for mapping risk zones.
+   - _Pros_: Firebase Auth and Crashlytics are industry standard.
+   - _Cons_: Firestore geographical queries require complex workarounds (GeoHashes). Supabase uses PostGIS, which natively supports `ST_Distance` queries for mapping risk zones.
 2. **Python (FastAPI) instead of Node.js?**
-   - *Pros*: Python has better native AI/ML libraries if we want to run local NLP models.
-   - *Cons*: Slower API routing overhead. Since we are using an API (OpenRouter) instead of hosting our own AI models, Node.js is faster for I/O proxying.
+   - _Pros_: Python has better native AI/ML libraries if we want to run local NLP models.
+   - _Cons_: Slower API routing overhead. Since we are using an API (OpenRouter) instead of hosting our own AI models, Node.js is faster for I/O proxying.

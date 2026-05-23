@@ -64,3 +64,23 @@ code {
 footer {
   color: #475569;
 }
+
+/* Active sidebar link styling */
+.VPSidebar .VPLink.active {
+  color: #0f766e !important;
+  font-weight: 700;
+  background: rgba(15, 118, 110, 0.1);
+  border-left: 3px solid #0f766e;
+  padding-left: calc(12px - 3px);
+}
+
+.VPSidebar .item > .item-heading.active {
+  color: #0f766e;
+  font-weight: 700;
+}
+
+.dark .VPSidebar .VPLink.active {
+  color: #10b981 !important;
+  background: rgba(16, 185, 129, 0.1);
+  border-left-color: #10b981;
+}

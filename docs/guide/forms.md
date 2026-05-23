@@ -1,12 +1,14 @@
-# Government Form Auto-fill\n\n## Supported Forms (Phase 1)
+# Government Form Auto-fill
 
-| Form | Type | Submission |
-|---|---|---|
-| সিভিক কমপ্লেইন ফর্ম | Civic report | In-app → PDF download |
-| পুলিশ GD (General Diary) | Crime/incident | PDF → Print/Email |
-| ইউটিলিটি কমপ্লেইন | DESCO/WASA/TITAS | PDF |
-| RTI আবেদন | Right to Information | PDF |
-| ভোক্তা অধিকার অভিযোগ | Consumer complaint | PDF |
+## Supported Forms (Phase 1)
+
+| Form                     | Type                 | Submission            |
+| ------------------------ | -------------------- | --------------------- |
+| সিভিক কমপ্লেইন ফর্ম      | Civic report         | In-app → PDF download |
+| পুলিশ GD (General Diary) | Crime/incident       | PDF → Print/Email     |
+| ইউটিলিটি কমপ্লেইন        | DESCO/WASA/TITAS     | PDF                   |
+| RTI আবেদন                | Right to Information | PDF                   |
+| ভোক্তা অধিকার অভিযোগ     | Consumer complaint   | PDF                   |
 
 ---
 
@@ -78,7 +80,7 @@ Leave unknown fields empty string.
 
 ## PDF Generation (Flutter)
 
-```dart
+````dart
 // lib/features/forms/services/pdf_generator.dart
 
 import 'package:pdf/pdf.dart';
@@ -180,3 +182,4 @@ class PdfGenerator {
   }
 }
 ```\n\n
+````

@@ -1,4 +1,6 @@
-# Voice Pipeline - STT + AI Processing\n\n## Voice Processing Architecture
+# Voice Pipeline - STT + AI Processing
+
+## Voice Processing Architecture
 
 ```
 User speaks
@@ -176,7 +178,7 @@ class AgentService {
 
 ## Backend Agent Handler (Node.js)
 
-```typescript
+````typescript
 // src/routes/agent.ts
 
 import { Router } from 'express';
@@ -256,3 +258,4 @@ router.post('/process', async (req, res) => {
 
 export default router;
 ```\n\n
+````

@@ -1,12 +1,14 @@
-# AI Agent Core - OpenRouter Integration\n\n## OpenRouter Model Strategy
+# AI Agent Core - OpenRouter Integration
 
-| Task | Model | Why | Cost/1M tokens |
-|---|---|---|---|
-| Voice report extraction | gemini-1.5-pro | Best Bangla, fast | $3.50/$10.50 |
-| BD Law Q&A | claude-3.5-sonnet | Deep reasoning | $3/$15 |
-| News summarization | gemini-flash-1.5 | Cheap, fast | $0.075/$0.30 |
-| Emergency detection | gemini-flash-1.5 | Real-time speed | $0.075/$0.30 |
-| Form field mapping | gemini-1.5-pro | Structured output | $3.50/$10.50 |
+## OpenRouter Model Strategy
+
+| Task                    | Model             | Why               | Cost/1M tokens |
+| ----------------------- | ----------------- | ----------------- | -------------- |
+| Voice report extraction | gemini-1.5-pro    | Best Bangla, fast | $3.50/$10.50   |
+| BD Law Q&A              | claude-3.5-sonnet | Deep reasoning    | $3/$15         |
+| News summarization      | gemini-flash-1.5  | Cheap, fast       | $0.075/$0.30   |
+| Emergency detection     | gemini-flash-1.5  | Real-time speed   | $0.075/$0.30   |
+| Form field mapping      | gemini-1.5-pro    | Structured output | $3.50/$10.50   |
 
 ---
 
@@ -156,7 +158,7 @@ Your job: extract structured data from Bangla voice transcripts.
 
 ## Cost Control Strategy
 
-```typescript
+````typescript
 // Cache identical or very similar transcripts
 // Use Redis with 1-hour TTL
 
@@ -193,3 +195,4 @@ Never put your API keys (OpenRouter, Google Maps, etc.) inside the Flutter app. 
 2. **Local On-Device AI Models?**
    - *Pros*: Works 100% offline, costs $0 in API fees.
    - *Cons*: Running a 3B parameter model on a low-end Android phone in Bangladesh will drain the battery instantly and make the phone overheat. Not viable for Phase 1.
+````

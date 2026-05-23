@@ -1,12 +1,14 @@
-# Full Project Roadmap\n\n## Team Task Allocation (4-5 people)
+# Full Project Roadmap
 
-| Person | Role | Responsibilities |
-|---|---|---|
-| Dev 1 | Flutter Lead | Agent UI, voice pipeline, maps |
-| Dev 2 | Flutter | Auth, forms, news, profile |
-| Dev 3 | Backend Lead | Node.js API, OpenRouter integration |
-| Dev 4 | Backend | Database, risk zones, emergency router |
-| Dev 5 | Fullstack / DevOps | CI/CD, Firebase, testing, app store |
+## Team Task Allocation (4-5 people)
+
+| Person | Role               | Responsibilities                       |
+| ------ | ------------------ | -------------------------------------- |
+| Dev 1  | Flutter Lead       | Agent UI, voice pipeline, maps         |
+| Dev 2  | Flutter            | Auth, forms, news, profile             |
+| Dev 3  | Backend Lead       | Node.js API, OpenRouter integration    |
+| Dev 4  | Backend            | Database, risk zones, emergency router |
+| Dev 5  | Fullstack / DevOps | CI/CD, Firebase, testing, app store    |
 
 ---
 
@@ -108,6 +110,7 @@ Example branches:
 ## Definition of Done (DoD)
 
 For every feature before merging:
+
 ```
 ✅ Works on Android 9+ physical device
 ✅ No red errors in Flutter DevTools
@@ -123,11 +126,11 @@ For every feature before merging:
 
 ## Key Technical Risks & Mitigations
 
-| Risk | Probability | Mitigation |
-|---|---|---|
-| Google STT Bangla accuracy poor | Medium | Two-step pipeline + LLM normalization |
-| OpenRouter cost overrun | Low | Per-user quota + caching |
-| Android background kill | High | Battery optimization request + Workmanager |
-| Play Store rejection | Medium | Policy compliance checklist |
-| Govt API unavailability | High | Adapter/email fallback built-in |
-| iOS background location rejection | Medium | Detailed justification text |\n\n
+| Risk                              | Probability | Mitigation                                 |
+| --------------------------------- | ----------- | ------------------------------------------ | ---- |
+| Google STT Bangla accuracy poor   | Medium      | Two-step pipeline + LLM normalization      |
+| OpenRouter cost overrun           | Low         | Per-user quota + caching                   |
+| Android background kill           | High        | Battery optimization request + Workmanager |
+| Play Store rejection              | Medium      | Policy compliance checklist                |
+| Govt API unavailability           | High        | Adapter/email fallback built-in            |
+| iOS background location rejection | Medium      | Detailed justification text                | \n\n |

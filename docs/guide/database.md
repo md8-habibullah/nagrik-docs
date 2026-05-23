@@ -1,4 +1,6 @@
-# Database Schema (Supabase / Prisma)\n\n## Prisma Schema
+# Database Schema (Supabase / Prisma)
+
+## Prisma Schema
 
 ```prisma
 // prisma/schema.prisma
@@ -203,7 +205,7 @@ model NewsArticle {
 
 ## Supabase Row Level Security (RLS)
 
-```sql
+````sql
 -- Users can only read/edit their own data
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
 
@@ -236,3 +238,4 @@ CREATE POLICY "Public police read"
   ON police_stations FOR SELECT TO anon, authenticated
   USING (true);
 ```\n\n
+````

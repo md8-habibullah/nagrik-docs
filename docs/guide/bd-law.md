@@ -1,4 +1,6 @@
-# Bangladesh Law AI Assistant\n\n## BD Law Knowledge Base Strategy
+# Bangladesh Law AI Assistant
+
+## BD Law Knowledge Base Strategy
 
 Since we cannot train a custom model, we use **RAG (Retrieval-Augmented Generation)**:
 
@@ -22,18 +24,18 @@ User question (Bangla)
 
 ## Key Laws to Include (Phase 1)
 
-| Law | Why Important |
-|---|---|
-| The Code of Criminal Procedure (CrPC) | FIR filing, arrest rights |
-| Penal Code 1860 | Common crimes, penalties |
-| Information & Communication Technology Act | Digital crimes |
-| Women and Children Repression Prevention Act | Harassment, assault |
-| Consumer Rights Protection Act | Product/service complaints |
-| Road Transport Act 2018 | Traffic laws, accidents |
-| Environmental Conservation Act | Pollution complaints |
-| Tenant/Landlord Laws | Housing disputes |
-| Labor Act 2006 | Worker rights |
-| RTI Act (Right to Information) | Information requests |
+| Law                                          | Why Important              |
+| -------------------------------------------- | -------------------------- |
+| The Code of Criminal Procedure (CrPC)        | FIR filing, arrest rights  |
+| Penal Code 1860                              | Common crimes, penalties   |
+| Information & Communication Technology Act   | Digital crimes             |
+| Women and Children Repression Prevention Act | Harassment, assault        |
+| Consumer Rights Protection Act               | Product/service complaints |
+| Road Transport Act 2018                      | Traffic laws, accidents    |
+| Environmental Conservation Act               | Pollution complaints       |
+| Tenant/Landlord Laws                         | Housing disputes           |
+| Labor Act 2006                               | Worker rights              |
+| RTI Act (Right to Information)               | Information requests       |
 
 ---
 
@@ -104,7 +106,7 @@ router.post('/ask', async (req, res) => {
 
 ## Flutter - Streaming Law Response
 
-```dart
+````dart
 // Receive server-sent events for streaming response
 
 Stream<String> streamLawAnswer(String question, List history) async* {
@@ -132,3 +134,4 @@ Stream<String> streamLawAnswer(String question, List history) async* {
   }
 }
 ```\n\n
+````

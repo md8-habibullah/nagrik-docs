@@ -1,4 +1,6 @@
-# Google Play Store - Full Submission Guide\n\n## Pre-submission Checklist
+# Google Play Store - Full Submission Guide
+
+## Pre-submission Checklist
 
 - [ ] App tested on Android 8.0+ (API 26+)
 - [ ] All permissions have user-facing explanations
@@ -155,7 +157,7 @@ Tags: civic, bangladesh, emergency, AI, bangla, safety
 
 ## Internal Testing → Beta → Production
 
-```
+````
 Week 1-2: Internal testing
   → Upload AAB to Internal Testing track
   → Share with team (max 100 testers)
@@ -172,3 +174,4 @@ Week 5+: Production
   → Monitor ratings + crash rate
   → 100% rollout if stable
 ```\n\n
+````

@@ -1,7 +1,9 @@
-# Deployment, CI/CD & DevOps\n\n## Infrastructure Overview
+# Deployment, CI/CD & DevOps
+
+## Infrastructure Overview
 
 ```
-GitHub (code) 
+GitHub (code)
     │
     ▼ push to main
 GitHub Actions CI/CD
@@ -82,7 +84,7 @@ name: Deploy Backend
 on:
   push:
     branches: [main]
-    paths: ['backend/**']
+    paths: ["backend/**"]
 
 jobs:
   test:
@@ -90,7 +92,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: '20' }
+        with: { node-version: "20" }
       - run: npm ci
         working-directory: backend
       - run: npm test
@@ -171,7 +173,7 @@ npx prisma generate
 
 ## Monitoring & Alerts
 
-```
+````
 Firebase Crashlytics → crash reports → email alert
 Firebase Analytics  → user behavior
 Sentry (backend)    → backend errors → Slack alert
@@ -179,3 +181,4 @@ Railway Metrics     → CPU/memory/response time
 Upstash Redis       → cache hit rate
 Supabase Dashboard  → DB queries, storage
 ```\n\n
+````
