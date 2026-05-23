@@ -5,8 +5,11 @@ export default defineConfig({
   description: "AI-Driven Voice Civic Agent for Bangladesh",
   base: '/nagrikAI-docs/',
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/nagrikAI-docs/favicon.svg' }]
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/nagrikAI-docs/favicon.svg' }],
+    ['meta', { name: 'theme-color', content: '#006a4e' }],
+    ['meta', { name: 'author', content: 'Md. Habibullah Sharif (Rafi)' }]
   ],
+  cleanUrls: true,
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
@@ -62,6 +65,16 @@ export default defineConfig({
     ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/md8-habibullah/nagrikAI-docs' }
-    ]
+    ],
+    outline: [2, 3],
+    lastUpdated: true,
+    docFooter: {
+      prev: 'Previous',
+      next: 'Next'
+    },
+    footer: {
+      message: 'Documentation maintained by Dreams of X Team and Md. Habibullah Sharif (Rafi).',
+      copyright: 'Copyright © 2026 Dreams of X Team'
+    }
   }
 })

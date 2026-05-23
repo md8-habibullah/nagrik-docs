@@ -1,16 +1,26 @@
 {
   "name": "nagrikAI-docs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Official NagrikAI documentation and architecture guide for the AI-driven voice civic agent platform in Bangladesh.",
   "main": "index.js",
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "nagrik-ai",
+    "documentation",
+    "vitepress",
+    "flutter",
+    "nodejs",
+    "supabase",
+    "ai-agent",
+    "civic-tech",
+    "bangladesh"
+  ],
+  "author": "Md. Habibullah Sharif (Rafi)",
+  "license": "UNLICENSED",
   "repository": {
     "type": "git",
     "url": "https://github.com/md8-habibullah/nagrikAI-docs.git"

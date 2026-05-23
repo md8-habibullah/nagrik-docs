@@ -1,8 +1,10 @@
 # NagrikAI - Comprehensive Documentation
 
-Welcome to the official repository for **NagrikAI**! This repository holds the comprehensive documentation, architecture, and step-by-step implementation plans for building the NagrikAI platform. 
+Welcome to the official documentation repository for **NagrikAI**. This repository contains the full architecture, implementation plan, and published docs for the NagrikAI platform, built as a VitePress website.
 
-This guide is specifically designed for a **4-5 person development team** to successfully build the MVP phase in 1-2 months.
+This guide is tailored for a **4-5 person development team** working on the MVP phase, with clear architecture, deployment checklists, and technical best practices.
+
+> Note: This repository is covered by a proprietary license held by Dreams of X Team and Md. Habibullah Sharif. Unauthorized copying, reproduction, or reuse of the documentation and website assets is prohibited.
 
 ---
 
@@ -10,10 +12,10 @@ This guide is specifically designed for a **4-5 person development team** to suc
 
 The most important part of this repository is our beautifully formatted Documentation Website. Instead of reading raw text files, you can view the entire project plan mapped out cleanly.
 
-**View the Live Documentation here:** 
+**View the Live Documentation here:**
 [https://md8-habibullah.github.io/nagrikAI-docs/](https://md8-habibullah.github.io/nagrikAI-docs/)
 
-*Note: This site automatically updates every time code is pushed to the `main` branch.*
+_Note: This site automatically updates every time code is pushed to the `main` branch._
 
 ---
 
@@ -35,35 +37,44 @@ The VitePress documentation covers every single "bit-by-bit" technical requireme
 If you want to edit or add new pages to the documentation, follow these steps:
 
 ### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/md8-habibullah/nagrikAI-docs.git
 cd nagrikAI-docs
 ```
 
 ### 2. Install Dependencies
+
 Make sure you have [Node.js](https://nodejs.org/) installed, then run:
+
 ```bash
 npm install
 ```
 
 ### 3. Start the Development Server
+
 ```bash
 npm run docs:dev
 ```
-*Open your browser and navigate to `http://localhost:5173` to view the live-reloading site.*
+
+_Open your browser and navigate to `http://localhost:5173` to view the live-reloading site._
 
 ### 4. Adding Content
+
 - All documentation files are located in the `docs/guide/` directory.
 - Simply edit the `.md` files or create new ones.
 - If you create a new file, make sure to add it to the sidebar navigation inside `docs/.vitepress/config.mjs`.
 
 ### 5. Publishing
+
 You don't need to do anything complex to publish! Simply commit and push your changes to GitHub:
+
 ```bash
 git add .
 git commit -m "Updated documentation"
 git push
 ```
+
 GitHub Actions will automatically catch your push, build the VitePress site, and update the live URL for free.
 
 ---
@@ -71,6 +82,7 @@ GitHub Actions will automatically catch your push, build the VitePress site, and
 ## The Development Team
 
 When building the core NagrikAI app, follow the division of labor outlined in the **Roadmap** section of the docs:
+
 - **Dev 1 (Flutter Lead):** Agent UI, Voice Pipeline, Maps
 - **Dev 2 (Flutter):** Auth, Forms, News, Profile
 - **Dev 3 (Backend Lead):** Node.js API, OpenRouter integration

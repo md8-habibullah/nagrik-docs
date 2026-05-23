@@ -1,0 +1,66 @@
+:root {
+  color-scheme: light;
+  --vp-c-brand: #006a4e;
+  --vp-c-brand-muted: #0f7f59;
+  --vp-c-page: #ffffff;
+  --vp-c-border: rgba(0, 0, 0, 0.1);
+  --vp-c-surface: #ffffff;
+  --vp-c-muted: #64748b;
+  --vp-c-bg: #f7fafc;
+  --vp-c-code-bg: #f3f5f7;
+}
+
+body {
+  background: var(--vp-c-bg);
+}
+
+.VPNavBar,
+.VPNavBar + .divider {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.VPNavBarTitle .title {
+  font-weight: 700;
+}
+
+.VPNavBarMenuLink,
+.VPLink {
+  color: #0f766e;
+}
+
+.VPButton.brand {
+  background: linear-gradient(135deg, #006a4e, #0f7f59);
+  color: #fff;
+}
+
+.VPButton.alt {
+  border-color: #0f766e;
+  color: #0f766e;
+}
+
+.VPHomeHero {
+  box-shadow: 0 24px 54px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  background: #ffffff;
+}
+
+.VPHomeHero .heading {
+  color: #0f766e;
+}
+
+.VPHomeFeatures .box {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #ffffff;
+}
+
+pre,
+code {
+  background: #f3f5f7;
+  border-radius: 0.65rem;
+}
+
+footer {
+  color: #475569;
+}
