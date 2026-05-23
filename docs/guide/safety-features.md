@@ -1,6 +1,6 @@
 # Panic Button System\n\n## Panic Trigger Methods
 
-Three simultaneous trigger methods — any one activates panic mode:
+Three simultaneous trigger methods - any one activates panic mode:
 
 1. **Physical:** Volume Down × 3 rapid presses
 2. **Gesture:** Phone shake (3 seconds continuous)
@@ -316,7 +316,7 @@ Future<void> _captureAndCheckLocation(ServiceInstance service) async {
     }
 
   } catch (e) {
-    // Silent fail — battery optimization may block
+    // Silent fail - battery optimization may block
     debugPrint('Background location error: \$e');
   }
 }
@@ -368,7 +368,7 @@ bool _isPointInPolygon(
 ## Dhaka Risk Zones Database (Initial Data)
 
 ```typescript
-// Initial Dhaka risk zones — manually curated
+// Initial Dhaka risk zones - manually curated
 // Seed via Prisma seed script
 
 const DHAKA_RISK_ZONES = [
@@ -426,7 +426,7 @@ Future<void> requestBatteryOptimizationExclusion() async {
     }
   }
 }
-```\n\n## Emergency Routing System\n\n## Emergency Detection — Automatic
+```\n\n## Emergency Routing System\n\n## Emergency Detection - Automatic
 
 AI automatically detects emergencies from voice:
 

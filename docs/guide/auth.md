@@ -108,7 +108,7 @@ class AuthNotifier extends _\$AuthNotifier {
 ## User Profile Screen
 
 ```dart
-// Collect at onboarding — saves to Supabase:
+// Collect at onboarding - saves to Supabase:
 // ✅ নাম (Bengali + English)
 // ✅ NID area / District
 // ✅ Phone number
@@ -121,7 +121,7 @@ class AuthNotifier extends _\$AuthNotifier {
 class OnboardingProfileScreen extends ConsumerStatefulWidget {
   // Multi-step form:
   // Step 1: Basic info (name, phone)
-  // Step 2: Location (division/district/thana dropdown — BD specific)
+  // Step 2: Location (division/district/thana dropdown - BD specific)
   // Step 3: Emergency contacts
   // Step 4: Permissions (location, mic, notifications)
 }
@@ -132,7 +132,7 @@ class OnboardingProfileScreen extends ConsumerStatefulWidget {
 ## Bangladesh Division/District/Thana Dropdown
 
 ```dart
-// Bundled in app — no API needed
+// Bundled in app - no API needed
 // assets/data/bd_geo.json
 
 {

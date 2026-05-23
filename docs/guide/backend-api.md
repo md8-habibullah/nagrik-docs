@@ -1,4 +1,4 @@
-# Node.js Backend — Full API\n\n## Project Structure
+# Node.js Backend - Full API\n\n## Project Structure
 
 ```
 nagrik-ai-backend/
@@ -164,7 +164,7 @@ router.post('/', async (req, res) => {
     },
   });
 
-  // If critical — trigger emergency flow
+  // If critical - trigger emergency flow
   if (is_emergency) {
     await emergencyQueue.add('route', { reportId: report.id });
   }

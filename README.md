@@ -1,4 +1,4 @@
-# NagrikAI — Comprehensive Documentation
+# NagrikAI - Comprehensive Documentation
 
 <div align="center">
   <img src="https://img.shields.io/badge/Status-Active-brightgreen" alt="Status Active" />

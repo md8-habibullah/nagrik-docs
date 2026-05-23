@@ -131,7 +131,7 @@ class _MapScreenState extends ConsumerState<MapScreen> {
 
 ---
 
-## Nearby Places — Backend Service
+## Nearby Places - Backend Service
 
 ```typescript
 // src/routes/places.ts
@@ -193,11 +193,11 @@ function mapPlaceType(type: string): string {
 
 ---
 
-## Bangladesh Police Stations — Static Database
+## Bangladesh Police Stations - Static Database
 
 ```typescript
 // src/data/bd_police_stations.ts
-// Static JSON seeded at startup — no external API cost
+// Static JSON seeded at startup - no external API cost
 
 export const DHAKA_POLICE_STATIONS = [
   {

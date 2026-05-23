@@ -1,4 +1,4 @@
-# AI Agent Core — OpenRouter Integration\n\n## OpenRouter Model Strategy
+# AI Agent Core - OpenRouter Integration\n\n## OpenRouter Model Strategy
 
 | Task | Model | Why | Cost/1M tokens |
 |---|---|---|---|

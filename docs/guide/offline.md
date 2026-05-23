@@ -53,7 +53,7 @@ class ConnectivityBanner extends ConsumerWidget {
           Icon(Icons.wifi_off, color: Colors.white, size: 16),
           SizedBox(width: 8),
           Text(
-            'অফলাইন মোড — সীমিত ফিচার উপলব্ধ',
+            'অফলাইন মোড - সীমিত ফিচার উপলব্ধ',
             style: TextStyle(color: Colors.white, fontSize: 12),
           ),
         ],
@@ -93,7 +93,7 @@ Future<void> preCacheDhakaTiles() async {
 
 ---
 
-## Offline Queue — Submit When Back Online
+## Offline Queue - Submit When Back Online
 
 ```dart
 // When offline, store reports locally and sync when connected

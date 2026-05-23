@@ -1,4 +1,4 @@
-# Agent Visual UI — Live Sandbox Screen\n\n## The Core UX Concept
+# Agent Visual UI - Live Sandbox Screen\n\n## The Core UX Concept
 
 The "Agent Sandbox" is the most important screen. When a user taps the microphone:
 
@@ -208,7 +208,7 @@ class ReasoningTickerWidget extends ConsumerWidget {
                .scaleXY(end: 1.0, duration: 600.ms),
               const SizedBox(width: 8),
               Text(
-                'AI Agent — ${_phaseLabel(state.phase)}',
+                'AI Agent - ${_phaseLabel(state.phase)}',
                 style: const TextStyle(
                   color: Colors.purple,
                   fontSize: 11,

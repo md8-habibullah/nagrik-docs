@@ -1,4 +1,4 @@
-# Flutter App — Full Implementation\n\n## Project Structure
+# Flutter App - Full Implementation\n\n## Project Structure
 
 ```
 nagrik_ai/
@@ -55,7 +55,7 @@ nagrik_ai/
 
 ---
 
-## pubspec.yaml — All Required Packages
+## pubspec.yaml - All Required Packages
 
 ```yaml
 name: nagrik_ai
@@ -155,7 +155,7 @@ dev_dependencies:
 
 ---
 
-## AndroidManifest.xml — Critical Permissions
+## AndroidManifest.xml - Critical Permissions
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
@@ -211,7 +211,7 @@ dev_dependencies:
 
 ---
 
-## iOS Info.plist — Required Permissions
+## iOS Info.plist - Required Permissions
 
 ```xml
 <!-- Add to ios/Runner/Info.plist -->

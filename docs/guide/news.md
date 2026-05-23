@@ -30,7 +30,7 @@ const RSS_FEEDS = [
   { name: 'daily_star', url: 'https://www.thedailystar.net/rss.xml', lang: 'en' },
 ];
 
-// Emergency keywords — trigger push notifications
+// Emergency keywords - trigger push notifications
 const EMERGENCY_KEYWORDS = [
   'আগুন', 'বন্যা', 'ভূমিকম্প', 'দুর্ঘটনা', 'বিস্ফোরণ',
   'সন্ত্রাস', 'সাইক্লোন', 'ঘূর্ণিঝড়', 'flood', 'fire',

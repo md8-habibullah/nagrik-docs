@@ -1,4 +1,4 @@
-# Tech Stack — Final Decisions\n\n## Why These Choices?
+# Tech Stack - Final Decisions\n\n## Why These Choices?
 
 Every choice below is optimized for: **1-2 month MVP timeline**, **4-5 person team**, **Bangla language support**, **competition demo quality**, and **real production scalability**.
 
@@ -38,7 +38,7 @@ Node.js 20 LTS + Express 5
 ├── Auth:                Supabase Auth (JWT + OAuth)
 ├── File Storage:        Supabase Storage (audio, images)
 ├── Realtime:            Supabase Realtime (risk zone updates)
-├── Caching:             Redis (Upstash — free tier)
+├── Caching:             Redis (Upstash - free tier)
 ├── Queue:               BullMQ (emergency job queue)
 ├── Validation:          Zod
 ├── Logging:             Winston + Sentry
@@ -62,7 +62,7 @@ Supabase (PostgreSQL 15)
 ## AI / Intelligence
 
 ```
-OpenRouter API (via backend proxy — NEVER call from app)
+OpenRouter API (via backend proxy - NEVER call from app)
 ├── Primary Model:       google/gemini-1.5-pro (best Bangla, cheapest)
 ├── Reasoning Model:     anthropic/claude-3.5-sonnet (complex tasks)
 ├── Fallback:            google/gemini-flash-1.5 (fast, cheap)
@@ -96,7 +96,7 @@ OpenRouter API (via backend proxy — NEVER call from app)
 4. **Same performance** for your use case (no 3D rendering)
 5. **Strong package ecosystem** for all needed features
 
-> ⚠️ **Important:** The hackathon proposal said Kotlin. Flutter is the right call for your team size and timeline. The core thesis is unchanged — only the implementation language changes.\n\n## System Architecture\n\n## High-Level Architecture
+> ⚠️ **Important:** The hackathon proposal said Kotlin. Flutter is the right call for your team size and timeline. The core thesis is unchanged - only the implementation language changes.\n\n## System Architecture\n\n## High-Level Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -141,21 +141,21 @@ OpenRouter API (via backend proxy — NEVER call from app)
 
 ---
 
-## Data Flow — Voice Report Submission
+## Data Flow - Voice Report Submission
 
 ```
 User speaks (Bangla)
         │
         ▼
-[Flutter STT plugin] — device-native, zero latency
+[Flutter STT plugin] - device-native, zero latency
         │ raw text transcript
         ▼
 [Backend /agent/process]
         │
-        ├──▶ [Google STT API] — high-accuracy Bangla fallback
+        ├──▶ [Google STT API] - high-accuracy Bangla fallback
         │
         ▼
-[OpenRouter — Gemini 1.5 Pro]
+[OpenRouter - Gemini 1.5 Pro]
         │ structured JSON extraction
         ▼
 {
@@ -168,16 +168,16 @@ User speaks (Bangla)
 }
         │
         ▼
-[Flutter UI] — live form auto-fill animation
+[Flutter UI] - live form auto-fill animation
         │
         ▼
-[User reviews + edits] — human-in-the-loop
+[User reviews + edits] - human-in-the-loop
         │
         ▼
 [Confirm & Submit]
         │
-        ├──▶ [Supabase DB] — store report
-        ├──▶ [API/Webhook] — notify relevant authority
+        ├──▶ [Supabase DB] - store report
+        ├──▶ [API/Webhook] - notify relevant authority
         └──▶ [User gets report ID]
 ```
 

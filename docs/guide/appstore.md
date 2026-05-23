@@ -1,4 +1,4 @@
-# Apple App Store — Full Submission Guide\n\n## Requirements
+# Apple App Store - Full Submission Guide\n\n## Requirements
 
 - **Mac computer** required for iOS builds
 - **Apple Developer Account** ($99/year)
@@ -32,10 +32,10 @@ flutter build ipa --release
 
 ---
 
-## Info.plist — All Required Keys
+## Info.plist - All Required Keys
 
 ```xml
-<!-- Location (REQUIRED — very detailed explanation) -->
+<!-- Location (REQUIRED - very detailed explanation) -->
 <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 <string>
 NagrikAI ব্যাকগ্রাউন্ডে আপনার লোকেশন ব্যবহার করে:
@@ -67,7 +67,7 @@ NagrikAI ভয়েস রিপোর্ট করতে এবং ইমা�
 
 ---
 
-## App Store Review — Common Rejection Reasons to Avoid
+## App Store Review - Common Rejection Reasons to Avoid
 
 ```
 ❌ Crash on launch

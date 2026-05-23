@@ -10,7 +10,7 @@
 
 ---
 
-## Phase 1 — MVP (Weeks 1-8)
+## Phase 1 - MVP (Weeks 1-8)
 
 ```
 Week 1-2: Foundation
@@ -45,7 +45,7 @@ Week 7-8: Polish + Launch
 
 ---
 
-## Phase 2 — Emergency Router (Months 3-4)
+## Phase 2 - Emergency Router (Months 3-4)
 
 ```
 - Severity detection refinement
@@ -59,7 +59,7 @@ Week 7-8: Polish + Launch
 
 ---
 
-## Phase 3 — Intelligence Layer (Months 5-6)
+## Phase 3 - Intelligence Layer (Months 5-6)
 
 ```
 - Bangladesh Law AI (RAG implementation)
@@ -73,7 +73,7 @@ Week 7-8: Polish + Launch
 
 ---
 
-## Phase 4 — Production Hardening (Months 7-9)
+## Phase 4 - Production Hardening (Months 7-9)
 
 ```
 - Full offline voice (on-device model evaluation)

@@ -1,4 +1,4 @@
-# Voice Pipeline — STT + AI Processing\n\n## Voice Processing Architecture
+# Voice Pipeline - STT + AI Processing\n\n## Voice Processing Architecture
 
 ```
 User speaks
@@ -21,7 +21,7 @@ User speaks
 [Structured JSON response]
     │
     ▼
-[Flutter UI — live form fill]
+[Flutter UI - live form fill]
 ```
 
 ---
@@ -112,7 +112,7 @@ class VoiceProvider extends _\$VoiceProvider {
       notifier.addReasoningStep('✓ ডেটা এক্সট্র্যাকশন সম্পন্ন');
       notifier.setExtractedData(report);
 
-      // If emergency detected — immediate routing
+      // If emergency detected - immediate routing
       if (report.isEmergency) {
         ref.read(emergencyRouterProvider.notifier)
            .handleEmergency(report);

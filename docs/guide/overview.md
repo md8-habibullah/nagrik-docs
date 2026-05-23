@@ -1,6 +1,6 @@
-# NagrikAI — Project Overview\n\n## What is NagrikAI?
+# NagrikAI - Project Overview\n\n## What is NagrikAI?
 
-NagrikAI is Bangladesh's first **voice-activated civic AI agent** — a production-grade mobile application that lets ordinary citizens report civic issues, access emergency services, understand local laws, and stay safe — all through natural Bangla voice commands.
+NagrikAI is Bangladesh's first **voice-activated civic AI agent** - a production-grade mobile application that lets ordinary citizens report civic issues, access emergency services, understand local laws, and stay safe - all through natural Bangla voice commands.
 
 **Core thesis:** *"Zero-UI voice input with transparent agentic reasoning & autonomous action."*
 
@@ -31,7 +31,7 @@ NagrikAI is Bangladesh's first **voice-activated civic AI agent** — a producti
 
 ## Competition Context
 
-- **Impact Dhaka 2026 (BUET):** Web MVP — 2nd Runner-Up
+- **Impact Dhaka 2026 (BUET):** Web MVP - 2nd Runner-Up
 - **Featured in:** বাংলাদেশ প্রতিদিন
 - **Now building:** Native Flutter app (Android + iOS)
 
@@ -41,6 +41,6 @@ NagrikAI is Bangladesh's first **voice-activated civic AI agent** — a producti
 
 | Platform | Status |
 |---|---|
-| Android (Play Store) | Primary — Phase 1 |
+| Android (Play Store) | Primary - Phase 1 |
 | iOS (App Store) | Phase 2 (same Flutter codebase) |
 | Web (Progressive Web App) | Phase 3 |\n\n

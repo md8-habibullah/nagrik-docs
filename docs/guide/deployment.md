@@ -21,7 +21,7 @@ Flutter app
 
 ---
 
-## Backend Deployment — Railway
+## Backend Deployment - Railway
 
 ```bash
 # 1. Install Railway CLI
@@ -72,7 +72,7 @@ CMD ["node", "dist/index.js"]
 
 ---
 
-## GitHub Actions — Backend CI/CD
+## GitHub Actions - Backend CI/CD
 
 ```yaml
 # .github/workflows/deploy-backend.yml
@@ -112,7 +112,7 @@ jobs:
 
 ---
 
-## GitHub Actions — Flutter Beta Build
+## GitHub Actions - Flutter Beta Build
 
 ```yaml
 # .github/workflows/flutter-beta.yml

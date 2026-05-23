@@ -1,4 +1,4 @@
-# Google Play Store — Full Submission Guide\n\n## Pre-submission Checklist
+# Google Play Store - Full Submission Guide\n\n## Pre-submission Checklist
 
 - [ ] App tested on Android 8.0+ (API 26+)
 - [ ] All permissions have user-facing explanations
@@ -31,7 +31,7 @@ storeFile=../nagrik-ai.keystore
 # 3. Update android/app/build.gradle
 # (Add signingConfigs block)
 
-# 4. Build release AAB (App Bundle — preferred for Play Store)
+# 4. Build release AAB (App Bundle - preferred for Play Store)
 flutter build appbundle --release
 
 # Output: build/app/outputs/bundle/release/app-release.aab
@@ -95,14 +95,14 @@ Short Description (80 chars max):
 
 Full Description:
 NagrikAI হল বাংলাদেশের নাগরিকদের জন্য একটি AI-চালিত ভয়েস সহায়ক।
-শুধু বলুন — বাকিটা NagrikAI করবে।
+শুধু বলুন - বাকিটা NagrikAI করবে।
 
 ✅ ভয়েস দিয়ে সিভিক অভিযোগ দাখিল করুন
 ✅ জরুরি পরিস্থিতিতে স্বয়ংক্রিয় হেল্পলাইন রাউটিং (999, 333, 109)
 ✅ কাছের পুলিশ, হাসপাতাল, অ্যাম্বুলেন্স খুঁজুন
 ✅ বাংলাদেশের আইন সম্পর্কে প্রশ্ন করুন
 ✅ ঝুঁকিপূর্ণ এলাকায় স্বয়ংক্রিয় সতর্কতা
-✅ প্যানিক বাটন — শেক করুন বা বলুন "সাহায্য করো"
+✅ প্যানিক বাটন - শেক করুন বা বলুন "সাহায্য করো"
 ✅ সরকারি ফর্ম স্বয়ংক্রিয় পূরণ ও PDF ডাউনলোড
 ✅ বাংলাদেশের সর্বশেষ সংবাদ
 
@@ -118,7 +118,7 @@ Tags: civic, bangladesh, emergency, AI, bangla, safety
 ## Play Store Required Policies
 
 ```
-1. Privacy Policy (REQUIRED — host on website)
+1. Privacy Policy (REQUIRED - host on website)
    Mention:
    - Location data collection and purpose
    - Microphone usage

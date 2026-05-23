@@ -2,10 +2,10 @@
 
 Bangladesh has major dialect variations:
 - Standard Bangla (ঢাকা / formal)
-- Chittagong dialect (চট্টগ্রামের ভাষা) — heavily modified phonetics
-- Sylhet dialect (সিলেটি) — distinct vocabulary
+- Chittagong dialect (চট্টগ্রামের ভাষা) - heavily modified phonetics
+- Sylhet dialect (সিলেটি) - distinct vocabulary
 - Noakhali dialect (নোয়াখালীর ভাষা)
-- Rajshahi/Rangpur (উত্তরবঙ্গ) — different vowels
+- Rajshahi/Rangpur (উত্তরবঙ্গ) - different vowels
 
 ---
 
@@ -17,8 +17,8 @@ Step 1: STT (Speech → Raw Text)
    Output: Raw text (may have wrong words)
 
    Priority:
-   1. flutter_speech_to_text (bn-BD locale) — free, instant
-   2. Google Cloud STT v1p1beta1 — paid but better dialects
+   1. flutter_speech_to_text (bn-BD locale) - free, instant
+   2. Google Cloud STT v1p1beta1 - paid but better dialects
       Model: "latest_long" for Bangla
       Alternative phrases: true (captures dialect variations)
 
@@ -103,7 +103,7 @@ Category: electricity, Sub: dangerous_wire
 
 ---
 
-## Text-to-Speech (TTS) — AI Response in Bangla
+## Text-to-Speech (TTS) - AI Response in Bangla
 
 ```dart
 // For AI responses that should be spoken back to user

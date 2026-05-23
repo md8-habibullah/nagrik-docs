@@ -102,7 +102,7 @@ router.post('/ask', async (req, res) => {
 
 ---
 
-## Flutter — Streaming Law Response
+## Flutter - Streaming Law Response
 
 ```dart
 // Receive server-sent events for streaming response
