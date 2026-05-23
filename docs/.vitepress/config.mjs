@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "NagrikAI Docs",
   description: "AI-Driven Voice Civic Agent for Bangladesh",
+  base: '/nagrik-docs/',
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
