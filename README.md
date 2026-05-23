@@ -12,18 +12,18 @@ This guide is specifically designed for a **4-5 person development team** to suc
 
 ---
 
-## 🌐 Live Documentation Website
+## Live Documentation Website
 
 The most important part of this repository is our beautifully formatted Documentation Website. Instead of reading raw text files, you can view the entire project plan mapped out cleanly.
 
-**👉 View the Live Documentation here:** 
+** View the Live Documentation here:** 
 [https://md8-habibullah.github.io/nagrik-docs/](https://md8-habibullah.github.io/nagrik-docs/)
 
 *Note: This site automatically updates every time code is pushed to the `main` branch.*
 
 ---
 
-## 📖 What's Included in the Guide?
+## What's Included in the Guide?
 
 The VitePress documentation covers every single "bit-by-bit" technical requirement of the app:
 
@@ -36,7 +36,7 @@ The VitePress documentation covers every single "bit-by-bit" technical requireme
 
 ---
 
-## 🛠 Local Setup & Contribution Guidelines
+## Local Setup & Contribution Guidelines
 
 If you want to edit or add new pages to the documentation, follow these steps:
 
@@ -74,7 +74,7 @@ GitHub Actions will automatically catch your push, build the VitePress site, and
 
 ---
 
-## 🤝 The Development Team
+## The Development Team
 
 When building the core NagrikAI app, follow the division of labor outlined in the **Roadmap** section of the docs:
 - **Dev 1 (Flutter Lead):** Agent UI, Voice Pipeline, Maps

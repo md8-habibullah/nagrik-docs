@@ -61,7 +61,7 @@ export default defineConfig({
       }
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/nagrik-ai' }
+      { icon: 'github', link: 'https://github.com/md8-habibullah/nagrik-docs' }
     ]
   }
 })
