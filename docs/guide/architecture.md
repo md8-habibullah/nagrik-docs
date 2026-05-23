@@ -1,0 +1,202 @@
+# Tech Stack — Final Decisions\n\n## Why These Choices?
+
+Every choice below is optimized for: **1-2 month MVP timeline**, **4-5 person team**, **Bangla language support**, **competition demo quality**, and **real production scalability**.
+
+---
+
+## Frontend
+
+```
+Flutter 3.x (Dart)
+├── State Management:    Riverpod 2.x (best for async/streaming)
+├── Navigation:          GoRouter
+├── HTTP Client:         Dio + Retrofit
+├── Local DB:            Drift (SQLite wrapper, type-safe)
+├── Maps:                flutter_map + OpenStreetMap tiles (FREE)
+│                        OR Google Maps Flutter (paid but better)
+├── Voice/STT:           flutter_speech_to_text (device STT, free)
+│                        + Google STT API (fallback, accurate Bangla)
+├── Background:          flutter_background_service
+│                        + Workmanager (periodic tasks)
+├── Location:            geolocator + background_locator_2
+├── Push Notifications:  firebase_messaging (FCM)
+├── Local Notifications: flutter_local_notifications
+├── Audio:               just_audio (panic alarm sound)
+├── Shake detect:        shake (for panic trigger)
+├── PDF generation:      pdf (dart package) + printing
+└── Secure Storage:      flutter_secure_storage
+```
+
+---
+
+## Backend
+
+```
+Node.js 20 LTS + Express 5
+├── Language:            TypeScript (strict mode)
+├── ORM:                 Prisma (Supabase PostgreSQL)
+├── Auth:                Supabase Auth (JWT + OAuth)
+├── File Storage:        Supabase Storage (audio, images)
+├── Realtime:            Supabase Realtime (risk zone updates)
+├── Caching:             Redis (Upstash — free tier)
+├── Queue:               BullMQ (emergency job queue)
+├── Validation:          Zod
+├── Logging:             Winston + Sentry
+└── Testing:             Vitest + Supertest
+```
+
+---
+
+## Database
+
+```
+Supabase (PostgreSQL 15)
+├── Primary:             Cloud PostgreSQL (Supabase)
+├── Local (on device):   Drift/SQLite (offline cache)
+├── Sessions:            Supabase Auth
+└── Files:               Supabase Storage Buckets
+```
+
+---
+
+## AI / Intelligence
+
+```
+OpenRouter API (via backend proxy — NEVER call from app)
+├── Primary Model:       google/gemini-1.5-pro (best Bangla, cheapest)
+├── Reasoning Model:     anthropic/claude-3.5-sonnet (complex tasks)
+├── Fallback:            google/gemini-flash-1.5 (fast, cheap)
+├── Speech-to-Text:      Google Cloud STT v1p1beta1 (Bangla-BD locale)
+├── News:                RSS feeds (no cost)
+└── Maps Places:         Google Places API (for facility search)
+```
+
+---
+
+## DevOps & Deployment
+
+```
+├── Backend hosting:     Railway.app (easy, free tier)
+│                        OR Render.com
+├── Database:            Supabase (free 500MB tier)
+├── CI/CD:               GitHub Actions
+├── App distribution:    Firebase App Distribution (beta)
+├── Crash reporting:     Firebase Crashlytics
+├── Analytics:           Firebase Analytics + Mixpanel
+└── Secrets:             GitHub Secrets + Railway env vars
+```
+
+---
+
+## Why Flutter over Kotlin Native?
+
+1. **Single codebase** → Android + iOS simultaneously
+2. **Faster development** → your team can ship in 1-2 months
+3. **Dart is simpler** than Kotlin for rapid prototyping
+4. **Same performance** for your use case (no 3D rendering)
+5. **Strong package ecosystem** for all needed features
+
+> ⚠️ **Important:** The hackathon proposal said Kotlin. Flutter is the right call for your team size and timeline. The core thesis is unchanged — only the implementation language changes.\n\n## System Architecture\n\n## High-Level Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        USER DEVICE                               │
+│                                                                  │
+│  ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐  │
+│  │  Voice   │    │  Maps    │    │  Panic   │    │  News    │  │
+│  │  Agent   │    │ & Places │    │  Button  │    │  Feed    │  │
+│  └────┬─────┘    └────┬─────┘    └────┬─────┘    └────┬─────┘  │
+│       │               │               │               │         │
+│  ┌────▼───────────────▼───────────────▼───────────────▼──────┐ │
+│  │              Flutter App Core (Riverpod State)              │ │
+│  │         Drift SQLite Cache | FCM | Background Service       │ │
+│  └────────────────────────┬───────────────────────────────────┘ │
+│                           │ HTTPS                               │
+└───────────────────────────┼─────────────────────────────────────┘
+                            │
+┌───────────────────────────▼─────────────────────────────────────┐
+│                    NODE.JS BACKEND (Railway)                      │
+│                                                                  │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────────┐   │
+│  │  /auth   │  │  /agent  │  │/emergency│  │  /locations  │   │
+│  │  router  │  │  router  │  │  router  │  │    router    │   │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └──────┬───────┘   │
+│       │              │              │               │            │
+│  ┌────▼──────────────▼──────────────▼───────────────▼─────────┐ │
+│  │                    Service Layer                             │ │
+│  │  AuthService | AgentService | EmergencyService | GeoService  │ │
+│  └────────────────────────┬────────────────────────────────────┘ │
+│                           │                                      │
+│  ┌────────────────────────▼────────────────────────────────────┐ │
+│  │                  External API Calls                          │ │
+│  │  OpenRouter API | Google STT | Google Places | News RSS     │ │
+│  └─────────────────────────────────────────────────────────────┘ │
+└──────────────────────────────────────────────────────────────────┘
+                            │
+┌───────────────────────────▼─────────────────────────────────────┐
+│                       SUPABASE                                   │
+│   PostgreSQL DB | Auth | Storage Buckets | Realtime Channels     │
+└──────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Data Flow — Voice Report Submission
+
+```
+User speaks (Bangla)
+        │
+        ▼
+[Flutter STT plugin] — device-native, zero latency
+        │ raw text transcript
+        ▼
+[Backend /agent/process]
+        │
+        ├──▶ [Google STT API] — high-accuracy Bangla fallback
+        │
+        ▼
+[OpenRouter — Gemini 1.5 Pro]
+        │ structured JSON extraction
+        ▼
+{
+  "category": "road_damage",
+  "sub_category": "pothole",
+  "location": "Mirpur 10, Dhaka",
+  "severity": "high",
+  "description": "বড় গর্ত রাস্তায়, দুর্ঘটনার আশঙ্কা",
+  "emergency": false
+}
+        │
+        ▼
+[Flutter UI] — live form auto-fill animation
+        │
+        ▼
+[User reviews + edits] — human-in-the-loop
+        │
+        ▼
+[Confirm & Submit]
+        │
+        ├──▶ [Supabase DB] — store report
+        ├──▶ [API/Webhook] — notify relevant authority
+        └──▶ [User gets report ID]
+```
+
+---
+
+## Security Architecture
+
+```
+App ─── HTTPS ──▶ Backend (JWT verify) ──▶ Supabase RLS
+                         │
+                         ├── OpenRouter key: SERVER SIDE ONLY
+                         ├── Google APIs key: SERVER SIDE ONLY
+                         └── Supabase service key: SERVER SIDE ONLY
+
+Device stores:
+  - JWT access token (flutter_secure_storage, AES encrypted)
+  - Refresh token (secure storage)
+  - Cached map tiles (read-only, public data)
+  - User profile cache (encrypted)
+```
+
+> ⛔ Never put API keys in Flutter code. Always proxy through your Node.js backend.\n\n
