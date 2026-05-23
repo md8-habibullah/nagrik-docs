@@ -16,7 +16,7 @@ This guide is specifically designed for a **4-5 person development team** to suc
 
 The most important part of this repository is our beautifully formatted Documentation Website. Instead of reading raw text files, you can view the entire project plan mapped out cleanly.
 
-** View the Live Documentation here:** 
+**View the Live Documentation here:** 
 [https://md8-habibullah.github.io/nagrik-docs/](https://md8-habibullah.github.io/nagrik-docs/)
 
 *Note: This site automatically updates every time code is pushed to the `main` branch.*
