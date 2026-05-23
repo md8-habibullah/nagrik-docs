@@ -7,7 +7,7 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/nagrikAI-docs/favicon.svg' }],
     ['meta', { name: 'theme-color', content: '#006a4e' }],
-    ['meta', { name: 'author', content: 'Md. Habibullah Sharif (Rafi)' }]
+    ['meta', { name: 'author', content: 'Md. Habibullah Sharif  ' }]
   ],
   cleanUrls: true,
   themeConfig: {
@@ -73,7 +73,7 @@ export default defineConfig({
       next: 'Next'
     },
     footer: {
-      message: 'Documentation maintained by Dreams of X Team and Md. Habibullah Sharif (Rafi).',
+      message: 'Documentation maintained by Dreams of X Team .',
       copyright: 'Copyright © 2026 Dreams of X Team'
     }
   }

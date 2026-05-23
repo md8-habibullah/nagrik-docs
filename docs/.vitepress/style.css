@@ -1,27 +1,24 @@
 /* ============================================
-   LIGHT THEME - PRIMARY COLORS
-   Bangladesh Green (#006a4e) + Islamic Gold
+   LIGHT THEME - PARCHMENT & GREEN
    ============================================ */
 :root {
   color-scheme: light;
 
-  /* Primary Brand Colors */
-  --vp-c-brand: #006a4e;
-  --vp-c-brand-muted: #0f7f59;
+  /* Primary Brand Colors - Bangladesh Green */
+  --vp-c-brand-1: #006a4e;
+  --vp-c-brand-2: #0f7f59;
+  --vp-c-brand-3: #139f6f;
+  --vp-c-brand: var(--vp-c-brand-1);
 
   /* Islamic-Inspired Accents */
   --vp-c-islamic-gold: #d4af37;
   --vp-c-islamic-blue: #1e3a5f;
   --vp-c-islamic-teal: #0f766e;
-  --vp-c-islamic-purple: #4b3c6b;
 
-  /* Base Colors */
-  --vp-c-page: #ffffff;
-  --vp-c-border: rgba(0, 0, 0, 0.1);
+  /* Base Colors - Warm Parchment feel */
+  --vp-c-bg: #fcfbf9;
   --vp-c-surface: #ffffff;
-  --vp-c-muted: #64748b;
-  --vp-c-bg: #f7fafc;
-  --vp-c-code-bg: #f3f5f7;
+  --vp-c-border: rgba(0, 106, 78, 0.15);
 
   /* Text Colors */
   --vp-c-text-1: #1e293b;
@@ -29,30 +26,28 @@
 }
 
 /* ============================================
-   DARK THEME - HIGH CONTRAST + ISLAMIC VIBE
+   DARK THEME - MIDNIGHT & GOLD
    ============================================ */
 .dark {
   color-scheme: dark;
 
-  /* Primary Dark Mode Colors */
-  --vp-c-brand: #10b981;
-  --vp-c-brand-muted: #34d399;
+  /* Primary Dark Mode Colors - Emerald */
+  --vp-c-brand-1: #10b981;
+  --vp-c-brand-2: #34d399;
+  --vp-c-brand-3: #6ee7b7;
+  --vp-c-brand: var(--vp-c-brand-1);
 
   /* Islamic-Inspired Dark Accents */
   --vp-c-islamic-gold: #f59e0b;
-  --vp-c-islamic-blue: #60a5fa;
   --vp-c-islamic-teal: #14b8a6;
-  --vp-c-islamic-purple: #a78bfa;
 
-  /* Dark Base Colors */
-  --vp-c-page: #1e293b;
-  --vp-c-bg: #0f172a;
-  --vp-c-surface: #1e293b;
-  --vp-c-border: rgba(148, 163, 184, 0.2);
-  --vp-c-code-bg: #1e293b;
+  /* Dark Base Colors - Deep Night */
+  --vp-c-bg: #0b1120;
+  --vp-c-surface: #131c31;
+  --vp-c-border: rgba(245, 158, 11, 0.15); /* Subtle gold border */
 
   /* Dark Text Colors - HIGH CONTRAST */
-  --vp-c-text-1: #f1f5f9;
+  --vp-c-text-1: #f8fafc;
   --vp-c-text-2: #cbd5e1;
 }
 
@@ -64,29 +59,14 @@ body {
 /* ============================================
    NAVBAR STYLING
    ============================================ */
-.VPNavBar,
-.VPNavBar + .divider {
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-  transition: all 0.3s ease;
-}
-
-.dark .VPNavBar,
-.dark .VPNavBar + .divider {
-  background: rgba(15, 23, 42, 0.85);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
-}
-
-.VPNavBarTitle .title {
-  font-weight: 700;
-  color: var(--vp-c-text-1);
+.VPNavBar {
+  border-bottom: 1px solid var(--vp-c-border) !important;
 }
 
 .VPNavBarMenuLink {
-  color: var(--vp-c-islamic-blue);
+  color: var(--vp-c-text-1);
   font-weight: 600;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .VPNavBarMenuLink:hover {
@@ -94,83 +74,56 @@ body {
 }
 
 /* ============================================
-   BUTTONS
+   BUTTONS & ACCENTS
    ============================================ */
 .VPButton.brand {
-  background: linear-gradient(135deg, #006a4e, #0f7f59);
+  background: var(--vp-c-brand-1);
   color: #fff;
   font-weight: 700;
-  transition: all 0.3s ease;
-}
-
-.VPButton.brand:hover {
-  background: linear-gradient(135deg, #0f7f59, #006a4e);
-  box-shadow: 0 8px 24px rgba(15, 127, 89, 0.3);
+  border: 1px solid transparent;
 }
 
 .dark .VPButton.brand {
-  background: linear-gradient(135deg, #10b981, #34d399);
-  color: #0f172a;
+  background: var(--vp-c-brand-1);
+  color: #0b1120; /* High contrast text on emerald button */
 }
 
 .dark .VPButton.brand:hover {
-  background: linear-gradient(135deg, #34d399, #10b981);
-  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
-}
-
-.VPButton.alt {
-  border-color: var(--vp-c-islamic-teal);
-  color: var(--vp-c-islamic-teal);
-  font-weight: 600;
-}
-
-.VPButton.alt:hover {
-  background: rgba(15, 118, 110, 0.1);
+  background: var(--vp-c-brand-2);
+  box-shadow: 0 4px 16px rgba(52, 211, 153, 0.3);
 }
 
 /* ============================================
-   HOME HERO & FEATURES
+   ISLAMIC GEOMETRY ACCENT (HERO SECTION)
    ============================================ */
 .VPHomeHero {
-  box-shadow: 0 24px 54px rgba(15, 23, 42, 0.08);
-  border: 1px solid rgba(15, 23, 42, 0.05);
-  background: #ffffff;
+  border-bottom: 2px solid var(--vp-c-islamic-gold);
+  background-image:
+    radial-gradient(
+      circle at top right,
+      rgba(212, 175, 55, 0.05) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(15, 118, 110, 0.05) 0%,
+      transparent 40%
+    );
 }
 
 .dark .VPHomeHero {
-  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.3);
-}
-
-.VPHomeHero .heading {
-  color: var(--vp-c-islamic-teal);
-  font-weight: 700;
-}
-
-.dark .VPHomeHero .heading {
-  color: var(--vp-c-islamic-gold);
-}
-
-.VPHomeFeatures .box {
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  background: #ffffff;
-  transition: all 0.3s ease;
-}
-
-.VPHomeFeatures .box:hover {
-  border-color: var(--vp-c-islamic-teal);
-  box-shadow: 0 12px 24px rgba(15, 118, 110, 0.1);
-}
-
-.dark .VPHomeFeatures .box {
-  background: rgba(30, 41, 59, 0.7);
-  border: 1px solid rgba(148, 163, 184, 0.2);
-}
-
-.dark .VPHomeFeatures .box:hover {
-  border-color: var(--vp-c-islamic-gold);
-  box-shadow: 0 12px 24px rgba(245, 158, 11, 0.2);
+  border-bottom: 2px solid var(--vp-c-islamic-gold);
+  background-image:
+    radial-gradient(
+      circle at top right,
+      rgba(245, 158, 11, 0.1) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(52, 211, 153, 0.1) 0%,
+      transparent 40%
+    );
 }
 
 /* ============================================
@@ -178,120 +131,13 @@ body {
    ============================================ */
 pre,
 code {
-  background: #f3f5f7;
-  border-radius: 0.65rem;
-  color: #1e293b;
-  transition: all 0.2s ease;
+  background: #f1f5f9;
+  color: #0f172a;
 }
 
 .dark pre,
 .dark code {
-  background: #0f172a;
-  color: #f1f5f9;
-  border: 1px solid rgba(148, 163, 184, 0.2);
-}
-
-/* ============================================
-   FOOTER
-   ============================================ */
-footer {
-  color: var(--vp-c-text-2);
-  border-top: 1px solid var(--vp-c-border);
-}
-
-.dark footer {
-  border-top-color: rgba(148, 163, 184, 0.2);
-}
-
-/* ============================================
-   ACTIVE SIDEBAR LINK STYLING
-   INCLUDES: BOLD + UNDERLINE + COLOR + BACKGROUND
-   ============================================ */
-.VPSidebar .VPLink.active {
-  color: #0f766e !important;
-  font-weight: 700;
-  background: rgba(15, 118, 110, 0.12);
-  border-left: 3px solid #0f766e;
-  border-bottom: 2px solid #0f766e;
-  padding-left: calc(12px - 3px);
-  padding-bottom: 4px;
-  text-decoration: underline;
-  text-decoration-color: #0f766e;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 2px;
-  transition: all 0.2s ease;
-}
-
-.VPSidebar .VPLink.active:hover {
-  background: rgba(15, 118, 110, 0.18);
-}
-
-.VPSidebar .item > .item-heading.active {
-  color: #0f766e;
-  font-weight: 700;
-  text-decoration: underline;
-  text-decoration-color: #0f766e;
-  text-underline-offset: 4px;
-}
-
-/* ============================================
-   DARK MODE ACTIVE SIDEBAR - HIGH CONTRAST
-   ============================================ */
-.dark .VPSidebar .VPLink.active {
-  color: #34d399 !important;
-  background: rgba(52, 211, 153, 0.15);
-  border-left-color: #34d399;
-  border-bottom-color: #34d399;
-  text-decoration-color: #34d399;
-  font-weight: 700;
-}
-
-.dark .VPSidebar .VPLink.active:hover {
-  background: rgba(52, 211, 153, 0.22);
-  box-shadow: inset 0 0 12px rgba(52, 211, 153, 0.1);
-}
-
-.dark .VPSidebar .item > .item-heading.active {
-  color: #34d399 !important;
-  font-weight: 700;
-  text-decoration-color: #34d399;
-}
-
-/* ============================================
-   SIDEBAR GENERAL TEXT - DARK MODE CONTRAST
-   ============================================ */
-.dark .VPSidebar .item-heading {
-  color: #cbd5e1;
-  font-weight: 600;
-}
-
-.dark .VPSidebar .VPLink {
-  color: #cbd5e1 !important;
-  transition: all 0.2s ease;
-}
-
-.dark .VPSidebar .VPLink:hover {
-  color: #f1f5f9 !important;
-}
-
-/* ============================================
-   LINKS & GENERAL TEXT
-   ============================================ */
-.VPLink {
-  color: var(--vp-c-islamic-teal);
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.VPLink:hover {
-  color: var(--vp-c-islamic-gold);
-}
-
-.dark .VPLink {
-  color: var(--vp-c-islamic-gold) !important;
-}
-
-.dark .VPLink:hover {
-  color: var(--vp-c-islamic-blue) !important;
-  text-decoration: underline;
+  background: #020617; /* Very dark terminal feel */
+  border: 1px solid var(--vp-c-border);
+  color: #e2e8f0;
 }
