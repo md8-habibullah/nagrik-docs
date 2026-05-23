@@ -1,0 +1,4925 @@
+hello!
+we are 4-5 people team are working on this project,
+thinking to build a full featured production grade application
+
+i need a proper implementation each and everythings bit bit implementation detaild for this
+example as which asi use, how to app will run in bg there can limitation for android and ios
+
+also can be no internate zone( i thinking initial stage will for for them who have interet then will be for offline features on our applications),
+some time interval will be location collect and will be selecct there red zone and vulnarable zone for waning can be any accident on night
+
+there will be all bangladesh latest news and condition what happenig there.
+also will be full BD law understand that ai
+
+
+i hope you understand properly i need a reall and full featured a real AI assistant who can todo anythings
+
+there i need use an online api must we will use open router ,
+
+AI can be used as a skill or a proper implementation
+All local police numbers, that app must will collecct user locations
+and will be based on this will be show all police, hospital, tourists, school, all of placed idetails information in Bangladesh
+
+For the initial stage we will select the Dhaka area for the warning....
+and bit by bit details i need, 
+
+first you can ask me porperly 
+
+some addtiona feature: Maps will be shows user daily life direction
+risk zone: for now in dhaka or can be bangladesh
+somthings will panic btn , specia sound or keyword will be send therelocation  or else
+An AI agent must need proper visual, what I said, what the agent is doing in proper visual my screen, and agent doing
+need proper form auto fillup, we will be auto fil any govt or nearly remport form fuillup, there will be shows main and option all features, AI can ask me for that that features what's needed or not? If needed then will be added properly 
+user information will be stored properly, such as login & registration 
+can be added nearby ambulance, police, hospital, bigger shop or store beside, or beside tourist places
+
+
+again ask me if have any confusion properly
+then we can 
+
+
+Q: For offline mode, which features are MUST-HAVE vs nice-to-have? (Select all that apply)
+A: Cached maps + risk zones only, for now do it , and next time will be full voice offline future
+
+Q: What's your timeline for MVP (Phase 1) launch?
+A: 1-2 months (minimal features)
+
+Q: Team technical expertise - strongest areas? (Select all that apply)
+A: frontend flutter, backend api we will be use node express, with supabase and firebase or sqlite 3 for now asa cloudcamp competion 2026
+
+i need a proper pdf with full implement ideas and guidline docs
+
+
+next also we can public it app store and playstore also include all proper guid book , all in one guidbook
+give mea  a proper docs (not pdf okay)
+
+
+```import { useState, useEffect, useRef } from "react";
+
+const NAV = [
+  { id: "overview", label: "Overview", icon: "ti-rocket", group: "Introduction" },
+  { id: "techstack", label: "Tech Stack", icon: "ti-stack-2", group: "Introduction" },
+  { id: "architecture", label: "System Architecture", icon: "ti-sitemap", group: "Introduction" },
+  { id: "flutter", label: "Flutter App", icon: "ti-device-mobile", group: "Frontend" },
+  { id: "agent-ui", label: "Agent Visual UI", icon: "ti-brain", group: "Frontend" },
+  { id: "voice", label: "Voice Pipeline", icon: "ti-microphone", group: "Frontend" },
+  { id: "maps", label: "Maps & Places", icon: "ti-map-pin", group: "Frontend" },
+  { id: "panic", label: "Panic Button", icon: "ti-alert-triangle", group: "Frontend" },
+  { id: "offline", label: "Offline Mode", icon: "ti-wifi-off", group: "Frontend" },
+  { id: "backend", label: "Node.js Backend", icon: "ti-server", group: "Backend" },
+  { id: "database", label: "Database Schema", icon: "ti-database", group: "Backend" },
+  { id: "auth", label: "Auth & Profiles", icon: "ti-user-shield", group: "Backend" },
+  { id: "ai", label: "AI Agent Core", icon: "ti-robot", group: "AI & Intelligence" },
+  { id: "bangla", label: "Bangla NLP", icon: "ti-language", group: "AI & Intelligence" },
+  { id: "law", label: "BD Law AI", icon: "ti-scale", group: "AI & Intelligence" },
+  { id: "forms", label: "Form Auto-fill", icon: "ti-forms", group: "AI & Intelligence" },
+  { id: "news", label: "News & Alerts", icon: "ti-news", group: "AI & Intelligence" },
+  { id: "location", label: "Location & Risk", icon: "ti-radar", group: "Safety" },
+  { id: "emergency", label: "Emergency Router", icon: "ti-ambulance", group: "Safety" },
+  { id: "playstore", label: "Play Store Guide", icon: "ti-brand-google-play", group: "Publishing" },
+  { id: "appstore", label: "App Store Guide", icon: "ti-brand-apple", group: "Deployment" },
+  { id: "deployment", label: "Deployment & CI/CD", icon: "ti-cloud-upload", group: "Deployment" },
+  { id: "cost", label: "Cost Estimation", icon: "ti-currency-dollar", group: "Deployment" },
+  { id: "roadmap", label: "Roadmap", icon: "ti-flag", group: "Deployment" },
+];
+
+const SECTIONS = {
+  overview: {
+    title: "NagrikAI — Project Overview",
+    badge: "Introduction",
+    content: `
+## What is NagrikAI?
+
+NagrikAI is Bangladesh's first **voice-activated civic AI agent** — a production-grade mobile application that lets ordinary citizens report civic issues, access emergency services, understand local laws, and stay safe — all through natural Bangla voice commands.
+
+**Core thesis:** *"Zero-UI voice input with transparent agentic reasoning & autonomous action."*
+
+---
+
+## Key Differentiators
+
+| Feature | Traditional Apps | NagrikAI |
+|---|---|---|
+| Input | Manual form typing | Voice in Bangla/dialects |
+| Processing | Static | Live AI reasoning shown on screen |
+| Emergency | Manual dialing | Auto-detected + routed instantly |
+| Forms | Fill yourself | AI auto-fills from voice |
+| Law help | Search engines | AI legal assistant (BD law) |
+| Location | Passive | Active risk zone alerts |
+
+---
+
+## Target Users
+
+- Citizens of Bangladesh (Dhaka initially, all BD later)
+- People with low digital literacy
+- Emergency situations (injury, flood, crime)
+- Civic complaint reporters
+- People needing legal guidance
+
+---
+
+## Competition Context
+
+- **Impact Dhaka 2026 (BUET):** Web MVP — 2nd Runner-Up
+- **Featured in:** বাংলাদেশ প্রতিদিন
+- **Now building:** Native Flutter app (Android + iOS)
+
+---
+
+## Platform Targets
+
+| Platform | Status |
+|---|---|
+| Android (Play Store) | Primary — Phase 1 |
+| iOS (App Store) | Phase 2 (same Flutter codebase) |
+| Web (Progressive Web App) | Phase 3 |
+`,
+  },
+
+  techstack: {
+    title: "Tech Stack — Final Decisions",
+    badge: "Introduction",
+    content: `
+## Why These Choices?
+
+Every choice below is optimized for: **1-2 month MVP timeline**, **4-5 person team**, **Bangla language support**, **competition demo quality**, and **real production scalability**.
+
+---
+
+## Frontend
+
+\`\`\`
+Flutter 3.x (Dart)
+├── State Management:    Riverpod 2.x (best for async/streaming)
+├── Navigation:          GoRouter
+├── HTTP Client:         Dio + Retrofit
+├── Local DB:            Drift (SQLite wrapper, type-safe)
+├── Maps:                flutter_map + OpenStreetMap tiles (FREE)
+│                        OR Google Maps Flutter (paid but better)
+├── Voice/STT:           flutter_speech_to_text (device STT, free)
+│                        + Google STT API (fallback, accurate Bangla)
+├── Background:          flutter_background_service
+│                        + Workmanager (periodic tasks)
+├── Location:            geolocator + background_locator_2
+├── Push Notifications:  firebase_messaging (FCM)
+├── Local Notifications: flutter_local_notifications
+├── Audio:               just_audio (panic alarm sound)
+├── Shake detect:        shake (for panic trigger)
+├── PDF generation:      pdf (dart package) + printing
+└── Secure Storage:      flutter_secure_storage
+\`\`\`
+
+---
+
+## Backend
+
+\`\`\`
+Node.js 20 LTS + Express 5
+├── Language:            TypeScript (strict mode)
+├── ORM:                 Prisma (Supabase PostgreSQL)
+├── Auth:                Supabase Auth (JWT + OAuth)
+├── File Storage:        Supabase Storage (audio, images)
+├── Realtime:            Supabase Realtime (risk zone updates)
+├── Caching:             Redis (Upstash — free tier)
+├── Queue:               BullMQ (emergency job queue)
+├── Validation:          Zod
+├── Logging:             Winston + Sentry
+└── Testing:             Vitest + Supertest
+\`\`\`
+
+---
+
+## Database
+
+\`\`\`
+Supabase (PostgreSQL 15)
+├── Primary:             Cloud PostgreSQL (Supabase)
+├── Local (on device):   Drift/SQLite (offline cache)
+├── Sessions:            Supabase Auth
+└── Files:               Supabase Storage Buckets
+\`\`\`
+
+---
+
+## AI / Intelligence
+
+\`\`\`
+OpenRouter API (via backend proxy — NEVER call from app)
+├── Primary Model:       google/gemini-1.5-pro (best Bangla, cheapest)
+├── Reasoning Model:     anthropic/claude-3.5-sonnet (complex tasks)
+├── Fallback:            google/gemini-flash-1.5 (fast, cheap)
+├── Speech-to-Text:      Google Cloud STT v1p1beta1 (Bangla-BD locale)
+├── News:                RSS feeds (no cost)
+└── Maps Places:         Google Places API (for facility search)
+\`\`\`
+
+---
+
+## DevOps & Deployment
+
+\`\`\`
+├── Backend hosting:     Railway.app (easy, free tier)
+│                        OR Render.com
+├── Database:            Supabase (free 500MB tier)
+├── CI/CD:               GitHub Actions
+├── App distribution:    Firebase App Distribution (beta)
+├── Crash reporting:     Firebase Crashlytics
+├── Analytics:           Firebase Analytics + Mixpanel
+└── Secrets:             GitHub Secrets + Railway env vars
+\`\`\`
+
+---
+
+## Why Flutter over Kotlin Native?
+
+1. **Single codebase** → Android + iOS simultaneously
+2. **Faster development** → your team can ship in 1-2 months
+3. **Dart is simpler** than Kotlin for rapid prototyping
+4. **Same performance** for your use case (no 3D rendering)
+5. **Strong package ecosystem** for all needed features
+
+> ⚠️ **Important:** The hackathon proposal said Kotlin. Flutter is the right call for your team size and timeline. The core thesis is unchanged — only the implementation language changes.
+`,
+  },
+
+  architecture: {
+    title: "System Architecture",
+    badge: "Introduction",
+    content: `
+## High-Level Architecture
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────┐
+│                        USER DEVICE                               │
+│                                                                  │
+│  ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐  │
+│  │  Voice   │    │  Maps    │    │  Panic   │    │  News    │  │
+│  │  Agent   │    │ & Places │    │  Button  │    │  Feed    │  │
+│  └────┬─────┘    └────┬─────┘    └────┬─────┘    └────┬─────┘  │
+│       │               │               │               │         │
+│  ┌────▼───────────────▼───────────────▼───────────────▼──────┐ │
+│  │              Flutter App Core (Riverpod State)              │ │
+│  │         Drift SQLite Cache | FCM | Background Service       │ │
+│  └────────────────────────┬───────────────────────────────────┘ │
+│                           │ HTTPS                               │
+└───────────────────────────┼─────────────────────────────────────┘
+                            │
+┌───────────────────────────▼─────────────────────────────────────┐
+│                    NODE.JS BACKEND (Railway)                      │
+│                                                                  │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────────┐   │
+│  │  /auth   │  │  /agent  │  │/emergency│  │  /locations  │   │
+│  │  router  │  │  router  │  │  router  │  │    router    │   │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └──────┬───────┘   │
+│       │              │              │               │            │
+│  ┌────▼──────────────▼──────────────▼───────────────▼─────────┐ │
+│  │                    Service Layer                             │ │
+│  │  AuthService | AgentService | EmergencyService | GeoService  │ │
+│  └────────────────────────┬────────────────────────────────────┘ │
+│                           │                                      │
+│  ┌────────────────────────▼────────────────────────────────────┐ │
+│  │                  External API Calls                          │ │
+│  │  OpenRouter API | Google STT | Google Places | News RSS     │ │
+│  └─────────────────────────────────────────────────────────────┘ │
+└──────────────────────────────────────────────────────────────────┘
+                            │
+┌───────────────────────────▼─────────────────────────────────────┐
+│                       SUPABASE                                   │
+│   PostgreSQL DB | Auth | Storage Buckets | Realtime Channels     │
+└──────────────────────────────────────────────────────────────────┘
+\`\`\`
+
+---
+
+## Data Flow — Voice Report Submission
+
+\`\`\`
+User speaks (Bangla)
+        │
+        ▼
+[Flutter STT plugin] — device-native, zero latency
+        │ raw text transcript
+        ▼
+[Backend /agent/process]
+        │
+        ├──▶ [Google STT API] — high-accuracy Bangla fallback
+        │
+        ▼
+[OpenRouter — Gemini 1.5 Pro]
+        │ structured JSON extraction
+        ▼
+{
+  "category": "road_damage",
+  "sub_category": "pothole",
+  "location": "Mirpur 10, Dhaka",
+  "severity": "high",
+  "description": "বড় গর্ত রাস্তায়, দুর্ঘটনার আশঙ্কা",
+  "emergency": false
+}
+        │
+        ▼
+[Flutter UI] — live form auto-fill animation
+        │
+        ▼
+[User reviews + edits] — human-in-the-loop
+        │
+        ▼
+[Confirm & Submit]
+        │
+        ├──▶ [Supabase DB] — store report
+        ├──▶ [API/Webhook] — notify relevant authority
+        └──▶ [User gets report ID]
+\`\`\`
+
+---
+
+## Security Architecture
+
+\`\`\`
+App ─── HTTPS ──▶ Backend (JWT verify) ──▶ Supabase RLS
+                         │
+                         ├── OpenRouter key: SERVER SIDE ONLY
+                         ├── Google APIs key: SERVER SIDE ONLY
+                         └── Supabase service key: SERVER SIDE ONLY
+
+Device stores:
+  - JWT access token (flutter_secure_storage, AES encrypted)
+  - Refresh token (secure storage)
+  - Cached map tiles (read-only, public data)
+  - User profile cache (encrypted)
+\`\`\`
+
+> ⛔ Never put API keys in Flutter code. Always proxy through your Node.js backend.
+`,
+  },
+
+  flutter: {
+    title: "Flutter App — Full Implementation",
+    badge: "Frontend",
+    content: `
+## Project Structure
+
+\`\`\`
+nagrik_ai/
+├── lib/
+│   ├── main.dart
+│   ├── app.dart                    # GoRouter + Riverpod setup
+│   ├── core/
+│   │   ├── constants/
+│   │   │   ├── api_endpoints.dart
+│   │   │   ├── bd_helplines.dart   # 999, 333, 109, 16123 etc.
+│   │   │   └── app_colors.dart
+│   │   ├── services/
+│   │   │   ├── background_service.dart
+│   │   │   ├── location_service.dart
+│   │   │   └── notification_service.dart
+│   │   └── utils/
+│   │       ├── permission_handler.dart
+│   │       └── connectivity_checker.dart
+│   ├── features/
+│   │   ├── auth/
+│   │   │   ├── presentation/       # login, register screens
+│   │   │   ├── providers/
+│   │   │   └── repository/
+│   │   ├── agent/                  # Voice AI agent
+│   │   │   ├── presentation/
+│   │   │   │   ├── agent_screen.dart
+│   │   │   │   ├── widgets/
+│   │   │   │   │   ├── voice_orb_widget.dart
+│   │   │   │   │   ├── reasoning_ticker_widget.dart
+│   │   │   │   │   ├── live_form_widget.dart
+│   │   │   │   │   └── confirm_action_sheet.dart
+│   │   │   ├── providers/
+│   │   │   │   ├── agent_state_provider.dart
+│   │   │   │   └── voice_provider.dart
+│   │   │   └── repository/
+│   │   ├── maps/                   # Maps + nearby places
+│   │   ├── emergency/              # Panic button + routing
+│   │   ├── news/                   # Bangladesh news
+│   │   ├── law/                    # BD Law AI
+│   │   ├── profile/                # User profile
+│   │   └── reports/                # Past civic reports
+│   └── shared/
+│       ├── widgets/
+│       └── models/
+├── android/
+│   ├── app/src/main/
+│   │   ├── AndroidManifest.xml     # Permissions
+│   │   └── res/
+│   │       └── drawable/           # Notification icons
+└── ios/
+    └── Runner/
+        └── Info.plist              # iOS permissions
+\`\`\`
+
+---
+
+## pubspec.yaml — All Required Packages
+
+\`\`\`yaml
+name: nagrik_ai
+description: AI-Driven Voice Civic Agent for Bangladesh
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.16.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  flutter_riverpod: ^2.5.0
+  riverpod_annotation: ^2.3.3
+
+  # Navigation
+  go_router: ^13.0.0
+
+  # Network
+  dio: ^5.4.0
+  retrofit: ^4.1.0
+
+  # Database (local)
+  drift: ^2.16.0
+  drift_sqflite: ^2.1.0
+  sqflite: ^2.3.0
+
+  # Auth & Backend
+  supabase_flutter: ^2.3.4
+
+  # Voice & STT
+  speech_to_text: ^6.6.0
+  permission_handler: ^11.3.0
+  record: ^5.1.0              # audio recording for panic
+
+  # Maps
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.0
+  flutter_map_cache: ^1.1.0   # offline tile caching
+  geolocator: ^11.0.0
+  geocoding: ^3.0.0
+
+  # Background Services
+  flutter_background_service: ^5.0.5
+  workmanager: ^0.5.2
+  background_locator_2: ^2.1.0
+
+  # Notifications
+  firebase_messaging: ^14.9.1
+  flutter_local_notifications: ^17.0.0
+
+  # Emergency / Panic
+  shake: ^2.2.0               # shake gesture detection
+  url_launcher: ^6.2.5        # for phone calls
+  just_audio: ^0.9.37         # panic alarm sound
+
+  # UI & Animations
+  lottie: ^3.0.0
+  animated_text_kit: ^4.2.2
+  flutter_animate: ^4.5.0
+  cached_network_image: ^3.3.1
+
+  # PDF & Forms
+  pdf: ^3.11.1
+  printing: ^5.13.1
+  open_file: ^3.3.2
+
+  # Storage
+  flutter_secure_storage: ^9.0.0
+  shared_preferences: ^2.2.2
+  path_provider: ^2.1.2
+
+  # Utils
+  connectivity_plus: ^6.0.2
+  package_info_plus: ^7.0.0
+  intl: ^0.19.0
+  uuid: ^4.3.3
+  logger: ^2.2.0
+
+  # Firebase (crash reporting)
+  firebase_core: ^2.29.0
+  firebase_crashlytics: ^3.5.1
+  firebase_analytics: ^10.10.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.4.8
+  riverpod_generator: ^2.3.9
+  retrofit_generator: ^8.1.0
+  drift_dev: ^2.16.0
+  flutter_lints: ^4.0.0
+\`\`\`
+
+---
+
+## AndroidManifest.xml — Critical Permissions
+
+\`\`\`xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <!-- Internet -->
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+  <!-- Location (foreground + background) -->
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+  <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION"/>
+
+  <!-- Microphone -->
+  <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
+  <!-- Phone calls (panic button) -->
+  <uses-permission android:name="android.permission.CALL_PHONE"/>
+  <uses-permission android:name="android.permission.SEND_SMS"/>
+
+  <!-- Notifications -->
+  <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+  <uses-permission android:name="android.permission.VIBRATE"/>
+  <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+  <!-- Camera (for report photo attachment) -->
+  <uses-permission android:name="android.permission.CAMERA"/>
+
+  <!-- Boot (restart background service after reboot) -->
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+  <application
+    android:label="NagrikAI"
+    android:name="\${applicationName}"
+    android:icon="@mipmap/ic_launcher"
+    android:enableOnBackInvokedCallback="true">
+
+    <!-- Background location service -->
+    <service
+      android:name="com.ryanheise.audioservice.AudioServiceIsolateService"
+      android:foregroundServiceType="location"
+      android:exported="false"/>
+
+    <receiver
+      android:name="com.it_nomads.flutterSecureStorage.ciphers.StorageCipherFactory"
+      android:exported="false"/>
+
+  </application>
+</manifest>
+\`\`\`
+
+---
+
+## iOS Info.plist — Required Permissions
+
+\`\`\`xml
+<!-- Add to ios/Runner/Info.plist -->
+<key>NSMicrophoneUsageDescription</key>
+<string>NagrikAI ব্যবহারকারীর ভয়েস ইনপুট এবং ইমার্জেন্সি রেকর্ডিংয়ের জন্য মাইক্রোফোন প্রয়োজন।</string>
+
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>NagrikAI আপনার নিরাপত্তার জন্য লোকেশন ট্র্যাক করে এবং কাছের পুলিশ/হাসপাতাল খুঁজে দেয়।</string>
+
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>NagrikAI কাছের সেবা এবং ঝুঁকি সতর্কতার জন্য আপনার অবস্থান প্রয়োজন।</string>
+
+<key>NSLocationAlwaysUsageDescription</key>
+<string>NagrikAI পটভূমিতে ঝুঁকিপূর্ণ এলাকা সতর্কতার জন্য লোকেশন প্রয়োজন।</string>
+
+<key>NSCameraUsageDescription</key>
+<string>সিভিক রিপোর্টে ছবি সংযুক্ত করার জন্য ক্যামেরা প্রয়োজন।</string>
+
+<key>UIBackgroundModes</key>
+<array>
+  <string>location</string>
+  <string>fetch</string>
+  <string>remote-notification</string>
+  <string>audio</string>
+</array>
+\`\`\`
+`,
+  },
+
+  "agent-ui": {
+    title: "Agent Visual UI — Live Sandbox Screen",
+    badge: "Frontend",
+    content: `
+## The Core UX Concept
+
+The "Agent Sandbox" is the most important screen. When a user taps the microphone:
+
+\`\`\`
+State Machine:
+IDLE → LISTENING → TRANSCRIBING → REASONING → EXTRACTING → REVIEW → CONFIRMED
+\`\`\`
+
+Each state has distinct visual feedback so the user always knows what the AI is doing.
+
+---
+
+## Agent State Model
+
+\`\`\`dart
+// lib/features/agent/providers/agent_state_provider.dart
+
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'agent_state_provider.g.dart';
+
+enum AgentPhase {
+  idle,
+  listening,
+  transcribing,
+  reasoning,
+  extracting,
+  review,
+  confirmed,
+  error,
+}
+
+class AgentState {
+  final AgentPhase phase;
+  final String transcript;
+  final List<String> reasoningSteps;   // live "thinking" messages
+  final CivicReport? extractedData;
+  final String? errorMessage;
+
+  const AgentState({
+    this.phase = AgentPhase.idle,
+    this.transcript = '',
+    this.reasoningSteps = const [],
+    this.extractedData,
+    this.errorMessage,
+  });
+
+  AgentState copyWith({...}) => AgentState(...);
+}
+
+class CivicReport {
+  final String category;
+  final String subCategory;
+  final String location;
+  final String severity;       // low | medium | high | critical
+  final String description;
+  final bool isEmergency;
+  final double? lat;
+  final double? lng;
+  final String? suggestedHelpline;
+
+  const CivicReport({...});
+
+  factory CivicReport.fromJson(Map<String, dynamic> json) => CivicReport(
+    category: json['category'] ?? '',
+    subCategory: json['sub_category'] ?? '',
+    location: json['location'] ?? '',
+    severity: json['severity'] ?? 'medium',
+    description: json['description'] ?? '',
+    isEmergency: json['is_emergency'] ?? false,
+    lat: json['lat']?.toDouble(),
+    lng: json['lng']?.toDouble(),
+    suggestedHelpline: json['suggested_helpline'],
+  );
+}
+
+@riverpod
+class AgentNotifier extends _\$AgentNotifier {
+  @override
+  AgentState build() => const AgentState();
+
+  void setPhase(AgentPhase phase) =>
+    state = state.copyWith(phase: phase);
+
+  void appendTranscript(String text) =>
+    state = state.copyWith(transcript: text);
+
+  void addReasoningStep(String step) =>
+    state = state.copyWith(
+      reasoningSteps: [...state.reasoningSteps, step]
+    );
+
+  void setExtractedData(CivicReport report) =>
+    state = state.copyWith(
+      extractedData: report,
+      phase: AgentPhase.review,
+    );
+
+  void reset() => state = const AgentState();
+}
+\`\`\`
+
+---
+
+## Voice Orb Widget (Animated Microphone)
+
+\`\`\`dart
+// lib/features/agent/presentation/widgets/voice_orb_widget.dart
+
+class VoiceOrbWidget extends ConsumerWidget {
+  const VoiceOrbWidget({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final phase = ref.watch(agentNotifierProvider).phase;
+
+    return GestureDetector(
+      onTap: () => ref.read(voiceProviderProvider.notifier).toggleListening(),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        width: phase == AgentPhase.listening ? 100 : 80,
+        height: phase == AgentPhase.listening ? 100 : 80,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: _getOrbColor(phase),
+          boxShadow: phase == AgentPhase.listening
+            ? [BoxShadow(
+                color: Colors.red.withOpacity(0.4),
+                blurRadius: 20,
+                spreadRadius: 10,
+              )]
+            : [],
+        ),
+        child: Center(
+          child: phase == AgentPhase.listening
+            ? Lottie.asset('assets/lottie/pulse.json', width: 60)
+            : const Icon(Icons.mic, color: Colors.white, size: 36),
+        ),
+      ).animate(
+        onPlay: (ctrl) => phase == AgentPhase.listening
+          ? ctrl.repeat()
+          : ctrl.stop(),
+      ).scale(
+        begin: const Offset(1, 1),
+        end: const Offset(1.05, 1.05),
+        duration: 600.ms,
+        curve: Curves.easeInOut,
+      ),
+    );
+  }
+
+  Color _getOrbColor(AgentPhase phase) => switch (phase) {
+    AgentPhase.idle => Colors.blue.shade700,
+    AgentPhase.listening => Colors.red.shade600,
+    AgentPhase.transcribing => Colors.orange.shade600,
+    AgentPhase.reasoning => Colors.purple.shade600,
+    AgentPhase.extracting => Colors.teal.shade600,
+    AgentPhase.review => Colors.green.shade600,
+    AgentPhase.confirmed => Colors.green.shade800,
+    AgentPhase.error => Colors.red.shade900,
+  };
+}
+\`\`\`
+
+---
+
+## Reasoning Ticker Widget (Live AI Thinking)
+
+\`\`\`dart
+// lib/features/agent/presentation/widgets/reasoning_ticker_widget.dart
+
+class ReasoningTickerWidget extends ConsumerWidget {
+  const ReasoningTickerWidget({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(agentNotifierProvider);
+
+    if (state.phase == AgentPhase.idle ||
+        state.phase == AgentPhase.confirmed) {
+      return const SizedBox.shrink();
+    }
+
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.black87,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.purple.shade700, width: 1),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                width: 8, height: 8,
+                decoration: const BoxDecoration(
+                  color: Colors.purple,
+                  shape: BoxShape.circle,
+                ),
+              ).animate(onPlay: (c) => c.repeat())
+               .scaleXY(end: 0.5, duration: 600.ms)
+               .then()
+               .scaleXY(end: 1.0, duration: 600.ms),
+              const SizedBox(width: 8),
+              Text(
+                'AI Agent — ${_phaseLabel(state.phase)}',
+                style: const TextStyle(
+                  color: Colors.purple,
+                  fontSize: 11,
+                  fontFamily: 'monospace',
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          // Live transcript if listening
+          if (state.transcript.isNotEmpty)
+            Text(
+              '"${state.transcript}"',
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.7),
+                fontSize: 13,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          const SizedBox(height: 4),
+          // Reasoning steps
+          ...state.reasoningSteps.asMap().entries.map((e) =>
+            Text(
+              '> ${e.value}',
+              style: TextStyle(
+                color: e.key == state.reasoningSteps.length - 1
+                  ? Colors.greenAccent
+                  : Colors.white.withOpacity(0.5),
+                fontSize: 12,
+                fontFamily: 'monospace',
+              ),
+            ).animate().fadeIn(duration: 300.ms),
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _phaseLabel(AgentPhase phase) => switch (phase) {
+    AgentPhase.listening => 'LISTENING...',
+    AgentPhase.transcribing => 'TRANSCRIBING...',
+    AgentPhase.reasoning => 'REASONING...',
+    AgentPhase.extracting => 'EXTRACTING DATA...',
+    AgentPhase.review => 'AWAITING REVIEW',
+    _ => 'PROCESSING...',
+  };
+}
+\`\`\`
+
+---
+
+## Live Form Auto-fill Widget
+
+\`\`\`dart
+// lib/features/agent/presentation/widgets/live_form_widget.dart
+
+class LiveFormWidget extends ConsumerStatefulWidget {
+  const LiveFormWidget({super.key});
+
+  @override
+  ConsumerState<LiveFormWidget> createState() => _LiveFormWidgetState();
+}
+
+class _LiveFormWidgetState extends ConsumerState<LiveFormWidget> {
+  late TextEditingController _categoryCtrl;
+  late TextEditingController _locationCtrl;
+  late TextEditingController _descCtrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _categoryCtrl = TextEditingController();
+    _locationCtrl = TextEditingController();
+    _descCtrl = TextEditingController();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final report = ref.watch(agentNotifierProvider).extractedData;
+
+    // Animate fill when data arrives
+    ref.listen(agentNotifierProvider, (prev, next) {
+      if (next.extractedData != null && prev?.extractedData == null) {
+        _animateFill(next.extractedData!);
+      }
+    });
+
+    if (report == null) return const SizedBox.shrink();
+
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          _buildField('Category', _categoryCtrl, Icons.category),
+          const SizedBox(height: 12),
+          _buildField('Location', _locationCtrl, Icons.location_on),
+          const SizedBox(height: 12),
+          _buildSeverityChip(report.severity),
+          const SizedBox(height: 12),
+          _buildField('Description', _descCtrl, Icons.description,
+            maxLines: 3),
+          const SizedBox(height: 20),
+          // Emergency banner
+          if (report.isEmergency)
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.red.shade50,
+                border: Border.all(color: Colors.red),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.warning, color: Colors.red),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      'Emergency detected! Routing to: \${report.suggestedHelpline}',
+                      style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  // Simulate typewriter fill animation
+  Future<void> _animateFill(CivicReport report) async {
+    await _typewriterFill(_categoryCtrl,
+      '\${report.category} → \${report.subCategory}');
+    await _typewriterFill(_locationCtrl, report.location);
+    await _typewriterFill(_descCtrl, report.description);
+  }
+
+  Future<void> _typewriterFill(
+    TextEditingController ctrl, String text) async {
+    ctrl.clear();
+    for (int i = 0; i <= text.length; i++) {
+      await Future.delayed(const Duration(milliseconds: 30));
+      ctrl.text = text.substring(0, i);
+    }
+  }
+
+  Widget _buildField(String label, TextEditingController ctrl,
+    IconData icon, {int maxLines = 1}) {
+    return TextFormField(
+      controller: ctrl,
+      maxLines: maxLines,
+      decoration: InputDecoration(
+        labelText: label,
+        prefixIcon: Icon(icon),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        fillColor: Colors.blue.shade50,
+        filled: true,
+      ),
+    );
+  }
+
+  Widget _buildSeverityChip(String severity) {
+    final color = switch (severity) {
+      'critical' => Colors.red,
+      'high' => Colors.orange,
+      'medium' => Colors.yellow.shade700,
+      _ => Colors.green,
+    };
+
+    return Row(
+      children: [
+        const Text('Severity: ', style: TextStyle(fontWeight: FontWeight.bold)),
+        Chip(
+          label: Text(severity.toUpperCase()),
+          backgroundColor: color.withOpacity(0.2),
+          side: BorderSide(color: color),
+          labelStyle: TextStyle(color: color, fontWeight: FontWeight.bold),
+        ),
+      ],
+    );
+  }
+}
+\`\`\`
+`,
+  },
+
+  voice: {
+    title: "Voice Pipeline — STT + AI Processing",
+    badge: "Frontend",
+    content: `
+## Voice Processing Architecture
+
+\`\`\`
+User speaks
+    │
+    ▼
+[flutter speech_to_text] ──▶ Device STT (Bengali locale: bn-BD)
+    │                         Free, works offline, fast
+    │ (if accuracy poor)
+    ▼
+[Google Cloud STT API] ──▶ High accuracy Bangla + dialects
+    │                       Cost: $0.006 per 15 seconds
+    │
+    ▼
+[Node.js Backend /agent/process]
+    │
+    ▼
+[OpenRouter → Gemini 1.5 Pro]
+    │ System prompt + few-shot examples
+    ▼
+[Structured JSON response]
+    │
+    ▼
+[Flutter UI — live form fill]
+\`\`\`
+
+---
+
+## Voice Provider (Flutter)
+
+\`\`\`dart
+// lib/features/agent/providers/voice_provider.dart
+
+import 'package:speech_to_text/speech_to_text.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'voice_provider.g.dart';
+
+@riverpod
+class VoiceProvider extends _\$VoiceProvider {
+  final SpeechToText _stt = SpeechToText();
+  bool _sttAvailable = false;
+
+  @override
+  void build() {}
+
+  Future<void> initialize() async {
+    _sttAvailable = await _stt.initialize(
+      onStatus: _onStatus,
+      onError: _onError,
+    );
+  }
+
+  Future<void> startListening() async {
+    if (!_sttAvailable) {
+      await initialize();
+    }
+
+    ref.read(agentNotifierProvider.notifier).setPhase(AgentPhase.listening);
+
+    await _stt.listen(
+      onResult: (result) {
+        // Live transcript as user speaks
+        ref.read(agentNotifierProvider.notifier)
+           .appendTranscript(result.recognizedWords);
+
+        if (result.finalResult) {
+          _processTranscript(result.recognizedWords);
+        }
+      },
+      listenFor: const Duration(seconds: 60),
+      pauseFor: const Duration(seconds: 3),
+      localeId: 'bn_BD',           // Bengali Bangladesh
+      cancelOnError: false,
+      partialResults: true,        // Live transcription
+      listenMode: ListenMode.confirmation,
+    );
+  }
+
+  Future<void> stopListening() async {
+    await _stt.stop();
+  }
+
+  Future<void> toggleListening() async {
+    if (_stt.isListening) {
+      await stopListening();
+    } else {
+      await startListening();
+    }
+  }
+
+  Future<void> _processTranscript(String transcript) async {
+    if (transcript.isEmpty) return;
+
+    final notifier = ref.read(agentNotifierProvider.notifier);
+
+    // Add reasoning steps (shown in UI)
+    notifier.setPhase(AgentPhase.reasoning);
+    notifier.addReasoningStep('ভয়েস ট্র্যান্সক্রিপ্ট বিশ্লেষণ করছি...');
+    notifier.addReasoningStep('অবস্থান শনাক্ত করার চেষ্টা করছি...');
+    notifier.addReasoningStep('সমস্যার ধরন নির্ধারণ করছি...');
+    notifier.addReasoningStep('ইমার্জেন্সি মাত্রা যাচাই করছি...');
+
+    try {
+      // Call backend AI agent
+      final agentService = ref.read(agentServiceProvider);
+      final report = await agentService.processVoiceReport(
+        transcript: transcript,
+        userLocation: await _getUserLocation(),
+      );
+
+      notifier.addReasoningStep('✓ ডেটা এক্সট্র্যাকশন সম্পন্ন');
+      notifier.setExtractedData(report);
+
+      // If emergency detected — immediate routing
+      if (report.isEmergency) {
+        ref.read(emergencyRouterProvider.notifier)
+           .handleEmergency(report);
+      }
+    } catch (e) {
+      notifier.setPhase(AgentPhase.error);
+    }
+  }
+
+  void _onStatus(String status) {
+    if (status == 'done') {
+      ref.read(agentNotifierProvider.notifier)
+         .setPhase(AgentPhase.transcribing);
+    }
+  }
+
+  void _onError(dynamic error) {
+    ref.read(agentNotifierProvider.notifier)
+       .setPhase(AgentPhase.error);
+  }
+
+  Future<Map<String, double>?> _getUserLocation() async {
+    // Get current location for context
+    final pos = await Geolocator.getCurrentPosition();
+    return {'lat': pos.latitude, 'lng': pos.longitude};
+  }
+}
+\`\`\`
+
+---
+
+## AI Agent Service (Backend call)
+
+\`\`\`dart
+// lib/features/agent/repository/agent_service.dart
+
+class AgentService {
+  final Dio _dio;
+
+  AgentService(this._dio);
+
+  Future<CivicReport> processVoiceReport({
+    required String transcript,
+    Map<String, double>? userLocation,
+  }) async {
+    final response = await _dio.post(
+      '/agent/process',
+      data: {
+        'transcript': transcript,
+        'location': userLocation,
+        'language': 'bn',
+      },
+    );
+
+    return CivicReport.fromJson(response.data['report']);
+  }
+}
+\`\`\`
+
+---
+
+## Backend Agent Handler (Node.js)
+
+\`\`\`typescript
+// src/routes/agent.ts
+
+import { Router } from 'express';
+import { OpenAI } from 'openai';
+
+const router = Router();
+
+const openrouter = new OpenAI({
+  baseURL: 'https://openrouter.ai/api/v1',
+  apiKey: process.env.OPENROUTER_API_KEY!,
+});
+
+const SYSTEM_PROMPT = \`
+You are NagrikAI, a civic assistant for Bangladesh citizens.
+Extract structured data from Bangla voice transcripts.
+
+DIALECT NORMALIZATION:
+- পানি = হানী = water
+- ড্রেন = নালা = drainage
+- রাস্তা = পথ = road
+- হাসপাতাল = ডাক্তারখানা = hospital
+
+Return ONLY valid JSON matching this schema:
+{
+  "category": "road_damage|drainage|electricity|water|crime|fire|medical|flood|other",
+  "sub_category": "string",
+  "location": "string (extracted from speech or 'GPS-based')",
+  "severity": "low|medium|high|critical",
+  "description": "short Bangla summary max 100 chars",
+  "is_emergency": boolean,
+  "suggested_helpline": "999|333|109|16123|null",
+  "lat": number or null,
+  "lng": number or null
+}
+
+EMERGENCY RULES:
+- Fire → is_emergency: true, helpline: 999
+- Crime in progress → is_emergency: true, helpline: 999
+- Medical emergency → is_emergency: true, helpline: 999
+- Flood/disaster → is_emergency: true, helpline: 333
+\`;
+
+router.post('/process', async (req, res) => {
+  const { transcript, location } = req.body;
+
+  const locationContext = location
+    ? \`User GPS: lat=\${location.lat}, lng=\${location.lng}\`
+    : 'GPS not available';
+
+  const response = await openrouter.chat.completions.create({
+    model: 'google/gemini-1.5-pro',
+    messages: [
+      { role: 'system', content: SYSTEM_PROMPT },
+      { role: 'user', content: \`
+        Transcript: "\${transcript}"
+        \${locationContext}
+        Extract the civic report data.
+      \` },
+    ],
+    temperature: 0.1,
+    max_tokens: 500,
+    response_format: { type: 'json_object' },
+  });
+
+  const report = JSON.parse(
+    response.choices[0].message.content!
+  );
+
+  // Enrich with actual GPS if available
+  if (location && !report.lat) {
+    report.lat = location.lat;
+    report.lng = location.lng;
+  }
+
+  res.json({ report });
+});
+
+export default router;
+\`\`\`
+`,
+  },
+
+  maps: {
+    title: "Maps, Places & Navigation",
+    badge: "Frontend",
+    content: `
+## Maps Strategy
+
+**Primary:** \`flutter_map\` + OpenStreetMap tiles (FREE, no quota)
+**Facilities search:** Google Places API (via backend proxy)
+**Offline tiles:** Cached using \`flutter_map_cache\` package
+
+---
+
+## Flutter Map Setup
+
+\`\`\`dart
+// lib/features/maps/presentation/map_screen.dart
+
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
+
+class MapScreen extends ConsumerStatefulWidget {
+  const MapScreen({super.key});
+
+  @override
+  ConsumerState<MapScreen> createState() => _MapScreenState();
+}
+
+class _MapScreenState extends ConsumerState<MapScreen> {
+  final MapController _mapController = MapController();
+  List<Marker> _markers = [];
+
+  @override
+  Widget build(BuildContext context) {
+    final userLocation = ref.watch(userLocationProvider);
+    final nearbyPlaces = ref.watch(nearbyPlacesProvider);
+    final riskZones = ref.watch(riskZonesProvider);
+
+    return Scaffold(
+      body: Stack(
+        children: [
+          FlutterMap(
+            mapController: _mapController,
+            options: MapOptions(
+              initialCenter: userLocation ?? const LatLng(23.8103, 90.4125),
+              initialZoom: 14,
+              onTap: (_, point) => _onMapTap(point),
+            ),
+            children: [
+              // Base map tiles (OpenStreetMap - FREE)
+              TileLayer(
+                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                userAgentPackageName: 'com.nagrik.ai',
+                tileProvider: CachedTileProvider(), // offline support
+              ),
+
+              // Risk zones overlay
+              PolygonLayer(
+                polygons: riskZones.map((zone) => Polygon(
+                  points: zone.boundary,
+                  color: zone.level == 'high'
+                    ? Colors.red.withOpacity(0.3)
+                    : Colors.orange.withOpacity(0.2),
+                  borderColor: zone.level == 'high'
+                    ? Colors.red
+                    : Colors.orange,
+                  borderStrokeWidth: 2,
+                )).toList(),
+              ),
+
+              // User location
+              if (userLocation != null)
+                MarkerLayer(markers: [
+                  Marker(
+                    point: userLocation,
+                    child: const Icon(
+                      Icons.my_location,
+                      color: Colors.blue,
+                      size: 30,
+                    ),
+                  ),
+                ]),
+
+              // Nearby places markers
+              MarkerLayer(
+                markers: nearbyPlaces.map((place) => Marker(
+                  point: LatLng(place.lat, place.lng),
+                  child: GestureDetector(
+                    onTap: () => _showPlaceDetails(place),
+                    child: _buildPlaceMarker(place.type),
+                  ),
+                )).toList(),
+              ),
+            ],
+          ),
+
+          // Category filter chips at top
+          Positioned(
+            top: 48, left: 16, right: 16,
+            child: _buildCategoryFilter(),
+          ),
+
+          // Direction card at bottom
+          Positioned(
+            bottom: 16, left: 16, right: 16,
+            child: _buildNearbyList(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPlaceMarker(String type) {
+    final (icon, color) = switch (type) {
+      'police' => (Icons.local_police, Colors.blue),
+      'hospital' => (Icons.local_hospital, Colors.red),
+      'ambulance' => (Icons.emergency, Colors.orange),
+      'school' => (Icons.school, Colors.green),
+      'pharmacy' => (Icons.medical_services, Colors.teal),
+      'tourist' => (Icons.camera_alt, Colors.purple),
+      _ => (Icons.place, Colors.grey),
+    };
+
+    return Container(
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: color,
+        shape: BoxShape.circle,
+        border: Border.all(color: Colors.white, width: 2),
+      ),
+      child: Icon(icon, color: Colors.white, size: 16),
+    );
+  }
+}
+\`\`\`
+
+---
+
+## Nearby Places — Backend Service
+
+\`\`\`typescript
+// src/routes/places.ts
+
+router.get('/nearby', async (req, res) => {
+  const { lat, lng, type, radius = 2000 } = req.query;
+
+  // Google Places API call
+  const response = await fetch(
+    \`https://maps.googleapis.com/maps/api/place/nearbysearch/json?\` +
+    new URLSearchParams({
+      location: \`\${lat},\${lng}\`,
+      radius: radius.toString(),
+      type: mapPlaceType(type as string),
+      key: process.env.GOOGLE_PLACES_API_KEY!,
+      language: 'bn',  // Bengali results
+    })
+  );
+
+  const data = await response.json();
+
+  // Transform for app
+  const places = data.results.map((p: any) => ({
+    id: p.place_id,
+    name: p.name,
+    lat: p.geometry.location.lat,
+    lng: p.geometry.location.lng,
+    type: type,
+    rating: p.rating,
+    distance: calculateDistance(
+      Number(lat), Number(lng),
+      p.geometry.location.lat, p.geometry.location.lng
+    ),
+    address: p.vicinity,
+    openNow: p.opening_hours?.open_now,
+    phone: p.formatted_phone_number,
+  }));
+
+  // Sort by distance
+  places.sort((a: any, b: any) => a.distance - b.distance);
+
+  res.json({ places });
+});
+
+function mapPlaceType(type: string): string {
+  const map: Record<string, string> = {
+    police: 'police',
+    hospital: 'hospital',
+    pharmacy: 'pharmacy',
+    school: 'school',
+    tourist: 'tourist_attraction',
+    fire: 'fire_station',
+    bank: 'bank',
+    mosque: 'mosque',
+  };
+  return map[type] ?? 'point_of_interest';
+}
+\`\`\`
+
+---
+
+## Bangladesh Police Stations — Static Database
+
+\`\`\`typescript
+// src/data/bd_police_stations.ts
+// Static JSON seeded at startup — no external API cost
+
+export const DHAKA_POLICE_STATIONS = [
+  {
+    id: 'dhanmondi-ps',
+    name: 'ধানমন্ডি থানা',
+    name_en: 'Dhanmondi Police Station',
+    phone: '02-9671234',
+    division: 'Dhaka',
+    district: 'Dhaka',
+    thana: 'Dhanmondi',
+    lat: 23.7461,
+    lng: 90.3742,
+    address: 'Road 8A, Dhanmondi, Dhaka-1209',
+    oc_name: 'Contact OC',
+  },
+  {
+    id: 'mirpur-ps',
+    name: 'মিরপুর থানা',
+    name_en: 'Mirpur Police Station',
+    phone: '02-9001234',
+    division: 'Dhaka',
+    district: 'Dhaka',
+    thana: 'Mirpur',
+    lat: 23.8103,
+    lng: 90.3551,
+    address: 'Mirpur-10, Dhaka-1216',
+    oc_name: 'Contact OC',
+  },
+  // ... all 64 Dhaka police stations
+  // Source: Bangladesh Police official directory
+];
+
+export const BD_HELPLINES = {
+  emergency: '999',           // National emergency
+  info: '333',                // Government info line
+  health: '16000',            // Health emergency
+  women_abuse: '109',         // Women & children helpline
+  anti_corruption: '16700',   // Anti-corruption
+  consumer: '16123',          // Consumer rights
+  fire: '02-9555555',         // Fire service
+  coast_guard: '02-9557001',  // Coast guard
+  rapid_action: '01769-691100', // RAB
+};
+\`\`\`
+`,
+  },
+
+  panic: {
+    title: "Panic Button System",
+    badge: "Frontend",
+    content: `
+## Panic Trigger Methods
+
+Three simultaneous trigger methods — any one activates panic mode:
+
+1. **Physical:** Volume Down × 3 rapid presses
+2. **Gesture:** Phone shake (3 seconds continuous)
+3. **Voice keyword:** "সাহায্য করো" / "বাঁচাও" / "help me"
+
+---
+
+## Panic Actions (On Trigger)
+
+\`\`\`
+1. Play loud alarm sound (even if phone muted)
+2. Send SMS to all emergency contacts with GPS location
+3. Start background audio recording
+4. Auto-call 999 after 5 second countdown (cancellable)
+5. Upload location + audio to server for evidence
+6. Notify app admin dashboard
+\`\`\`
+
+---
+
+## Panic Service Implementation
+
+\`\`\`dart
+// lib/features/emergency/services/panic_service.dart
+
+import 'package:shake/shake.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+class PanicService {
+  static final PanicService _instance = PanicService._internal();
+  factory PanicService() => _instance;
+  PanicService._internal();
+
+  ShakeDetector? _shakeDetector;
+  final AudioPlayer _alarmPlayer = AudioPlayer();
+  bool _panicActive = false;
+
+  // Initialize all panic triggers
+  Future<void> initialize(WidgetRef ref) async {
+    _initShakeDetector(ref);
+    _initVolumeButtonListener(ref);
+    _preloadAlarm();
+  }
+
+  void _initShakeDetector(WidgetRef ref) {
+    _shakeDetector = ShakeDetector.autoStart(
+      onPhoneShake: () {
+        if (!_panicActive) {
+          triggerPanic(ref, trigger: 'shake');
+        }
+      },
+      shakeThresholdGravity: 2.7,
+      shakeSlopTimeMS: 500,
+      shakeCountResetTime: 3000,
+      minimumShakeCount: 3,
+    );
+  }
+
+  void _initVolumeButtonListener(WidgetRef ref) {
+    // Uses android_intent_plus or platform channel
+    // Monitor volume button presses via MethodChannel
+    const channel = MethodChannel('nagrik_ai/volume_buttons');
+    channel.setMethodCallHandler((call) async {
+      if (call.method == 'volumeDownTriplePress') {
+        triggerPanic(ref, trigger: 'volume_button');
+      }
+    });
+  }
+
+  Future<void> _preloadAlarm() async {
+    await _alarmPlayer.setAsset('assets/audio/emergency_alarm.mp3');
+  }
+
+  Future<void> triggerPanic(WidgetRef ref, {
+    required String trigger,
+  }) async {
+    if (_panicActive) return;
+    _panicActive = true;
+
+    // 1. Play alarm immediately
+    await _alarmPlayer.setVolume(1.0);
+    await _alarmPlayer.play();
+
+    // 2. Get current location
+    final position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+
+    final location = '${position.latitude},${position.longitude}';
+    final mapsLink = 'https://maps.google.com/?q=\$location';
+
+    // 3. Start audio recording
+    _startEmergencyRecording();
+
+    // 4. Send SMS to emergency contacts
+    final contacts = ref.read(emergencyContactsProvider);
+    for (final contact in contacts) {
+      await _sendEmergencySMS(
+        phone: contact.phone,
+        message: '🆘 NagrikAI EMERGENCY ALERT\\n'
+                 '\${contact.ownerName} needs help!\\n'
+                 'Location: \$mapsLink\\n'
+                 'Time: \${DateTime.now()}\\n'
+                 'Trigger: \$trigger',
+      );
+    }
+
+    // 5. Upload to server
+    await _uploadPanicEvent(
+      lat: position.latitude,
+      lng: position.longitude,
+      trigger: trigger,
+    );
+
+    // 6. Show countdown dialog → auto-call 999
+    // This is shown in the UI layer
+    ref.read(panicStateProvider.notifier).activate(
+      position: position,
+      countdownSeconds: 5,
+    );
+  }
+
+  Future<void> _sendEmergencySMS({
+    required String phone,
+    required String message,
+  }) async {
+    final uri = Uri(
+      scheme: 'sms',
+      path: phone,
+      queryParameters: {'body': message},
+    );
+    await launchUrl(uri);
+  }
+
+  Future<void> callEmergency(String number) async {
+    final uri = Uri(scheme: 'tel', path: number);
+    await launchUrl(uri);
+  }
+
+  Future<void> cancelPanic() async {
+    _panicActive = false;
+    await _alarmPlayer.stop();
+    await _stopEmergencyRecording();
+  }
+}
+\`\`\`
+
+---
+
+## Volume Button Native Channel (Android)
+
+\`\`\`kotlin
+// android/app/src/main/kotlin/MainActivity.kt
+
+import android.view.KeyEvent
+import io.flutter.embedding.android.FlutterActivity
+import io.flutter.plugin.common.MethodChannel
+
+class MainActivity : FlutterActivity() {
+    private val CHANNEL = "nagrik_ai/volume_buttons"
+    private var volumeDownCount = 0
+    private var lastVolumePress = 0L
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+            val now = System.currentTimeMillis()
+            if (now - lastVolumePress < 500) {
+                volumeDownCount++
+                if (volumeDownCount >= 3) {
+                    // Triple press detected
+                    flutterEngine?.dartExecutor?.binaryMessenger?.let { messenger ->
+                        MethodChannel(messenger, CHANNEL)
+                            .invokeMethod("volumeDownTriplePress", null)
+                    }
+                    volumeDownCount = 0
+                }
+            } else {
+                volumeDownCount = 1
+            }
+            lastVolumePress = now
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+}
+\`\`\`
+
+---
+
+## Panic Screen UI
+
+\`\`\`dart
+class PanicScreen extends ConsumerStatefulWidget {
+  // Full-screen red alert with countdown
+  // Shows:
+  // - Big "EMERGENCY" text
+  // - Countdown timer (5 → 0 → calls 999)
+  // - Cancel button
+  // - "Calling 999..." status
+  // - Location shared confirmation
+  // - "SMS sent to X contacts" confirmation
+}
+\`\`\`
+
+---
+
+## Voice Keyword Detection
+
+\`\`\`dart
+// During active listening, check for panic keywords
+
+const List<String> PANIC_KEYWORDS = [
+  'সাহায্য করো', 'বাঁচাও', 'help me',
+  'আমাকে বাঁচাও', 'emergency', 'ইমার্জেন্সি',
+  'আগুন', 'ডাকাত', 'ধর্ষণ', 'আক্রমণ',
+];
+
+bool containsPanicKeyword(String transcript) {
+  final lower = transcript.toLowerCase();
+  return PANIC_KEYWORDS.any((kw) => lower.contains(kw));
+}
+\`\`\`
+`,
+  },
+
+  offline: {
+    title: "Offline Mode Implementation",
+    badge: "Frontend",
+    content: `
+## Phase 1 Offline Strategy
+
+For your 1-2 month MVP: **cached maps + risk zones + helplines**.
+Full offline voice AI comes in a later phase (requires ~2GB on-device model).
+
+---
+
+## What Works Offline
+
+| Feature | Offline Support | How |
+|---|---|---|
+| Map display | ✅ Yes | Cached OSM tiles (flutter_map_cache) |
+| Risk zones | ✅ Yes | Cached in SQLite, updated on connect |
+| Helpline directory | ✅ Yes | Bundled in app assets |
+| Police/hospital list | ✅ Yes | Cached in SQLite |
+| Past reports | ✅ Yes | SQLite |
+| Panic button (SMS) | ✅ Yes | Works without internet |
+| Voice AI agent | ❌ No | Requires OpenRouter API |
+| News feed | ❌ No | Requires internet |
+| Live places search | ❌ No | Requires Google Places API |
+
+---
+
+## Connectivity-Aware UI
+
+\`\`\`dart
+// lib/core/utils/connectivity_checker.dart
+
+@riverpod
+Stream<bool> isOnline(IsOnlineRef ref) async* {
+  final connectivity = Connectivity();
+
+  yield* connectivity.onConnectivityChanged.map((result) =>
+    result != ConnectivityResult.none
+  );
+}
+
+// In any widget:
+class ConnectivityBanner extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final online = ref.watch(isOnlineProvider).valueOrNull ?? true;
+
+    if (online) return const SizedBox.shrink();
+
+    return Container(
+      width: double.infinity,
+      color: Colors.orange,
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: const Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.wifi_off, color: Colors.white, size: 16),
+          SizedBox(width: 8),
+          Text(
+            'অফলাইন মোড — সীমিত ফিচার উপলব্ধ',
+            style: TextStyle(color: Colors.white, fontSize: 12),
+          ),
+        ],
+      ),
+    );
+  }
+}
+\`\`\`
+
+---
+
+## Offline Map Tiles
+
+\`\`\`dart
+// lib/features/maps/services/tile_cache_service.dart
+
+// flutter_map_cache handles this automatically.
+// Pre-cache Dhaka area tiles on first launch:
+
+Future<void> preCacheDhakaTiles() async {
+  // Cache zoom levels 10-16 for Dhaka area
+  // Approx bounding box: Dhaka metro area
+  const bounds = LatLngBounds(
+    LatLng(23.6850, 90.3350),  // SW
+    LatLng(23.9050, 90.5050),  // NE
+  );
+
+  // Use flutter_map_cache to download tiles
+  // Estimated size: ~50MB for zoom 10-16 Dhaka
+  await TileCacheService.downloadArea(
+    bounds: bounds,
+    minZoom: 10,
+    maxZoom: 16,
+  );
+}
+\`\`\`
+
+---
+
+## Offline Queue — Submit When Back Online
+
+\`\`\`dart
+// When offline, store reports locally and sync when connected
+
+class OfflineQueueService {
+  final AppDatabase _db;
+  final AgentService _agentService;
+
+  Future<void> queueReport(CivicReport report) async {
+    await _db.pendingReports.insertOne(
+      PendingReport(
+        id: const Uuid().v4(),
+        reportJson: jsonEncode(report.toJson()),
+        createdAt: DateTime.now(),
+        synced: false,
+      ),
+    );
+  }
+
+  // Called when connectivity restored
+  Future<void> syncPendingReports() async {
+    final pending = await _db.pendingReports
+      .filter((r) => r.synced.equals(false))
+      .get();
+
+    for (final item in pending) {
+      try {
+        final report = CivicReport.fromJson(
+          jsonDecode(item.reportJson)
+        );
+        await _agentService.submitReport(report);
+        await _db.pendingReports.filter(
+          (r) => r.id.equals(item.id)
+        ).delete();
+      } catch (_) {
+        // Will retry next time
+      }
+    }
+  }
+}
+\`\`\`
+`,
+  },
+
+  backend: {
+    title: "Node.js Backend — Full API",
+    badge: "Backend",
+    content: `
+## Project Structure
+
+\`\`\`
+nagrik-ai-backend/
+├── src/
+│   ├── index.ts               # Entry point
+│   ├── app.ts                 # Express app setup
+│   ├── config/
+│   │   ├── env.ts             # Zod env validation
+│   │   ├── supabase.ts
+│   │   └── redis.ts
+│   ├── middleware/
+│   │   ├── auth.middleware.ts  # JWT verification
+│   │   ├── rate-limit.ts
+│   │   └── error-handler.ts
+│   ├── routes/
+│   │   ├── agent.ts           # AI agent endpoints
+│   │   ├── auth.ts            # Auth endpoints
+│   │   ├── reports.ts         # Civic reports
+│   │   ├── places.ts          # Nearby places
+│   │   ├── emergency.ts       # Emergency routing
+│   │   ├── news.ts            # News aggregation
+│   │   ├── risk-zones.ts      # Risk zone data
+│   │   └── law.ts             # BD law AI
+│   ├── services/
+│   │   ├── openrouter.service.ts
+│   │   ├── google-stt.service.ts
+│   │   ├── places.service.ts
+│   │   └── rss.service.ts
+│   └── lib/
+│       └── prisma.ts
+├── prisma/
+│   └── schema.prisma
+├── .env.example
+├── package.json
+└── tsconfig.json
+\`\`\`
+
+---
+
+## Environment Variables (.env)
+
+\`\`\`bash
+# Server
+PORT=3000
+NODE_ENV=production
+
+# Supabase
+SUPABASE_URL=https://xxx.supabase.co
+SUPABASE_ANON_KEY=eyJ...
+SUPABASE_SERVICE_KEY=eyJ...
+
+# OpenRouter
+OPENROUTER_API_KEY=sk-or-...
+
+# Google APIs
+GOOGLE_STT_API_KEY=AIza...
+GOOGLE_PLACES_API_KEY=AIza...
+
+# Redis (Upstash)
+REDIS_URL=redis://...
+REDIS_TOKEN=...
+
+# JWT
+JWT_SECRET=your-secret-key-here
+\`\`\`
+
+---
+
+## Express App Setup
+
+\`\`\`typescript
+// src/app.ts
+
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+import { authMiddleware } from './middleware/auth.middleware';
+
+const app = express();
+
+app.use(helmet());
+app.use(cors({ origin: '*' })); // restrict in production
+app.use(express.json({ limit: '10mb' }));
+
+// Rate limiting
+app.use('/api/', rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: 'Too many requests, please try again.',
+}));
+
+// Public routes
+app.use('/api/auth', authRouter);
+
+// Protected routes (require JWT)
+app.use('/api/agent', authMiddleware, agentRouter);
+app.use('/api/reports', authMiddleware, reportsRouter);
+app.use('/api/places', authMiddleware, placesRouter);
+app.use('/api/emergency', authMiddleware, emergencyRouter);
+app.use('/api/news', newsRouter);           // Public
+app.use('/api/risk-zones', riskZonesRouter); // Public
+app.use('/api/law', authMiddleware, lawRouter);
+
+export default app;
+\`\`\`
+
+---
+
+## Auth Middleware
+
+\`\`\`typescript
+// src/middleware/auth.middleware.ts
+
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_KEY!
+);
+
+export const authMiddleware = async (req, res, next) => {
+  const token = req.headers.authorization?.replace('Bearer ', '');
+
+  if (!token) {
+    return res.status(401).json({ error: 'No token provided' });
+  }
+
+  const { data: { user }, error } = await supabase.auth.getUser(token);
+
+  if (error || !user) {
+    return res.status(401).json({ error: 'Invalid token' });
+  }
+
+  req.user = user;
+  next();
+};
+\`\`\`
+
+---
+
+## Reports API
+
+\`\`\`typescript
+// src/routes/reports.ts
+
+router.post('/', async (req, res) => {
+  const { category, sub_category, location, severity,
+          description, lat, lng, is_emergency } = req.body;
+
+  const report = await prisma.civicReport.create({
+    data: {
+      userId: req.user.id,
+      category,
+      subCategory: sub_category,
+      location,
+      severity,
+      description,
+      lat,
+      lng,
+      isEmergency: is_emergency,
+      status: 'submitted',
+    },
+  });
+
+  // If critical — trigger emergency flow
+  if (is_emergency) {
+    await emergencyQueue.add('route', { reportId: report.id });
+  }
+
+  res.status(201).json({ report, id: report.id });
+});
+
+router.get('/my', async (req, res) => {
+  const reports = await prisma.civicReport.findMany({
+    where: { userId: req.user.id },
+    orderBy: { createdAt: 'desc' },
+    take: 20,
+  });
+  res.json({ reports });
+});
+\`\`\`
+`,
+  },
+
+  database: {
+    title: "Database Schema (Supabase / Prisma)",
+    badge: "Backend",
+    content: `
+## Prisma Schema
+
+\`\`\`prisma
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ─── Users & Auth ───────────────────────────────────────────
+
+model User {
+  id            String   @id @default(uuid())
+  email         String   @unique
+  phone         String?
+  nameEn        String?
+  nameBn        String?
+  nidArea       String?  // NID region code
+  address       String?
+  divisionCode  String?
+  districtCode  String?
+  thanaCode     String?
+  avatarUrl     String?
+  isVerified    Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  reports           CivicReport[]
+  emergencyContacts EmergencyContact[]
+  deviceTokens      DeviceToken[]
+  locationHistory   LocationSnapshot[]
+
+  @@map("users")
+}
+
+model EmergencyContact {
+  id      String @id @default(uuid())
+  userId  String
+  name    String
+  phone   String
+  relation String  // পরিবার | বন্ধু | সহকর্মী
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("emergency_contacts")
+}
+
+model DeviceToken {
+  id        String   @id @default(uuid())
+  userId    String
+  token     String   @unique  // FCM token
+  platform  String   // android | ios
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("device_tokens")
+}
+
+// ─── Civic Reports ───────────────────────────────────────────
+
+model CivicReport {
+  id          String   @id @default(uuid())
+  userId      String
+  category    String   // road_damage | drainage | electricity ...
+  subCategory String
+  location    String   // Human-readable location
+  lat         Float?
+  lng         Float?
+  severity    String   // low | medium | high | critical
+  description String
+  isEmergency Boolean  @default(false)
+  status      String   @default("submitted")
+                       // submitted | in_progress | resolved | closed
+  ticketId    String?  // External ticket ID if govt API available
+  audioUrl    String?  // Recorded voice (Supabase Storage)
+  photoUrls   String[] // Report photos
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([lat, lng])
+  @@index([status])
+  @@map("civic_reports")
+}
+
+// ─── Location & Risk ─────────────────────────────────────────
+
+model LocationSnapshot {
+  id        String   @id @default(uuid())
+  userId    String
+  lat       Float
+  lng       Float
+  accuracy  Float?
+  capturedAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId, capturedAt])
+  @@map("location_snapshots")
+}
+
+model RiskZone {
+  id          String   @id @default(uuid())
+  name        String
+  nameBn      String
+  description String?
+  level       String   // low | medium | high | critical
+  type        String   // flood | crime | accident | fire | construction
+  boundary    Json     // GeoJSON polygon coordinates
+  division    String?
+  district    String?
+  thana       String?
+  activeFrom  DateTime?
+  activeTo    DateTime?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  @@map("risk_zones")
+}
+
+// ─── Emergency Events ─────────────────────────────────────────
+
+model EmergencyEvent {
+  id          String   @id @default(uuid())
+  userId      String
+  trigger     String   // shake | volume | voice | manual
+  lat         Float
+  lng         Float
+  audioUrl    String?
+  contactsNotified Int @default(0)
+  policeAlerted    Boolean @default(false)
+  resolvedAt  DateTime?
+  createdAt   DateTime @default(now())
+
+  @@map("emergency_events")
+}
+
+// ─── BD Static Data ───────────────────────────────────────────
+
+model PoliceStation {
+  id         String  @id
+  nameBn     String
+  nameEn     String
+  phone      String
+  division   String
+  district   String
+  thana      String
+  lat        Float
+  lng        Float
+  address    String
+
+  @@map("police_stations")
+}
+
+model Hospital {
+  id         String  @id
+  nameBn     String
+  nameEn     String
+  phone      String
+  type       String  // govt | private | clinic
+  division   String
+  district   String
+  thana      String
+  lat        Float
+  lng        Float
+  address    String
+  beds       Int?
+  emergency  Boolean @default(false)
+
+  @@map("hospitals")
+}
+
+// ─── News ─────────────────────────────────────────────────────
+
+model NewsArticle {
+  id          String   @id @default(uuid())
+  title       String
+  titleBn     String?
+  summary     String?
+  sourceUrl   String   @unique
+  source      String   // prothom_alo | bdnews24 | dhaka_tribune
+  category    String?  // crime | politics | weather | disaster
+  publishedAt DateTime
+  fetchedAt   DateTime @default(now())
+  isAlert     Boolean  @default(false)  // breaking/emergency news
+
+  @@index([publishedAt])
+  @@index([isAlert])
+  @@map("news_articles")
+}
+\`\`\`
+
+---
+
+## Supabase Row Level Security (RLS)
+
+\`\`\`sql
+-- Users can only read/edit their own data
+ALTER TABLE users ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users read own profile"
+  ON users FOR SELECT
+  USING (auth.uid()::text = id);
+
+CREATE POLICY "Users update own profile"
+  ON users FOR UPDATE
+  USING (auth.uid()::text = id);
+
+-- Reports: users see only their own
+ALTER TABLE civic_reports ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users manage own reports"
+  ON civic_reports FOR ALL
+  USING (auth.uid()::text = user_id);
+
+-- Risk zones: public read
+ALTER TABLE risk_zones ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Public risk zones read"
+  ON risk_zones FOR SELECT
+  TO anon, authenticated
+  USING (is_active = true);
+
+-- Police stations: public read
+ALTER TABLE police_stations ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public police read"
+  ON police_stations FOR SELECT TO anon, authenticated
+  USING (true);
+\`\`\`
+`,
+  },
+
+  auth: {
+    title: "Auth & User Profiles",
+    badge: "Backend",
+    content: `
+## Authentication Flow
+
+\`\`\`
+Registration:
+User fills form → Supabase Auth creates account
+  → Email/SMS OTP verification
+  → User completes profile (name, NID area, phone)
+  → JWT issued → stored in flutter_secure_storage
+
+Login:
+Email + Password → Supabase Auth
+  → JWT access token (1 hour expiry)
+  → Refresh token (30 days)
+  → Both stored securely on device
+
+Phone Login (alternative):
+Phone number → OTP via SMS (Supabase Twilio integration)
+  → Verify OTP → JWT issued
+\`\`\`
+
+---
+
+## Supabase Auth Setup (Flutter)
+
+\`\`\`dart
+// lib/core/config/supabase_config.dart
+
+Future<void> initSupabase() async {
+  await Supabase.initialize(
+    url: Env.supabaseUrl,
+    anonKey: Env.supabaseAnonKey,
+    authOptions: const FlutterAuthClientOptions(
+      authFlowType: AuthFlowType.pkce,
+      autoRefreshToken: true,
+    ),
+    storageOptions: const StorageClientOptions(
+      retryAttempts: 3,
+    ),
+  );
+}
+
+// Auth Provider
+@riverpod
+class AuthNotifier extends _\$AuthNotifier {
+  @override
+  AsyncValue<User?> build() {
+    return AsyncValue.data(
+      Supabase.instance.client.auth.currentUser
+    );
+  }
+
+  Future<void> signUpWithEmail({
+    required String email,
+    required String password,
+    required String nameBn,
+    required String phone,
+  }) async {
+    state = const AsyncValue.loading();
+
+    final response = await Supabase.instance.client.auth.signUp(
+      email: email,
+      password: password,
+      data: {
+        'name_bn': nameBn,
+        'phone': phone,
+      },
+    );
+
+    if (response.user != null) {
+      // Create user profile in our DB
+      await Supabase.instance.client
+        .from('users')
+        .insert({
+          'id': response.user!.id,
+          'email': email,
+          'name_bn': nameBn,
+          'phone': phone,
+        });
+    }
+
+    state = AsyncValue.data(response.user);
+  }
+
+  Future<void> signInWithPhone(String phone) async {
+    await Supabase.instance.client.auth.signInWithOtp(
+      phone: '+880\${phone.replaceAll(RegExp(r'^0'), '')}',
+    );
+  }
+
+  Future<void> verifyOTP(String phone, String otp) async {
+    final response = await Supabase.instance.client.auth.verifyOTP(
+      phone: '+880\${phone.replaceAll(RegExp(r'^0'), '')}',
+      token: otp,
+      type: OtpType.sms,
+    );
+    state = AsyncValue.data(response.user);
+  }
+
+  Future<void> signOut() async {
+    await Supabase.instance.client.auth.signOut();
+    state = const AsyncValue.data(null);
+  }
+}
+\`\`\`
+
+---
+
+## User Profile Screen
+
+\`\`\`dart
+// Collect at onboarding — saves to Supabase:
+// ✅ নাম (Bengali + English)
+// ✅ NID area / District
+// ✅ Phone number
+// ✅ Permanent address
+// ✅ Emergency contacts (up to 5)
+// ✅ Profile photo (Supabase Storage)
+// ✅ Preferred language (Bangla / English)
+// ✅ Notification preferences
+
+class OnboardingProfileScreen extends ConsumerStatefulWidget {
+  // Multi-step form:
+  // Step 1: Basic info (name, phone)
+  // Step 2: Location (division/district/thana dropdown — BD specific)
+  // Step 3: Emergency contacts
+  // Step 4: Permissions (location, mic, notifications)
+}
+\`\`\`
+
+---
+
+## Bangladesh Division/District/Thana Dropdown
+
+\`\`\`dart
+// Bundled in app — no API needed
+// assets/data/bd_geo.json
+
+{
+  "divisions": [
+    {
+      "id": "dhaka",
+      "name_bn": "ঢাকা",
+      "name_en": "Dhaka",
+      "districts": [
+        {
+          "id": "dhaka_city",
+          "name_bn": "ঢাকা",
+          "name_en": "Dhaka",
+          "thanas": [
+            { "id": "dhanmondi", "name_bn": "ধানমন্ডি", "name_en": "Dhanmondi" },
+            { "id": "mirpur", "name_bn": "মিরপুর", "name_en": "Mirpur" },
+            // ... all thanas
+          ]
+        }
+      ]
+    }
+    // ... all 8 divisions → 64 districts → all thanas
+  ]
+}
+\`\`\`
+`,
+  },
+
+  ai: {
+    title: "AI Agent Core — OpenRouter Integration",
+    badge: "AI & Intelligence",
+    content: `
+## OpenRouter Model Strategy
+
+| Task | Model | Why | Cost/1M tokens |
+|---|---|---|---|
+| Voice report extraction | gemini-1.5-pro | Best Bangla, fast | $3.50/$10.50 |
+| BD Law Q&A | claude-3.5-sonnet | Deep reasoning | $3/$15 |
+| News summarization | gemini-flash-1.5 | Cheap, fast | $0.075/$0.30 |
+| Emergency detection | gemini-flash-1.5 | Real-time speed | $0.075/$0.30 |
+| Form field mapping | gemini-1.5-pro | Structured output | $3.50/$10.50 |
+
+---
+
+## OpenRouter Service
+
+\`\`\`typescript
+// src/services/openrouter.service.ts
+
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  baseURL: 'https://openrouter.ai/api/v1',
+  apiKey: process.env.OPENROUTER_API_KEY!,
+  defaultHeaders: {
+    'HTTP-Referer': 'https://nagrik.ai',
+    'X-Title': 'NagrikAI',
+  },
+});
+
+export type ModelChoice =
+  | 'google/gemini-1.5-pro'
+  | 'google/gemini-flash-1.5'
+  | 'anthropic/claude-3.5-sonnet';
+
+export class OpenRouterService {
+
+  async extractCivicReport(
+    transcript: string,
+    userContext: { lat?: number; lng?: number; userId: string }
+  ): Promise<CivicReportData> {
+
+    const completion = await client.chat.completions.create({
+      model: 'google/gemini-1.5-pro',
+      messages: [
+        { role: 'system', content: CIVIC_EXTRACTION_PROMPT },
+        { role: 'user', content: buildUserMessage(transcript, userContext) },
+      ],
+      temperature: 0.1,
+      max_tokens: 600,
+      response_format: { type: 'json_object' },
+    });
+
+    return JSON.parse(completion.choices[0].message.content!);
+  }
+
+  async answerLawQuestion(
+    question: string,
+    conversationHistory: Message[]
+  ): Promise<string> {
+
+    const completion = await client.chat.completions.create({
+      model: 'anthropic/claude-3.5-sonnet',
+      messages: [
+        { role: 'system', content: BD_LAW_SYSTEM_PROMPT },
+        ...conversationHistory,
+        { role: 'user', content: question },
+      ],
+      temperature: 0.3,
+      max_tokens: 1000,
+      stream: true,  // Stream for UI responsiveness
+    });
+
+    // Handle streaming
+    let fullResponse = '';
+    for await (const chunk of completion) {
+      const delta = chunk.choices[0]?.delta?.content ?? '';
+      fullResponse += delta;
+    }
+    return fullResponse;
+  }
+
+  async summarizeNews(articles: RawArticle[]): Promise<SummarizedArticle[]> {
+    const summaryPrompt = articles
+      .map((a, i) => \`Article \${i+1}: \${a.title}\\n\${a.content}\`)
+      .join('\\n---\\n');
+
+    const completion = await client.chat.completions.create({
+      model: 'google/gemini-flash-1.5',
+      messages: [
+        { role: 'system', content: NEWS_SUMMARY_PROMPT },
+        { role: 'user', content: summaryPrompt },
+      ],
+      max_tokens: 2000,
+      response_format: { type: 'json_object' },
+    });
+
+    return JSON.parse(completion.choices[0].message.content!).articles;
+  }
+}
+\`\`\`
+
+---
+
+## Core Prompts
+
+\`\`\`typescript
+// src/prompts/civic_extraction.ts
+
+export const CIVIC_EXTRACTION_PROMPT = \`
+You are NagrikAI, a civic assistant AI for Bangladesh.
+Your job: extract structured data from Bangla voice transcripts.
+
+## Dialect normalization
+পানি = হানী = water/পানি সমস্যা
+ড্রেন = নালা = drainage
+রাস্তা = পথ = road
+ডাক্তারখানা = হাসপাতাল = hospital
+থানা = পুলিশ স্টেশন = police station
+
+## Category taxonomy
+- road_damage: pothole, broken road, speed bump, bridge damage
+- drainage: clogged drain, waterlogging, sewage overflow
+- electricity: power outage, dangerous wire, transformer issue
+- water: supply problem, dirty water, pipeline break
+- crime: theft, harassment, fight, vandalism
+- fire: fire emergency, gas leak
+- medical: injury, illness, ambulance needed
+- flood: flooding, river overflow
+- noise: construction, vehicle noise
+- waste: garbage pile, waste burning
+- other: anything else
+
+## Emergency rules (STRICT)
+- Fire/gas leak → is_emergency: true, suggested_helpline: "999"
+- Crime in progress → is_emergency: true, suggested_helpline: "999"
+- Medical crisis → is_emergency: true, suggested_helpline: "999"
+- Flood/disaster → is_emergency: true, suggested_helpline: "333"
+- General civic issue → is_emergency: false
+
+## Output (JSON ONLY, no markdown)
+{
+  "category": "string",
+  "sub_category": "string",
+  "location": "extracted location or 'GPS location'",
+  "severity": "low|medium|high|critical",
+  "description": "brief Bangla description max 100 chars",
+  "is_emergency": boolean,
+  "suggested_helpline": "999|333|109|16000|null",
+  "lat": number or null,
+  "lng": number or null,
+  "confidence": 0.0-1.0
+}
+\`;
+\`\`\`
+
+---
+
+## Cost Control Strategy
+
+\`\`\`typescript
+// Cache identical or very similar transcripts
+// Use Redis with 1-hour TTL
+
+async function processWithCache(transcript: string, context: any) {
+  const cacheKey = \`agent:\${hashTranscript(transcript)}\`;
+  const cached = await redis.get(cacheKey);
+
+  if (cached) return JSON.parse(cached);
+
+  const result = await openRouterService.extractCivicReport(transcript, context);
+  await redis.setex(cacheKey, 3600, JSON.stringify(result));
+  return result;
+}
+
+// Token budgeting: track per-user monthly usage
+// Free tier: 100 AI queries/month
+// Premium: unlimited
+\`\`\`
+`,
+  },
+
+  bangla: {
+    title: "Bangla NLP & Dialect Handling",
+    badge: "AI & Intelligence",
+    content: `
+## The Challenge
+
+Bangladesh has major dialect variations:
+- Standard Bangla (ঢাকা / formal)
+- Chittagong dialect (চট্টগ্রামের ভাষা) — heavily modified phonetics
+- Sylhet dialect (সিলেটি) — distinct vocabulary
+- Noakhali dialect (নোয়াখালীর ভাষা)
+- Rajshahi/Rangpur (উত্তরবঙ্গ) — different vowels
+
+---
+
+## Two-Step Pipeline
+
+\`\`\`
+Step 1: STT (Speech → Raw Text)
+   Input: Audio with dialect/noise
+   Output: Raw text (may have wrong words)
+
+   Priority:
+   1. flutter_speech_to_text (bn-BD locale) — free, instant
+   2. Google Cloud STT v1p1beta1 — paid but better dialects
+      Model: "latest_long" for Bangla
+      Alternative phrases: true (captures dialect variations)
+
+Step 2: LLM Normalization (Raw Text → Canonical Data)
+   Input: Raw transcript (possibly dialect-heavy)
+   Output: Structured JSON with standard Bangla
+\`\`\`
+
+---
+
+## Google STT Bangla Configuration
+
+\`\`\`typescript
+// src/services/google-stt.service.ts
+
+async function transcribeWithGoogleSTT(
+  audioBase64: string
+): Promise<string> {
+  const client = new SpeechClient();
+
+  const [response] = await client.recognize({
+    config: {
+      encoding: 'LINEAR16',
+      sampleRateHertz: 16000,
+      languageCode: 'bn-BD',           // Bengali Bangladesh
+      alternativeLanguageCodes: ['bn-IN'], // Also try India Bengali
+      model: 'latest_long',
+      useEnhanced: true,
+      enableAutomaticPunctuation: true,
+      enableWordTimeOffsets: false,
+      speechContexts: [{
+        phrases: [
+          // Civic terms (boost recognition)
+          'রাস্তা', 'ড্রেন', 'পানি', 'বিদ্যুৎ', 'আগুন',
+          'পুলিশ', 'হাসপাতাল', 'থানা', 'গর্ত', 'নালা',
+          // Common misspoken civic terms
+          'হানী', 'পাতি', 'বিদুত',
+          // Area names in Dhaka
+          'মিরপুর', 'গুলশান', 'মতিঝিল', 'ধানমন্ডি',
+          'বনানী', 'উত্তরা', 'মোহাম্মদপুর', 'রামপুরা',
+        ],
+        boost: 15.0,  // Boost probability for civic terms
+      }],
+    },
+    audio: { content: audioBase64 },
+  });
+
+  return response.results
+    ?.map(r => r.alternatives?.[0]?.transcript)
+    .filter(Boolean)
+    .join(' ') ?? '';
+}
+\`\`\`
+
+---
+
+## Dialect Normalization Prompt Engineering
+
+\`\`\`typescript
+// Few-shot examples embedded in system prompt
+
+const DIALECT_EXAMPLES = \`
+## Dialect normalization examples:
+
+Input (Chittagong): "আমার বাড়ির সামনে হানী আহে না"
+Normalized: "আমার বাড়ির সামনে পানি আসে না"
+Category: water, Sub: supply_problem
+
+Input (Sylheti): "রাস্তার উপরে বড় খাল অইছে"
+Normalized: "রাস্তায় বড় গর্ত হয়েছে"
+Category: road_damage, Sub: pothole
+
+Input (Noakhali): "নালাতে ময়লা জমছে, পাউনি যাইতে পারতেছে না"
+Normalized: "নালায় ময়লা জমেছে, পানি যেতে পারছে না"
+Category: drainage, Sub: clogged_drain
+
+Input (Rangpur): "ইলেকট্রিকের তার ঝুলি আছে, বিপজ্জনক"
+Normalized: "বিদ্যুতের তার ঝুলছে, বিপজ্জনক"
+Category: electricity, Sub: dangerous_wire
+\`;
+\`\`\`
+
+---
+
+## Text-to-Speech (TTS) — AI Response in Bangla
+
+\`\`\`dart
+// For AI responses that should be spoken back to user
+// Use Google TTS or device TTS
+
+import 'package:flutter_tts/flutter_tts.dart';
+
+class TTSService {
+  final FlutterTts _tts = FlutterTts();
+
+  Future<void> initialize() async {
+    await _tts.setLanguage('bn-BD');
+    await _tts.setSpeechRate(0.8);  // Slightly slower for clarity
+    await _tts.setVolume(1.0);
+    await _tts.setPitch(1.0);
+  }
+
+  Future<void> speak(String text) async {
+    await _tts.speak(text);
+  }
+
+  Future<void> stop() async {
+    await _tts.stop();
+  }
+}
+\`\`\`
+`,
+  },
+
+  law: {
+    title: "Bangladesh Law AI Assistant",
+    badge: "AI & Intelligence",
+    content: `
+## BD Law Knowledge Base Strategy
+
+Since we cannot train a custom model, we use **RAG (Retrieval-Augmented Generation)**:
+
+\`\`\`
+User question (Bangla)
+      │
+      ▼
+[Embed question] → find relevant law sections
+      │
+      ▼
+[Retrieve top 3-5 relevant sections from BD law corpus]
+      │
+      ▼
+[Claude 3.5 Sonnet] + retrieved context
+      │
+      ▼
+[Answer in Bangla with citations]
+\`\`\`
+
+---
+
+## Key Laws to Include (Phase 1)
+
+| Law | Why Important |
+|---|---|
+| The Code of Criminal Procedure (CrPC) | FIR filing, arrest rights |
+| Penal Code 1860 | Common crimes, penalties |
+| Information & Communication Technology Act | Digital crimes |
+| Women and Children Repression Prevention Act | Harassment, assault |
+| Consumer Rights Protection Act | Product/service complaints |
+| Road Transport Act 2018 | Traffic laws, accidents |
+| Environmental Conservation Act | Pollution complaints |
+| Tenant/Landlord Laws | Housing disputes |
+| Labor Act 2006 | Worker rights |
+| RTI Act (Right to Information) | Information requests |
+
+---
+
+## BD Law System Prompt
+
+\`\`\`typescript
+export const BD_LAW_SYSTEM_PROMPT = \`
+You are "আইন সহায়ক" (Law Helper), an AI legal assistant
+specialized in Bangladesh law.
+
+## Your role
+- Answer questions about Bangladesh laws in simple Bangla
+- Cite specific sections when relevant
+- Explain rights and procedures clearly
+- Recommend when to consult a real lawyer
+
+## Critical rules
+1. ALWAYS clarify: you are an AI, not a licensed lawyer
+2. For serious criminal matters → recommend police + lawyer
+3. Never give advice that could endanger safety
+4. Use plain Bangla, avoid legal jargon
+5. Cite specific acts: "ফৌজদারি কার্যবিধি ধারা ১৫৪" etc.
+
+## Response format
+1. Direct answer to question
+2. Relevant law section (if applicable)
+3. Practical next step
+4. "একজন আইনজীবীর সাথে কথা বলুন" reminder if complex
+
+## Laws you know
+[Insert full law corpus text here as context]
+\`;
+\`\`\`
+
+---
+
+## Law Q&A Endpoint
+
+\`\`\`typescript
+// src/routes/law.ts
+
+router.post('/ask', async (req, res) => {
+  const { question, history = [] } = req.body;
+
+  // Set up streaming response
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+
+  const stream = await openRouterService.streamLawAnswer(
+    question,
+    history
+  );
+
+  for await (const chunk of stream) {
+    const content = chunk.choices[0]?.delta?.content ?? '';
+    if (content) {
+      res.write(\`data: \${JSON.stringify({ content })}\\n\\n\`);
+    }
+  }
+
+  res.write('data: [DONE]\\n\\n');
+  res.end();
+});
+\`\`\`
+
+---
+
+## Flutter — Streaming Law Response
+
+\`\`\`dart
+// Receive server-sent events for streaming response
+
+Stream<String> streamLawAnswer(String question, List history) async* {
+  final request = http.Request(
+    'POST',
+    Uri.parse('\${Env.apiUrl}/api/law/ask'),
+  );
+
+  request.headers['Authorization'] = 'Bearer \$token';
+  request.headers['Content-Type'] = 'application/json';
+  request.body = jsonEncode({ 'question': question, 'history': history });
+
+  final response = await client.send(request);
+
+  await for (final chunk in response.stream
+      .transform(utf8.decoder)
+      .transform(const LineSplitter())) {
+
+    if (chunk.startsWith('data: ')) {
+      final data = chunk.substring(6);
+      if (data == '[DONE]') break;
+      final json = jsonDecode(data);
+      yield json['content'] as String;
+    }
+  }
+}
+\`\`\`
+`,
+  },
+
+  forms: {
+    title: "Government Form Auto-fill",
+    badge: "AI & Intelligence",
+    content: `
+## Supported Forms (Phase 1)
+
+| Form | Type | Submission |
+|---|---|---|
+| সিভিক কমপ্লেইন ফর্ম | Civic report | In-app → PDF download |
+| পুলিশ GD (General Diary) | Crime/incident | PDF → Print/Email |
+| ইউটিলিটি কমপ্লেইন | DESCO/WASA/TITAS | PDF |
+| RTI আবেদন | Right to Information | PDF |
+| ভোক্তা অধিকার অভিযোগ | Consumer complaint | PDF |
+
+---
+
+## Form Auto-fill Flow
+
+\`\`\`
+User speaks issue
+      │
+      ▼
+AI extracts structured data
+      │
+      ▼
+User selects: "কোন ফর্মে ফাইল করবেন?"
+[GD] [Civic] [Utility] [RTI]
+      │
+      ▼
+AI maps extracted data → form fields
+      │
+      ▼
+Show form with pre-filled fields
+      │
+      ▼
+User reviews + edits any field
+      │
+      ▼
+[Generate PDF] → Download/Share/Print
+\`\`\`
+
+---
+
+## Form Field Mapping
+
+\`\`\`typescript
+// Backend: Map AI extraction to specific form fields
+
+router.post('/fill', async (req, res) => {
+  const { formType, civicReport, userProfile } = req.body;
+
+  const fieldMap = await openRouterService.mapToFormFields({
+    formType,
+    report: civicReport,
+    user: userProfile,
+  });
+
+  res.json({ fields: fieldMap });
+});
+
+// Prompt for field mapping:
+const FORM_MAPPING_PROMPT = (formType: string) => \`
+Map the civic report data to form fields for: \${formType}
+
+Police GD form fields:
+- ১. বাদীর নাম ও পিতার নাম
+- ২. বর্তমান ঠিকানা
+- ৩. থানার নাম
+- ৪. ঘটনার তারিখ ও সময়
+- ৫. ঘটনাস্থল
+- ৬. ঘটনার বিবরণ (বিস্তারিত)
+- ৭. আসামির নাম (যদি জানা থাকে)
+- ৮. সাক্ষীর নাম (যদি থাকে)
+- ৯. প্রার্থিত ব্যবস্থা
+
+Return JSON with each field filled from the report data.
+Leave unknown fields empty string.
+\`;
+\`\`\`
+
+---
+
+## PDF Generation (Flutter)
+
+\`\`\`dart
+// lib/features/forms/services/pdf_generator.dart
+
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:printing/printing.dart';
+
+class PdfGenerator {
+
+  Future<Uint8List> generateGDForm({
+    required Map<String, String> fields,
+    required String thanaName,
+    required DateTime date,
+  }) async {
+    final pdf = pw.Document();
+
+    // Load Bengali font (MUST for Unicode support)
+    final banglaFont = await PdfGoogleFonts.notoSansBengaliRegular();
+    final banglaFontBold = await PdfGoogleFonts.notoSansBengaliBold();
+
+    pdf.addPage(
+      pw.Page(
+        pageFormat: PdfPageFormat.a4,
+        build: (context) => pw.Column(
+          crossAxisAlignment: pw.CrossAxisAlignment.start,
+          children: [
+            // Header
+            pw.Center(
+              child: pw.Text(
+                'সাধারণ ডায়েরি (জিডি)',
+                style: pw.TextStyle(
+                  font: banglaFontBold,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+            pw.SizedBox(height: 8),
+            pw.Center(
+              child: pw.Text(
+                '\$thanaName থানা, ঢাকা',
+                style: pw.TextStyle(font: banglaFont, fontSize: 14),
+              ),
+            ),
+            pw.Divider(),
+            pw.SizedBox(height: 12),
+
+            // Date
+            pw.Text(
+              'তারিখ: \${DateFormat('dd/MM/yyyy', 'bn').format(date)}',
+              style: pw.TextStyle(font: banglaFont, fontSize: 12),
+            ),
+            pw.SizedBox(height: 16),
+
+            // Form fields
+            _buildFormField('বাদীর নাম', fields['name'] ?? '', banglaFont, banglaFontBold),
+            _buildFormField('পিতার নাম', fields['father_name'] ?? '', banglaFont, banglaFontBold),
+            _buildFormField('ঠিকানা', fields['address'] ?? '', banglaFont, banglaFontBold),
+            _buildFormField('ঘটনার বিবরণ', fields['description'] ?? '', banglaFont, banglaFontBold, maxLines: 8),
+
+            pw.SizedBox(height: 30),
+
+            // Signature
+            pw.Row(
+              mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+              children: [
+                pw.Text('দারোগার স্বাক্ষর', style: pw.TextStyle(font: banglaFont)),
+                pw.Text('বাদীর স্বাক্ষর', style: pw.TextStyle(font: banglaFont)),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+
+    return pdf.save();
+  }
+
+  pw.Widget _buildFormField(String label, String value,
+    pw.Font regular, pw.Font bold, {int maxLines = 1}) {
+
+    return pw.Column(
+      crossAxisAlignment: pw.CrossAxisAlignment.start,
+      children: [
+        pw.Text(label, style: pw.TextStyle(font: bold, fontSize: 11)),
+        pw.Container(
+          width: double.infinity,
+          padding: const pw.EdgeInsets.all(6),
+          decoration: pw.BoxDecoration(
+            border: pw.Border.all(color: PdfColors.grey400),
+            borderRadius: const pw.BorderRadius.all(pw.Radius.circular(4)),
+          ),
+          child: pw.Text(
+            value.isEmpty ? ' ' : value,
+            style: pw.TextStyle(font: regular, fontSize: 11),
+          ),
+        ),
+        pw.SizedBox(height: 10),
+      ],
+    );
+  }
+}
+\`\`\`
+`,
+  },
+
+  news: {
+    title: "Bangladesh News & Alerts",
+    badge: "AI & Intelligence",
+    content: `
+## News Sources & Strategy
+
+\`\`\`
+Free RSS feeds (no API cost):
+├── Prothom Alo    → https://www.prothomalo.com/feed/
+├── BD News 24     → https://bdnews24.com/feed
+├── Dhaka Tribune  → https://www.dhakatribune.com/feed
+└── Daily Star     → https://www.thedailystar.net/rss.xml
+
+Fetch frequency: Every 15 minutes via Node.js cron job
+Store in Supabase news_articles table
+AI summarize in Bangla → serve to app
+\`\`\`
+
+---
+
+## News Aggregation Service
+
+\`\`\`typescript
+// src/services/rss.service.ts
+
+import Parser from 'rss-parser';
+import cron from 'node-cron';
+
+const parser = new Parser();
+
+const RSS_FEEDS = [
+  { name: 'prothom_alo', url: 'https://www.prothomalo.com/feed/', lang: 'bn' },
+  { name: 'bdnews24', url: 'https://bdnews24.com/feed', lang: 'bn' },
+  { name: 'daily_star', url: 'https://www.thedailystar.net/rss.xml', lang: 'en' },
+];
+
+// Emergency keywords — trigger push notifications
+const EMERGENCY_KEYWORDS = [
+  'আগুন', 'বন্যা', 'ভূমিকম্প', 'দুর্ঘটনা', 'বিস্ফোরণ',
+  'সন্ত্রাস', 'সাইক্লোন', 'ঘূর্ণিঝড়', 'flood', 'fire',
+  'earthquake', 'explosion', 'accident',
+];
+
+export class RssService {
+
+  async fetchAllFeeds() {
+    for (const feed of RSS_FEEDS) {
+      try {
+        const parsed = await parser.parseURL(feed.url);
+
+        for (const item of parsed.items.slice(0, 20)) {
+          const isAlert = EMERGENCY_KEYWORDS.some(kw =>
+            item.title?.toLowerCase().includes(kw.toLowerCase())
+          );
+
+          // Upsert to avoid duplicates
+          await prisma.newsArticle.upsert({
+            where: { sourceUrl: item.link! },
+            update: {},
+            create: {
+              title: item.title ?? '',
+              sourceUrl: item.link!,
+              source: feed.name,
+              publishedAt: new Date(item.pubDate ?? Date.now()),
+              isAlert,
+            },
+          });
+
+          // Push notification for emergency news
+          if (isAlert) {
+            await sendBreakingNewsPush(item.title!);
+          }
+        }
+      } catch (error) {
+        console.error(\`RSS fetch failed for \${feed.name}:\`, error);
+      }
+    }
+  }
+
+  startCronJob() {
+    // Every 15 minutes
+    cron.schedule('*/15 * * * *', () => this.fetchAllFeeds());
+  }
+}
+
+// News API endpoint
+router.get('/', async (req, res) => {
+  const { category, page = 1, limit = 20 } = req.query;
+
+  const news = await prisma.newsArticle.findMany({
+    where: category ? { category: category as string } : {},
+    orderBy: { publishedAt: 'desc' },
+    skip: (Number(page) - 1) * Number(limit),
+    take: Number(limit),
+  });
+
+  res.json({ news, page: Number(page) });
+});
+\`\`\`
+
+---
+
+## News Category Auto-tagging
+
+\`\`\`typescript
+// AI auto-categorize each article when fetched
+
+async function categorizeArticle(title: string): Promise<string> {
+  // Use cheap Gemini Flash for this bulk operation
+  const result = await openRouterService.categorize(title);
+  return result; // crime | weather | politics | disaster | sports | economy | other
+}
+\`\`\`
+
+---
+
+## Flutter News Feed
+
+\`\`\`dart
+// lib/features/news/presentation/news_screen.dart
+
+class NewsScreen extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final news = ref.watch(newsProvider);
+
+    return Column(
+      children: [
+        // Alert banner for breaking news
+        ref.watch(breakingNewsProvider).when(
+          data: (alert) => alert != null
+            ? BreakingNewsBanner(article: alert)
+            : const SizedBox.shrink(),
+          loading: () => const SizedBox.shrink(),
+          error: (_, __) => const SizedBox.shrink(),
+        ),
+
+        // Category filter
+        NewsCategoryFilter(),
+
+        // News list
+        Expanded(
+          child: news.when(
+            data: (articles) => ListView.builder(
+              itemCount: articles.length,
+              itemBuilder: (ctx, i) => NewsCard(article: articles[i]),
+            ),
+            loading: () => const CircularProgressIndicator(),
+            error: (e, _) => Text('Error: \$e'),
+          ),
+        ),
+      ],
+    );
+  }
+}
+\`\`\`
+`,
+  },
+
+  location: {
+    title: "Location Tracking & Risk Zones",
+    badge: "Safety",
+    content: `
+## Location Architecture
+
+\`\`\`
+Foreground (app open):
+  geolocator → high accuracy → update every 30 seconds
+  → show on map in real-time
+
+Background (app minimized/closed):
+  flutter_background_service → foreground service (Android)
+  WorkManager → periodic task every 15 minutes
+  → store in SQLite + sync to Supabase when online
+
+Risk zone checking:
+  On each location update → check if inside any risk zone polygon
+  → if entered risk zone → trigger notification
+\`\`\`
+
+---
+
+## Background Location Service
+
+\`\`\`dart
+// lib/core/services/background_service.dart
+
+import 'package:flutter_background_service/flutter_background_service.dart';
+
+Future<void> initBackgroundService() async {
+  final service = FlutterBackgroundService();
+
+  await service.configure(
+    androidConfiguration: AndroidConfiguration(
+      onStart: onStart,
+      autoStart: true,
+      isForegroundMode: true,           // Required for background location
+      notificationChannelId: 'nagrik_location',
+      initialNotificationTitle: 'NagrikAI সক্রিয়',
+      initialNotificationContent: 'আপনার নিরাপত্তা পর্যবেক্ষণ করছে...',
+      foregroundServiceNotificationId: 888,
+      foregroundServiceTypes: [
+        AndroidForegroundType.location,  // Android 14+ required
+      ],
+    ),
+    iosConfiguration: IosConfiguration(
+      autoStart: true,
+      onForeground: onStart,
+      onBackground: onIosBackground,
+    ),
+  );
+
+  await service.startService();
+}
+
+@pragma('vm:entry-point')
+void onStart(ServiceInstance service) async {
+  DartPluginRegistrant.ensureInitialized();
+
+  // Update notification
+  service.on('setAsForeground').listen((event) {
+    service.setAsForegroundService();
+  });
+
+  // Location tracking loop
+  Timer.periodic(const Duration(minutes: 15), (timer) async {
+    await _captureAndCheckLocation(service);
+  });
+}
+
+Future<void> _captureAndCheckLocation(ServiceInstance service) async {
+  try {
+    final position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.balanced,
+      timeLimit: const Duration(seconds: 10),
+    );
+
+    // Store locally
+    final db = await getDatabase();
+    await db.insert('location_snapshots', {
+      'lat': position.latitude,
+      'lng': position.longitude,
+      'captured_at': DateTime.now().toIso8601String(),
+    });
+
+    // Check risk zones
+    await _checkRiskZones(position.latitude, position.longitude);
+
+    // Sync to server if online
+    final isConnected = await Connectivity()
+      .checkConnectivity() != ConnectivityResult.none;
+    if (isConnected) {
+      await _syncLocationToServer(position);
+    }
+
+  } catch (e) {
+    // Silent fail — battery optimization may block
+    debugPrint('Background location error: \$e');
+  }
+}
+\`\`\`
+
+---
+
+## Risk Zone Detection
+
+\`\`\`dart
+Future<void> _checkRiskZones(double lat, double lng) async {
+  final riskZones = await _getCachedRiskZones();
+
+  for (final zone in riskZones) {
+    if (_isPointInPolygon(lat, lng, zone.boundary)) {
+      if (!_wasAlreadyNotified(zone.id)) {
+        // Trigger notification
+        await _sendRiskZoneAlert(zone);
+        _markNotified(zone.id);
+      }
+    }
+  }
+}
+
+// Point-in-polygon algorithm (ray casting)
+bool _isPointInPolygon(
+  double lat, double lng,
+  List<LatLng> polygon
+) {
+  bool inside = false;
+  int n = polygon.length;
+
+  for (int i = 0, j = n - 1; i < n; j = i++) {
+    final xi = polygon[i].latitude, yi = polygon[i].longitude;
+    final xj = polygon[j].latitude, yj = polygon[j].longitude;
+
+    final intersect = ((yi > lng) != (yj > lng)) &&
+        (lat < (xj - xi) * (lng - yi) / (yj - yi) + xi);
+
+    if (intersect) inside = !inside;
+  }
+
+  return inside;
+}
+\`\`\`
+
+---
+
+## Dhaka Risk Zones Database (Initial Data)
+
+\`\`\`typescript
+// Initial Dhaka risk zones — manually curated
+// Seed via Prisma seed script
+
+const DHAKA_RISK_ZONES = [
+  {
+    id: 'dhaka-old-town-flood',
+    name_bn: 'পুরান ঢাকা বন্যা ঝুঁকি',
+    level: 'high',
+    type: 'flood',
+    boundary: [/* GeoJSON coordinates */],
+    description: 'বর্ষাকালে জলাবদ্ধতার উচ্চ ঝুঁকি',
+  },
+  {
+    id: 'mirpur-crime-zone',
+    name_bn: 'মিরপুর ছিনতাই সতর্কতা',
+    level: 'medium',
+    type: 'crime',
+    boundary: [/* polygon */],
+    description: 'রাতে চলাচলে সতর্ক থাকুন',
+  },
+  // ... more zones
+];
+\`\`\`
+
+---
+
+## Battery Optimization Warning (Android)
+
+\`\`\`dart
+// On first launch, ask user to disable battery optimization
+
+Future<void> requestBatteryOptimizationExclusion() async {
+  if (Platform.isAndroid) {
+    // Check if already excluded
+    final isIgnoring = await Permission.ignoreBatteryOptimizations.isGranted;
+
+    if (!isIgnoring) {
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: const Text('ব্যাকগ্রাউন্ড সার্ভিস'),
+          content: const Text(
+            'NagrikAI সঠিকভাবে কাজ করতে ব্যাটারি অপ্টিমাইজেশন বন্ধ রাখুন। '
+            'Settings → Battery → NagrikAI → "Don\'t optimize"'
+          ),
+          actions: [
+            TextButton(
+              onPressed: () async {
+                await Permission.ignoreBatteryOptimizations.request();
+              },
+              child: const Text('সেটিংস খুলুন'),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+}
+\`\`\`
+`,
+  },
+
+  emergency: {
+    title: "Emergency Routing System",
+    badge: "Safety",
+    content: `
+## Emergency Detection — Automatic
+
+AI automatically detects emergencies from voice:
+
+\`\`\`
+Critical keywords/intent → is_emergency: true
+  ↓
+Severity: "critical"
+  ↓
+App shows RED banner: "জরুরি সাহায্য দরকার?"
+  ↓
+Two options:
+  [হ্যাঁ, এখনই কল করুন] [না, রিপোর্ট পাঠান]
+  ↓
+If YES → Direct call to appropriate helpline
+\`\`\`
+
+---
+
+## Bangladesh Helpline Directory
+
+\`\`\`dart
+// lib/core/constants/bd_helplines.dart
+
+class BdHelplines {
+  static const Map<String, HelplineInfo> all = {
+    'national_emergency': HelplineInfo(
+      number: '999',
+      nameBn: 'জাতীয় জরুরি সেবা',
+      nameEn: 'National Emergency',
+      description: 'পুলিশ, ফায়ার, অ্যাম্বুলেন্স',
+      icon: Icons.emergency,
+      color: Colors.red,
+      categories: ['crime', 'fire', 'medical'],
+    ),
+    'govt_info': HelplineInfo(
+      number: '333',
+      nameBn: 'সরকারি তথ্য ও অভিযোগ',
+      nameEn: 'Govt Info & Complaints',
+      description: 'সরকারি সেবা অভিযোগ',
+      categories: ['civic', 'disaster'],
+    ),
+    'women_children': HelplineInfo(
+      number: '109',
+      nameBn: 'নারী ও শিশু নির্যাতন',
+      nameEn: 'Women & Children Helpline',
+      categories: ['crime', 'abuse'],
+    ),
+    'health': HelplineInfo(
+      number: '16000',
+      nameBn: 'স্বাস্থ্য সহায়তা',
+      nameEn: 'Health Emergency',
+      categories: ['medical'],
+    ),
+    'consumer': HelplineInfo(
+      number: '16123',
+      nameBn: 'ভোক্তা অধিকার',
+      nameEn: 'Consumer Rights',
+      categories: ['consumer'],
+    ),
+    'anti_corruption': HelplineInfo(
+      number: '16700',
+      nameBn: 'দুর্নীতি দমন',
+      nameEn: 'Anti-Corruption (ACC)',
+      categories: ['corruption'],
+    ),
+    'fire': HelplineInfo(
+      number: '02-9555555',
+      nameBn: 'ফায়ার সার্ভিস',
+      nameEn: 'Fire Service',
+      categories: ['fire'],
+    ),
+    'railway': HelplineInfo(
+      number: '131',
+      nameBn: 'বাংলাদেশ রেলওয়ে',
+      nameEn: 'Bangladesh Railway',
+      categories: ['transport'],
+    ),
+    'legal_aid': HelplineInfo(
+      number: '16430',
+      nameBn: 'জাতীয় আইনি সহায়তা',
+      nameEn: 'Legal Aid',
+      categories: ['legal'],
+    ),
+  };
+
+  static String getForCategory(String category) {
+    for (final entry in all.entries) {
+      if (entry.value.categories.contains(category)) {
+        return entry.value.number;
+      }
+    }
+    return '999'; // Default to national emergency
+  }
+}
+\`\`\`
+
+---
+
+## Emergency Call Routing
+
+\`\`\`dart
+// Immediately call emergency number
+Future<void> callHelpline(String number) async {
+  final uri = Uri(scheme: 'tel', path: number);
+
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
+  } else {
+    // Fallback: show number for manual dial
+    Clipboard.setData(ClipboardData(text: number));
+    showSnackBar('নম্বরটি কপি করা হয়েছে: \$number');
+  }
+}
+\`\`\`
+
+---
+
+## Emergency Adapter (No-API Fallback)
+
+\`\`\`typescript
+// When no official API available for a department:
+// Send structured email/webhook instead
+
+export class EmergencyAdapter {
+
+  async routeReport(report: CivicReport): Promise<void> {
+    const department = this.getDepartment(report.category);
+
+    if (department.apiAvailable) {
+      await this.sendViaApi(department.apiUrl, report);
+    } else if (department.email) {
+      await this.sendViaEmail(department.email, report);
+    } else {
+      await this.sendViaWebhook(department.webhookUrl, report);
+    }
+  }
+
+  private async sendViaEmail(
+    email: string, report: CivicReport
+  ): Promise<void> {
+    // Use Supabase Edge Function or SendGrid
+    await emailService.send({
+      to: email,
+      subject: \`[NagrikAI] \${report.category} - \${report.location}\`,
+      html: this.buildEmailTemplate(report),
+    });
+  }
+}
+\`\`\`
+`,
+  },
+
+  playstore: {
+    title: "Google Play Store — Full Submission Guide",
+    badge: "Publishing",
+    content: `
+## Pre-submission Checklist
+
+- [ ] App tested on Android 8.0+ (API 26+)
+- [ ] All permissions have user-facing explanations
+- [ ] Privacy policy URL live (required)
+- [ ] Terms of service URL live
+- [ ] App icon (512×512 PNG, no alpha)
+- [ ] Feature graphic (1024×500 PNG)
+- [ ] Screenshots (minimum 2, max 8 per device type)
+- [ ] Release APK/AAB signed with keystore
+
+---
+
+## Build Release APK
+
+\`\`\`bash
+# 1. Generate signing keystore (one time only)
+keytool -genkey -v \\
+  -keystore nagrik-ai.keystore \\
+  -alias nagrik-ai \\
+  -keyalg RSA \\
+  -keysize 2048 \\
+  -validity 10000
+
+# 2. Add to android/key.properties
+storePassword=YOUR_STORE_PASSWORD
+keyPassword=YOUR_KEY_PASSWORD
+keyAlias=nagrik-ai
+storeFile=../nagrik-ai.keystore
+
+# 3. Update android/app/build.gradle
+# (Add signingConfigs block)
+
+# 4. Build release AAB (App Bundle — preferred for Play Store)
+flutter build appbundle --release
+
+# Output: build/app/outputs/bundle/release/app-release.aab
+
+# 5. Build APK (for direct distribution)
+flutter build apk --release --split-per-abi
+\`\`\`
+
+---
+
+## android/app/build.gradle (Signing Config)
+
+\`\`\`gradle
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+    compileSdkVersion 34
+
+    defaultConfig {
+        applicationId "ai.nagrik.app"
+        minSdkVersion 26
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile keystoreProperties['storeFile'] ?
+                file(keystoreProperties['storeFile']) : null
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'),
+                'proguard-rules.pro'
+        }
+    }
+}
+\`\`\`
+
+---
+
+## Play Store Listing Content
+
+\`\`\`
+App Name: NagrikAI - নাগরিক সহায়ক
+
+Short Description (80 chars max):
+বাংলাদেশের প্রথম AI ভয়েস সিভিক এজেন্ট ও ইমার্জেন্সি রাউটার
+
+Full Description:
+NagrikAI হল বাংলাদেশের নাগরিকদের জন্য একটি AI-চালিত ভয়েস সহায়ক।
+শুধু বলুন — বাকিটা NagrikAI করবে।
+
+✅ ভয়েস দিয়ে সিভিক অভিযোগ দাখিল করুন
+✅ জরুরি পরিস্থিতিতে স্বয়ংক্রিয় হেল্পলাইন রাউটিং (999, 333, 109)
+✅ কাছের পুলিশ, হাসপাতাল, অ্যাম্বুলেন্স খুঁজুন
+✅ বাংলাদেশের আইন সম্পর্কে প্রশ্ন করুন
+✅ ঝুঁকিপূর্ণ এলাকায় স্বয়ংক্রিয় সতর্কতা
+✅ প্যানিক বাটন — শেক করুন বা বলুন "সাহায্য করো"
+✅ সরকারি ফর্ম স্বয়ংক্রিয় পূরণ ও PDF ডাউনলোড
+✅ বাংলাদেশের সর্বশেষ সংবাদ
+
+Category: Productivity / Social
+Content Rating: Everyone
+Price: Free
+
+Tags: civic, bangladesh, emergency, AI, bangla, safety
+\`\`\`
+
+---
+
+## Play Store Required Policies
+
+\`\`\`
+1. Privacy Policy (REQUIRED — host on website)
+   Mention:
+   - Location data collection and purpose
+   - Microphone usage
+   - Data stored in Supabase (EU servers)
+   - No data sold to third parties
+   - User data deletion option
+
+2. Permissions Declaration (Play Console)
+   For each sensitive permission, explain:
+   - ACCESS_BACKGROUND_LOCATION:
+     "Background location is used to alert users when
+     they enter high-risk zones, even when the app
+     is not actively open."
+
+   - RECORD_AUDIO:
+     "Microphone is used only for voice civic reporting
+     and emergency recording. Audio is not stored
+     without explicit user confirmation."
+
+   - CALL_PHONE:
+     "Used exclusively for one-tap emergency helpline
+     calling (999, 333, 109) during panic situations."
+
+3. Data Safety Section (Play Console)
+   Fill out truthfully:
+   - Location: Collected, shared with your backend
+   - Personal info: Name, email, phone collected
+   - Audio: Collected on explicit user action only
+   - Financial info: None
+   - Encryption: Yes (HTTPS + AES storage)
+\`\`\`
+
+---
+
+## Internal Testing → Beta → Production
+
+\`\`\`
+Week 1-2: Internal testing
+  → Upload AAB to Internal Testing track
+  → Share with team (max 100 testers)
+  → Fix crashes from Firebase Crashlytics
+
+Week 3-4: Open Beta
+  → Move to Open Testing track
+  → Share opt-in link publicly
+  → Get real user feedback
+  → Monitor ANR/crash rates (target < 1%)
+
+Week 5+: Production
+  → 20% rollout first
+  → Monitor ratings + crash rate
+  → 100% rollout if stable
+\`\`\`
+`,
+  },
+
+  appstore: {
+    title: "Apple App Store — Full Submission Guide",
+    badge: "Deployment",
+    content: `
+## Requirements
+
+- **Mac computer** required for iOS builds
+- **Apple Developer Account** ($99/year)
+- **Xcode 15+**
+- iOS 14.0+ target (covers 95%+ of devices)
+
+---
+
+## iOS Build Setup
+
+\`\`\`bash
+# 1. In Xcode, set Bundle Identifier
+# ai.nagrik.app
+
+# 2. Set minimum iOS version
+# ios/Podfile → platform :ios, '14.0'
+
+# 3. Install pods
+cd ios && pod install && cd ..
+
+# 4. Set up signing in Xcode
+# Xcode → Runner → Signing & Capabilities
+# → Team: your Apple Developer account
+# → Bundle ID: ai.nagrik.app
+
+# 5. Build for App Store
+flutter build ipa --release
+
+# Output: build/ios/ipa/nagrik_ai.ipa
+\`\`\`
+
+---
+
+## Info.plist — All Required Keys
+
+\`\`\`xml
+<!-- Location (REQUIRED — very detailed explanation) -->
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>
+NagrikAI ব্যাকগ্রাউন্ডে আপনার লোকেশন ব্যবহার করে:
+১) ঝুঁকিপূর্ণ এলাকায় প্রবেশ করলে সতর্কতা পাঠাতে
+২) প্যানিক বাটন চাপলে আপনার অবস্থান পাঠাতে
+৩) কাছের হাসপাতাল ও পুলিশ খুঁজে দিতে
+লোকেশন কখনো তৃতীয় পক্ষের কাছে বিক্রি করা হয় না।
+</string>
+
+<!-- Microphone -->
+<key>NSMicrophoneUsageDescription</key>
+<string>
+NagrikAI ভয়েস রিপোর্ট করতে এবং ইমার্জেন্সিতে অডিও রেকর্ড করতে
+মাইক্রোফোন ব্যবহার করে। অডিও শুধুমাত্র আপনার অনুমতিতে সেভ হয়।
+</string>
+
+<!-- Camera -->
+<key>NSCameraUsageDescription</key>
+<string>
+সিভিক রিপোর্টে ছবি সংযুক্ত করতে ক্যামেরা ব্যবহার করা হয়।
+</string>
+
+<!-- Contacts (for emergency contacts import) -->
+<key>NSContactsUsageDescription</key>
+<string>
+ইমার্জেন্সি কনট্যাক্ট যোগ করতে আপনার ফোনবুক ব্যবহার করা হতে পারে।
+</string>
+\`\`\`
+
+---
+
+## App Store Review — Common Rejection Reasons to Avoid
+
+\`\`\`
+❌ Crash on launch
+   Fix: Test on real device, not just simulator
+
+❌ Location used without justification
+   Fix: Show location permission prompt at right moment
+        (when user first uses a location feature, not on launch)
+
+❌ Empty states / incomplete features
+   Fix: Ensure all listed features actually work
+
+❌ Privacy policy missing or generic
+   Fix: Write Bangladesh-specific privacy policy, mention Supabase
+
+❌ Metadata doesn't match app
+   Fix: Screenshots must match actual app UI exactly
+
+❌ Calls API without user action
+   Fix: Never auto-call. Always show confirmation dialog
+
+❌ Background location not clearly explained
+   Fix: Add detailed justification in review notes
+\`\`\`
+
+---
+
+## App Store Listing Content
+
+\`\`\`
+Name: NagrikAI
+Subtitle: Bangladesh Civic AI Agent
+
+Keywords (100 chars max):
+bangladesh,civic,emergency,bangla,AI,safety,police,hospital,law,নাগরিক
+
+Description:
+[Same as Play Store but adjust formatting for App Store style]
+
+Category: Utilities
+Secondary Category: Productivity
+
+Age Rating: 4+ (no objectionable content)
+Price: Free
+
+Privacy Policy URL: https://nagrik.ai/privacy
+Support URL: https://nagrik.ai/support
+Marketing URL: https://nagrik.ai
+\`\`\`
+
+---
+
+## TestFlight → Production
+
+\`\`\`
+1. Upload IPA via Xcode or Transporter app
+2. Add internal testers (team, max 25 internal)
+3. External TestFlight beta (up to 10,000 testers, needs review)
+4. Submit for App Review (1-3 business days average)
+5. Phased release: 1% → 2% → 5% → 10% → 50% → 100%
+   (each phase monitored for crash rate)
+\`\`\`
+`,
+  },
+
+  deployment: {
+    title: "Deployment, CI/CD & DevOps",
+    badge: "Deployment",
+    content: `
+## Infrastructure Overview
+
+\`\`\`
+GitHub (code) 
+    │
+    ▼ push to main
+GitHub Actions CI/CD
+    │
+    ├──▶ Run tests
+    ├──▶ Build Docker image
+    ├──▶ Deploy to Railway (backend)
+    └──▶ Notify team (Slack/Discord)
+
+Supabase (database)
+    └── Managed PostgreSQL, no server to maintain
+
+Flutter app
+    ├──▶ firebase app distribution (beta)
+    └──▶ Play Store / App Store (production)
+\`\`\`
+
+---
+
+## Backend Deployment — Railway
+
+\`\`\`bash
+# 1. Install Railway CLI
+npm install -g @railway/cli
+
+# 2. Login
+railway login
+
+# 3. Initialize project
+railway init
+
+# 4. Set environment variables
+railway variables set OPENROUTER_API_KEY=sk-or-...
+railway variables set SUPABASE_URL=https://...
+railway variables set SUPABASE_SERVICE_KEY=eyJ...
+railway variables set GOOGLE_PLACES_API_KEY=AIza...
+railway variables set GOOGLE_STT_API_KEY=AIza...
+railway variables set NODE_ENV=production
+
+# 5. Deploy
+railway up
+
+# Your backend is now live at:
+# https://nagrik-ai-backend.railway.app
+\`\`\`
+
+---
+
+## Dockerfile
+
+\`\`\`dockerfile
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci --only=production
+
+COPY dist/ ./dist/
+COPY prisma/ ./prisma/
+
+RUN npx prisma generate
+
+EXPOSE 3000
+
+CMD ["node", "dist/index.js"]
+\`\`\`
+
+---
+
+## GitHub Actions — Backend CI/CD
+
+\`\`\`yaml
+# .github/workflows/deploy-backend.yml
+
+name: Deploy Backend
+
+on:
+  push:
+    branches: [main]
+    paths: ['backend/**']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci
+        working-directory: backend
+      - run: npm test
+        working-directory: backend
+      - run: npm run build
+        working-directory: backend
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: railway/action@v1
+        with:
+          service: nagrik-ai-backend
+        env:
+          RAILWAY_TOKEN: \${{ secrets.RAILWAY_TOKEN }}
+\`\`\`
+
+---
+
+## GitHub Actions — Flutter Beta Build
+
+\`\`\`yaml
+# .github/workflows/flutter-beta.yml
+
+name: Flutter Beta Build
+
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  android-beta:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with: { flutter-version: '3.22.0' }
+
+      - name: Setup Android signing
+        run: |
+          echo "\${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > android/nagrik-ai.keystore
+          echo "storePassword=\${{ secrets.KEY_STORE_PASSWORD }}" > android/key.properties
+          echo "keyPassword=\${{ secrets.KEY_PASSWORD }}" >> android/key.properties
+          echo "keyAlias=nagrik-ai" >> android/key.properties
+          echo "storeFile=../nagrik-ai.keystore" >> android/key.properties
+
+      - run: flutter pub get
+      - run: flutter build apk --release
+
+      - name: Distribute to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: \${{ secrets.FIREBASE_APP_ID }}
+          serviceCredentialsFileContent: \${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          groups: testers
+          file: build/app/outputs/flutter-apk/app-release.apk
+          releaseNotes: "Build from commit \${{ github.sha }}"
+\`\`\`
+
+---
+
+## Supabase Database Migration
+
+\`\`\`bash
+# Run migrations
+npx prisma migrate deploy
+
+# Seed initial data (police stations, hospitals, risk zones)
+npx prisma db seed
+
+# Generate Prisma client
+npx prisma generate
+\`\`\`
+
+---
+
+## Monitoring & Alerts
+
+\`\`\`
+Firebase Crashlytics → crash reports → email alert
+Firebase Analytics  → user behavior
+Sentry (backend)    → backend errors → Slack alert
+Railway Metrics     → CPU/memory/response time
+Upstash Redis       → cache hit rate
+Supabase Dashboard  → DB queries, storage
+\`\`\`
+`,
+  },
+
+  cost: {
+    title: "Cost Estimation & Budget",
+    badge: "Deployment",
+    content: `
+## Monthly Cost Breakdown
+
+### Hackathon / Development Phase (0 users)
+
+| Service | Plan | Cost |
+|---|---|---|
+| Railway (backend) | Hobby | $5/month |
+| Supabase | Free | $0 |
+| OpenRouter | Pay per use | ~$5-10 |
+| Google Places API | Free tier | $0 (< $200 credit) |
+| Google STT | Free tier | $0 (< 60 min/month) |
+| Firebase | Free Spark | $0 |
+| Upstash Redis | Free | $0 |
+| **Total** | | **~$10-15/month** |
+
+---
+
+### Growth Phase (1,000 active users)
+
+| Service | Usage | Cost |
+|---|---|---|
+| Railway (backend) | Pro plan | $20/month |
+| Supabase | Pro | $25/month |
+| OpenRouter (Gemini 1.5 Pro) | ~50K queries × $0.003 | ~$150/month |
+| Google Places API | 10K requests | ~$32/month |
+| Google STT API | 500 hours | ~$180/month |
+| Firebase (FCM) | Free | $0 |
+| **Total** | | **~$407/month** |
+
+---
+
+### Scale Phase (10,000 active users)
+
+| Service | Cost |
+|---|---|
+| Railway / Render (2x instances) | $80/month |
+| Supabase Pro | $25/month |
+| OpenRouter | ~$800/month |
+| Google APIs | ~$500/month |
+| CDN (Cloudflare) | Free |
+| **Total** | **~$1,400/month** |
+
+---
+
+## Cost Optimization Strategies
+
+\`\`\`
+1. Cache AI responses (Redis)
+   - Identical transcripts → return cached result
+   - Saves ~30-40% OpenRouter cost
+
+2. Use Gemini Flash for simple tasks
+   - Flash costs 20x less than Pro
+   - Use Flash for: news categorization, simple Q&A
+   - Use Pro only for: civic extraction, law Q&A
+
+3. Batch STT processing
+   - Group audio uploads → process in batch
+   - Saves API call overhead
+
+4. Rate limit per user
+   - Free: 50 AI queries/month
+   - Premium: unlimited
+   - Prevents single user from draining budget
+
+5. Cache map tiles
+   - OpenStreetMap is FREE
+   - Cache on device → zero map tile cost
+
+6. Free STT first
+   - Use flutter_speech_to_text (device) by default
+   - Only fallback to Google STT if accuracy < threshold
+   - Saves ~60% STT cost
+\`\`\`
+
+---
+
+## Revenue Model (Future)
+
+\`\`\`
+Phase 1 (now): Free, grant-funded / competition
+Phase 2: Freemium
+  - Free: 50 reports/month, basic features
+  - Premium: ৳199/month = unlimited + priority support
+Phase 3: B2B
+  - Government department dashboards
+  - NGO/INGO civic monitoring tools
+Phase 4: API
+  - Sell NagrikAI API to other civic apps
+\`\`\`
+`,
+  },
+
+  roadmap: {
+    title: "Full Project Roadmap",
+    badge: "Deployment",
+    content: `
+## Team Task Allocation (4-5 people)
+
+| Person | Role | Responsibilities |
+|---|---|---|
+| Dev 1 | Flutter Lead | Agent UI, voice pipeline, maps |
+| Dev 2 | Flutter | Auth, forms, news, profile |
+| Dev 3 | Backend Lead | Node.js API, OpenRouter integration |
+| Dev 4 | Backend | Database, risk zones, emergency router |
+| Dev 5 | Fullstack / DevOps | CI/CD, Firebase, testing, app store |
+
+---
+
+## Phase 1 — MVP (Weeks 1-8)
+
+\`\`\`
+Week 1-2: Foundation
+  ✅ Flutter project setup + navigation
+  ✅ Supabase auth (email + phone OTP)
+  ✅ User profile + emergency contacts
+  ✅ Node.js backend skeleton
+  ✅ OpenRouter integration + basic prompt
+
+Week 3-4: Core Agent
+  ✅ Voice input (flutter_speech_to_text)
+  ✅ Agent state machine
+  ✅ Live reasoning widget
+  ✅ Form auto-fill with typewriter animation
+  ✅ Civic report submission
+
+Week 5-6: Safety Features
+  ✅ Basic map with flutter_map
+  ✅ Nearby places (Google Places)
+  ✅ Panic button (shake + volume + manual)
+  ✅ Emergency SMS sending
+  ✅ BD helpline directory
+
+Week 7-8: Polish + Launch
+  ✅ Offline map tile caching
+  ✅ News feed (RSS)
+  ✅ Push notifications (FCM)
+  ✅ Play Store beta launch
+  ✅ Performance optimization
+  ✅ Bug fixes from beta testers
+\`\`\`
+
+---
+
+## Phase 2 — Emergency Router (Months 3-4)
+
+\`\`\`
+- Severity detection refinement
+- Direct call routing automation
+- Dhaka risk zone polygon data
+- Background location service
+- Night-time risk alerts
+- Audio recording on panic
+- Upstream to Supabase on panic
+\`\`\`
+
+---
+
+## Phase 3 — Intelligence Layer (Months 5-6)
+
+\`\`\`
+- Bangladesh Law AI (RAG implementation)
+- Government form PDF generation
+  (GD, RTI, consumer complaint)
+- AI news summarization in Bangla
+- Smart helpline routing (AI-assisted)
+- iOS App Store launch
+- Analytics dashboard
+\`\`\`
+
+---
+
+## Phase 4 — Production Hardening (Months 7-9)
+
+\`\`\`
+- Full offline voice (on-device model evaluation)
+- Multi-division rollout (beyond Dhaka)
+- Government API integrations (if available)
+- Adapter middleware for non-API departments
+- Multilingual: Chittagong/Sylhet dialect tuning
+- Accessibility (screen reader support)
+- Enterprise/NGO dashboard
+- GDPR-compliant data deletion
+\`\`\`
+
+---
+
+## Git Branching Strategy
+
+\`\`\`
+main        → production releases only
+develop     → integration branch
+feature/*   → individual features (PR to develop)
+hotfix/*    → urgent fixes (PR to main + develop)
+
+Example branches:
+  feature/voice-agent-ui
+  feature/panic-button
+  feature/bd-law-ai
+  feature/play-store-assets
+\`\`\`
+
+---
+
+## Definition of Done (DoD)
+
+For every feature before merging:
+\`\`\`
+✅ Works on Android 9+ physical device
+✅ No red errors in Flutter DevTools
+✅ Error states handled (network failure, empty state)
+✅ Bangla text renders correctly (no boxes/question marks)
+✅ Permissions handled gracefully (denial case)
+✅ Works on slow 3G connection
+✅ Dark mode compatible (if UI supports)
+✅ PR reviewed by at least 1 other team member
+\`\`\`
+
+---
+
+## Key Technical Risks & Mitigations
+
+| Risk | Probability | Mitigation |
+|---|---|---|
+| Google STT Bangla accuracy poor | Medium | Two-step pipeline + LLM normalization |
+| OpenRouter cost overrun | Low | Per-user quota + caching |
+| Android background kill | High | Battery optimization request + Workmanager |
+| Play Store rejection | Medium | Policy compliance checklist |
+| Govt API unavailability | High | Adapter/email fallback built-in |
+| iOS background location rejection | Medium | Detailed justification text |
+`,
+  },
+};
+
+export default function NagrikAIDocs() {
+  const [active, setActive] = useState("overview");
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [search, setSearch] = useState("");
+  const contentRef = useRef(null);
+
+  const section = SECTIONS[active];
+  const groups = [...new Set(NAV.map((n) => n.group))];
+
+  const filtered = NAV.filter((n) =>
+    search === "" ||
+    n.label.toLowerCase().includes(search.toLowerCase())
+  );
+
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.scrollTop = 0;
+    }
+  }, [active]);
+
+  function renderContent(content) {
+    const lines = content.trim().split("\n");
+    const elements = [];
+    let i = 0;
+
+    while (i < lines.length) {
+      const line = lines[i];
+
+      if (line.startsWith("## ")) {
+        elements.push(
+          <h2 key={i} style={{
+            fontSize: 20, fontWeight: 600,
+            margin: "28px 0 10px",
+            color: "var(--color-text-primary)",
+            borderBottom: "0.5px solid var(--color-border-tertiary)",
+            paddingBottom: 8,
+          }}>
+            {line.slice(3)}
+          </h2>
+        );
+        i++;
+      } else if (line.startsWith("### ")) {
+        elements.push(
+          <h3 key={i} style={{
+            fontSize: 15, fontWeight: 600,
+            margin: "20px 0 6px",
+            color: "var(--color-text-primary)",
+          }}>
+            {line.slice(4)}
+          </h3>
+        );
+        i++;
+      } else if (line.startsWith("---")) {
+        elements.push(
+          <hr key={i} style={{
+            border: "none",
+            borderTop: "0.5px solid var(--color-border-tertiary)",
+            margin: "20px 0",
+          }} />
+        );
+        i++;
+      } else if (line.startsWith("```")) {
+        const lang = line.slice(3).trim();
+        const codeLines = [];
+        i++;
+        while (i < lines.length && !lines[i].startsWith("```")) {
+          codeLines.push(lines[i]);
+          i++;
+        }
+        i++; // skip closing ```
+        elements.push(
+          <div key={i} style={{ margin: "12px 0", position: "relative" }}>
+            {lang && (
+              <span style={{
+                position: "absolute",
+                top: 8, right: 12,
+                fontSize: 11,
+                color: "var(--color-text-tertiary)",
+                fontFamily: "var(--font-mono)",
+                textTransform: "uppercase",
+                letterSpacing: 1,
+              }}>
+                {lang}
+              </span>
+            )}
+            <pre style={{
+              background: "var(--color-background-secondary)",
+              border: "0.5px solid var(--color-border-tertiary)",
+              borderRadius: "var(--border-radius-lg)",
+              padding: "14px 16px",
+              overflow: "auto",
+              fontSize: 12.5,
+              lineHeight: 1.65,
+              fontFamily: "var(--font-mono)",
+              color: "var(--color-text-primary)",
+              margin: 0,
+              whiteSpace: "pre",
+            }}>
+              {codeLines.join("\n")}
+            </pre>
+          </div>
+        );
+      } else if (line.startsWith("| ")) {
+        const tableLines = [];
+        while (i < lines.length && lines[i].startsWith("|")) {
+          tableLines.push(lines[i]);
+          i++;
+        }
+        const headers = tableLines[0]
+          .split("|")
+          .filter(Boolean)
+          .map((h) => h.trim());
+        const rows = tableLines
+          .slice(2)
+          .map((r) =>
+            r.split("|").filter(Boolean).map((c) => c.trim())
+          );
+
+        elements.push(
+          <div key={i} style={{
+            overflowX: "auto",
+            margin: "12px 0",
+            border: "0.5px solid var(--color-border-tertiary)",
+            borderRadius: "var(--border-radius-md)",
+          }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+              <thead>
+                <tr style={{ background: "var(--color-background-secondary)" }}>
+                  {headers.map((h, hi) => (
+                    <th key={hi} style={{
+                      padding: "8px 12px",
+                      textAlign: "left",
+                      fontWeight: 500,
+                      color: "var(--color-text-primary)",
+                      borderBottom: "0.5px solid var(--color-border-tertiary)",
+                      whiteSpace: "nowrap",
+                    }}>
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((row, ri) => (
+                  <tr key={ri} style={{
+                    borderBottom: ri < rows.length - 1
+                      ? "0.5px solid var(--color-border-tertiary)"
+                      : "none",
+                  }}>
+                    {row.map((cell, ci) => (
+                      <td key={ci} style={{
+                        padding: "7px 12px",
+                        color: "var(--color-text-secondary)",
+                        fontSize: 13,
+                        lineHeight: 1.5,
+                      }}>
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      } else if (line.match(/^[-✅❌⚠️🔧] /)) {
+        const items = [];
+        while (i < lines.length && lines[i].match(/^[-✅❌⚠️🔧✓] /)) {
+          items.push(lines[i].replace(/^[-✅❌⚠️🔧✓] /, "").trim());
+          i++;
+        }
+        elements.push(
+          <ul key={i} style={{ margin: "8px 0", paddingLeft: 0, listStyle: "none" }}>
+            {items.map((item, ii) => (
+              <li key={ii} style={{
+                display: "flex",
+                gap: 8,
+                padding: "3px 0",
+                fontSize: 14,
+                color: "var(--color-text-secondary)",
+                lineHeight: 1.6,
+              }}>
+                <span style={{ color: "var(--color-text-tertiary)", minWidth: 16 }}>•</span>
+                <span dangerouslySetInnerHTML={{ __html: formatInline(item) }} />
+              </li>
+            ))}
+          </ul>
+        );
+      } else if (line.trim() === "") {
+        elements.push(<div key={i} style={{ height: 6 }} />);
+        i++;
+      } else {
+        elements.push(
+          <p key={i} style={{
+            margin: "4px 0",
+            fontSize: 14,
+            lineHeight: 1.7,
+            color: "var(--color-text-secondary)",
+          }}>
+            <span dangerouslySetInnerHTML={{ __html: formatInline(line) }} />
+          </p>
+        );
+        i++;
+      }
+    }
+
+    return elements;
+  }
+
+  function formatInline(text) {
+    return text
+      .replace(/\*\*(.+?)\*\*/g, '<strong style="color:var(--color-text-primary);font-weight:500">$1</strong>')
+      .replace(/`(.+?)`/g, '<code style="background:var(--color-background-secondary);padding:1px 5px;border-radius:4px;font-size:12px;font-family:var(--font-mono);color:var(--color-text-primary)">$1</code>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>');
+  }
+
+  const totalSections = Object.keys(SECTIONS).length;
+  const currentIndex = Object.keys(SECTIONS).indexOf(active);
+
+  return (
+    <div style={{
+      display: "flex",
+      height: "calc(100vh - 2rem)",
+      minHeight: 600,
+      border: "0.5px solid var(--color-border-tertiary)",
+      borderRadius: "var(--border-radius-lg)",
+      overflow: "hidden",
+      background: "var(--color-background-primary)",
+    }}>
+      {/* Sidebar */}
+      <div style={{
+        width: sidebarOpen ? 240 : 0,
+        minWidth: sidebarOpen ? 240 : 0,
+        overflow: "hidden",
+        transition: "all 0.2s ease",
+        borderRight: "0.5px solid var(--color-border-tertiary)",
+        background: "var(--color-background-secondary)",
+        display: "flex",
+        flexDirection: "column",
+      }}>
+        {/* Sidebar header */}
+        <div style={{
+          padding: "14px 16px 10px",
+          borderBottom: "0.5px solid var(--color-border-tertiary)",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+            <i className="ti ti-rocket" style={{ fontSize: 18, color: "var(--color-text-info)" }} aria-hidden />
+            <span style={{
+              fontSize: 13,
+              fontWeight: 500,
+              color: "var(--color-text-primary)",
+            }}>
+              NagrikAI Docs
+            </span>
+          </div>
+          <input
+            type="text"
+            placeholder="Search sections..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            style={{ width: "100%", fontSize: 12, padding: "5px 10px" }}
+          />
+        </div>
+
+        {/* Nav */}
+        <div style={{ overflow: "auto", flex: 1, padding: "8px 0" }}>
+          {groups.map((group) => {
+            const items = filtered.filter((n) => n.group === group);
+            if (items.length === 0) return null;
+            return (
+              <div key={group}>
+                <div style={{
+                  padding: "6px 16px 3px",
+                  fontSize: 10,
+                  fontWeight: 500,
+                  textTransform: "uppercase",
+                  letterSpacing: 1,
+                  color: "var(--color-text-tertiary)",
+                }}>
+                  {group}
+                </div>
+                {items.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => setActive(item.id)}
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 8,
+                      padding: "6px 16px",
+                      border: "none",
+                      cursor: "pointer",
+                      textAlign: "left",
+                      fontSize: 13,
+                      background: active === item.id
+                        ? "var(--color-background-primary)"
+                        : "transparent",
+                      color: active === item.id
+                        ? "var(--color-text-primary)"
+                        : "var(--color-text-secondary)",
+                      fontWeight: active === item.id ? 500 : 400,
+                      borderRadius: 0,
+                    }}
+                  >
+                    <i
+                      className={`ti ${item.icon}`}
+                      style={{
+                        fontSize: 14,
+                        color: active === item.id
+                          ? "var(--color-text-info)"
+                          : "var(--color-text-tertiary)",
+                        minWidth: 16,
+                      }}
+                      aria-hidden
+                    />
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Progress */}
+        <div style={{
+          padding: "10px 16px",
+          borderTop: "0.5px solid var(--color-border-tertiary)",
+        }}>
+          <div style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: 4,
+          }}>
+            <span style={{ fontSize: 11, color: "var(--color-text-tertiary)" }}>
+              Progress
+            </span>
+            <span style={{ fontSize: 11, color: "var(--color-text-tertiary)" }}>
+              {currentIndex + 1} / {totalSections}
+            </span>
+          </div>
+          <div style={{
+            height: 3,
+            background: "var(--color-border-tertiary)",
+            borderRadius: 99,
+            overflow: "hidden",
+          }}>
+            <div style={{
+              height: "100%",
+              width: `${((currentIndex + 1) / totalSections) * 100}%`,
+              background: "var(--color-text-info)",
+              borderRadius: 99,
+              transition: "width 0.3s ease",
+            }} />
+          </div>
+        </div>
+      </div>
+
+      {/* Main content */}
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+
+        {/* Topbar */}
+        <div style={{
+          padding: "10px 20px",
+          borderBottom: "0.5px solid var(--color-border-tertiary)",
+          display: "flex",
+          alignItems: "center",
+          gap: 12,
+          background: "var(--color-background-primary)",
+        }}>
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            style={{
+              padding: 6,
+              border: "0.5px solid var(--color-border-secondary)",
+              borderRadius: "var(--border-radius-md)",
+              cursor: "pointer",
+              background: "transparent",
+              display: "flex",
+              alignItems: "center",
+            }}
+            aria-label="Toggle sidebar"
+          >
+            <i className="ti ti-menu-2" style={{ fontSize: 16 }} aria-hidden />
+          </button>
+
+          <div style={{ flex: 1 }}>
+            <span style={{
+              fontSize: 11,
+              color: "var(--color-text-tertiary)",
+              marginRight: 8,
+            }}>
+              {section?.badge}
+            </span>
+            <span style={{
+              fontSize: 15,
+              fontWeight: 500,
+              color: "var(--color-text-primary)",
+            }}>
+              {section?.title}
+            </span>
+          </div>
+
+          <div style={{ display: "flex", gap: 6 }}>
+            <button
+              onClick={() => {
+                const keys = Object.keys(SECTIONS);
+                const idx = keys.indexOf(active);
+                if (idx > 0) setActive(keys[idx - 1]);
+              }}
+              disabled={currentIndex === 0}
+              style={{
+                padding: "5px 10px",
+                border: "0.5px solid var(--color-border-secondary)",
+                borderRadius: "var(--border-radius-md)",
+                cursor: currentIndex === 0 ? "not-allowed" : "pointer",
+                opacity: currentIndex === 0 ? 0.4 : 1,
+                background: "transparent",
+                fontSize: 12,
+              }}
+            >
+              <i className="ti ti-arrow-left" aria-hidden style={{ fontSize: 14 }} />
+            </button>
+            <button
+              onClick={() => {
+                const keys = Object.keys(SECTIONS);
+                const idx = keys.indexOf(active);
+                if (idx < keys.length - 1) setActive(keys[idx + 1]);
+              }}
+              disabled={currentIndex === totalSections - 1}
+              style={{
+                padding: "5px 10px",
+                border: "0.5px solid var(--color-border-secondary)",
+                borderRadius: "var(--border-radius-md)",
+                cursor: currentIndex === totalSections - 1 ? "not-allowed" : "pointer",
+                opacity: currentIndex === totalSections - 1 ? 0.4 : 1,
+                background: "transparent",
+                fontSize: 12,
+              }}
+            >
+              <i className="ti ti-arrow-right" aria-hidden style={{ fontSize: 14 }} />
+            </button>
+          </div>
+        </div>
+
+        {/* Content area */}
+        <div
+          ref={contentRef}
+          style={{
+            flex: 1,
+            overflow: "auto",
+            padding: "24px 32px 48px",
+          }}
+        >
+          <h2 className="sr-only">NagrikAI Implementation Guidebook</h2>
+
+          {section && (
+            <div style={{ maxWidth: 760 }}>
+              {renderContent(section.content)}
+            </div>
+          )}
+
+          {/* Next section button */}
+          {currentIndex < totalSections - 1 && (
+            <div style={{ marginTop: 40, paddingTop: 20, borderTop: "0.5px solid var(--color-border-tertiary)" }}>
+              <button
+                onClick={() => {
+                  const keys = Object.keys(SECTIONS);
+                  setActive(keys[currentIndex + 1]);
+                }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  padding: "10px 16px",
+                  border: "0.5px solid var(--color-border-secondary)",
+                  borderRadius: "var(--border-radius-lg)",
+                  cursor: "pointer",
+                  background: "var(--color-background-secondary)",
+                  fontSize: 13,
+                  color: "var(--color-text-primary)",
+                }}
+              >
+                <span style={{ color: "var(--color-text-tertiary)", fontSize: 12 }}>
+                  Next section
+                </span>
+                <span style={{ fontWeight: 500 }}>
+                  {SECTIONS[Object.keys(SECTIONS)[currentIndex + 1]]?.title}
+                </span>
+                <i className="ti ti-arrow-right" aria-hidden style={{ fontSize: 14, marginLeft: "auto" }} />
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}```
