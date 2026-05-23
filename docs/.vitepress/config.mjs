@@ -3,9 +3,9 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "NagrikAI Docs",
   description: "AI-Driven Voice Civic Agent for Bangladesh",
-  base: '/nagrik-docs/',
+  base: '/nagrikAI-docs/',
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/nagrik-docs/favicon.svg' }]
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/nagrikAI-docs/favicon.svg' }]
   ],
   themeConfig: {
     nav: [
@@ -61,7 +61,7 @@ export default defineConfig({
       }
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/md8-habibullah/nagrik-docs' }
+      { icon: 'github', link: 'https://github.com/md8-habibullah/nagrikAI-docs' }
     ]
   }
 })
