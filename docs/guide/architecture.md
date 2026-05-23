@@ -200,3 +200,26 @@ Device stores:
 ```
 
 > ⛔ Never put API keys in Flutter code. Always proxy through your Node.js backend.\n\n
+## Bit-by-Bit Implementation: Why This Stack?
+
+For a team of 4-5 developers building an MVP in 1-2 months, **velocity** and **type-safety** are the most critical metrics. 
+
+### Why Flutter?
+- **Single Codebase**: Writing separate Android (Kotlin) and iOS (Swift) apps would double development time. Flutter compiles to native ARM code, ensuring high performance (60fps) for animations like the Voice Orb.
+- **Rich UI**: Flutter's declarative UI makes building the "Live Agent Sandbox" extremely fast.
+
+### Why Node.js + Express?
+- **JavaScript Everywhere**: If your team knows JS/Dart, Node is much faster to iterate on than Python/Django or Go.
+- **Async I/O**: Node is inherently non-blocking, which is perfect for proxying requests to OpenRouter and Google STT simultaneously.
+
+### Why Supabase (PostgreSQL)?
+- **Zero Backend Configuration**: Setting up a custom Postgres server, Auth system, and Row Level Security (RLS) takes weeks. Supabase gives you this out-of-the-box in 1 day.
+- **Relational Integrity**: Civic reports need strict schemas (Users -> Reports -> Locations). NoSQL (like Firebase/Firestore) makes complex geographical querying (e.g., finding all reports within a 5km radius) very difficult and expensive.
+
+## Alternative Approaches to Consider
+1. **Firebase instead of Supabase?**
+   - *Pros*: Firebase Auth and Crashlytics are industry standard.
+   - *Cons*: Firestore geographical queries require complex workarounds (GeoHashes). Supabase uses PostGIS, which natively supports `ST_Distance` queries for mapping risk zones.
+2. **Python (FastAPI) instead of Node.js?**
+   - *Pros*: Python has better native AI/ML libraries if we want to run local NLP models.
+   - *Cons*: Slower API routing overhead. Since we are using an API (OpenRouter) instead of hosting our own AI models, Node.js is faster for I/O proxying.

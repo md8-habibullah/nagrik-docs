@@ -576,3 +576,20 @@ export class EmergencyAdapter {
   }
 }
 ```\n\n
+## Bit-by-Bit Implementation: Panic Button
+
+The panic button must work even if the app is closed (running in the background).
+
+### Step-by-Step Logic
+1. **Permissions**: Request `ACCESS_BACKGROUND_LOCATION` and `SEND_SMS` on Android.
+2. **Shake Detection**: Use the `shake` Flutter package. When acceleration exceeds a threshold (e.g., 3.0g), trigger the event.
+3. **Action Execution**:
+   - Get current GPS coordinate via `geolocator`.
+   - Reverse geocode to get a readable address (e.g., "Dhaka University Area").
+   - Format SMS: "URGENT! I am in danger at [Location]. [Google Maps Link]".
+   - Send SMS silently using `telephony` package.
+
+## Alternative Approaches to Consider
+1. **Volume Button Intercept instead of Shake?**
+   - *Pros*: Less accidental triggers than shaking.
+   - *Cons*: Android/iOS strictly forbid overriding hardware buttons when the app is in the background. It will likely get rejected from the Play Store. Shake detection relies on accelerometer data, which is permitted in the background.

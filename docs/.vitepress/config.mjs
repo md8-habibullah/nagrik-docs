@@ -4,6 +4,9 @@ export default defineConfig({
   title: "NagrikAI Docs",
   description: "AI-Driven Voice Civic Agent for Bangladesh",
   base: '/nagrik-docs/',
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/nagrik-docs/favicon.svg' }]
+  ],
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },

@@ -135,3 +135,16 @@ class OfflineQueueService {
   }
 }
 ```\n\n
+## Bit-by-Bit Implementation: Offline Capabilities
+
+For users without internet, we must ensure basic functionality works.
+
+### Step-by-Step Logic
+1. **Map Tiles**: Use `flutter_map_cache`. When the user is on WiFi, the app downloads OpenStreetMap tiles for Dhaka (zoom levels 10-15). These are stored as `.png` files in the app's local directory.
+2. **Local Database**: Use `sqlite3` (via the Drift package in Flutter). Store the polygons (coordinates) of known "Red Zones".
+3. **Location Polling**: When offline, the app still gets GPS pings. It queries the local SQLite DB: `SELECT * FROM risk_zones WHERE ST_Contains(geom, user_location)`. If true, trigger a local notification.
+
+## Alternative Approaches to Consider
+1. **Google Maps SDK instead of flutter_map?**
+   - *Pros*: Google Maps has higher quality POI data.
+   - *Cons*: Google Maps SDK does not allow you to cache map tiles for true offline use without internet, and it costs money. `flutter_map` (OpenStreetMap) is 100% free and allows aggressive offline caching.

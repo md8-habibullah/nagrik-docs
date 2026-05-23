@@ -175,3 +175,21 @@ async function processWithCache(transcript: string, context: any) {
 // Free tier: 100 AI queries/month
 // Premium: unlimited
 ```\n\n
+## Bit-by-Bit Implementation: AI Proxying
+
+Never put your API keys (OpenRouter, Google Maps, etc.) inside the Flutter app. If someone decompiles your APK, they will steal the keys and drain your budget.
+
+### Step-by-Step Logic
+1. **Flutter App**: Records voice, converts to text (using device STT), and sends a JSON payload `{ "transcript": "aami mohammadpur e accident dekhechi" }` to your Node.js backend.
+2. **Node Backend (`/api/agent`)**: Receives the transcript. It holds the `OPENROUTER_API_KEY` securely in `.env`.
+3. **System Prompting**: The Node backend wraps the transcript in a massive "System Prompt" (defining the JSON schema we want).
+4. **OpenRouter**: Forwards the prompt to Gemini 1.5 Pro.
+5. **Streaming**: As Gemini generates the JSON, Node.js streams it back to Flutter so the user sees the "Reasoning..." happening live.
+
+## Alternative Approaches to Consider
+1. **Direct API calls from Flutter?**
+   - *Pros*: Faster to implement initially (no backend needed).
+   - *Cons*: MASSIVE security risk. You will definitely lose your API keys.
+2. **Local On-Device AI Models?**
+   - *Pros*: Works 100% offline, costs $0 in API fees.
+   - *Cons*: Running a 3B parameter model on a low-end Android phone in Bangladesh will drain the battery instantly and make the phone overheat. Not viable for Phase 1.

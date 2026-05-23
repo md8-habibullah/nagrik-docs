@@ -238,3 +238,17 @@ dev_dependencies:
   <string>audio</string>
 </array>
 ```\n\n
+## Bit-by-Bit Implementation: State Management
+
+We use **Riverpod** because it is compile-safe and handles asynchronous state (like waiting for API calls or voice streams) gracefully using `AsyncValue`.
+
+### Step-by-Step Logic for the Agent Sandbox
+1. **The Provider (`AgentNotifier`)**: Holds the current phase of the UI (Listening, Transcribing, Reasoning, etc).
+2. **The Mic Button**: When tapped, it triggers `ref.read(agentNotifierProvider.notifier).setPhase(AgentPhase.listening)`.
+3. **The Voice Stream**: As `flutter_speech_to_text` yields partial words, we call `appendTranscript(text)`.
+4. **The UI Reaction**: The UI is simply a `ConsumerWidget` that listens to `AgentNotifier`. If `phase == listening`, the microphone pulses red. If `phase == reasoning`, a loading ticker appears.
+
+## Alternative Approaches to Consider
+1. **BLoC instead of Riverpod?**
+   - *Pros*: BLoC is extremely structured and great for massive enterprise apps.
+   - *Cons*: Highly boilerplate-heavy. For a 1-month MVP, creating Events, States, and Blocs for every tiny feature will slow the team down. Riverpod offers the safety of BLoC with the simplicity of Provider.

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#006a4e" /> <!-- Bangladesh Green -->
+      <stop offset="100%" stop-color="#004d38" />
+    </linearGradient>
+  </defs>
+  <!-- Background Shield -->
+  <path d="M 50 5 L 90 20 L 90 50 C 90 75 50 95 50 95 C 50 95 10 75 10 50 L 10 20 Z" fill="url(#bg)" />
+  
+  <!-- Red Sun / Circle -->
+  <circle cx="50" cy="45" r="22" fill="#f42a41" /> <!-- Bangladesh Red -->
+  
+  <!-- Microphone Icon -->
+  <rect x="44" y="25" width="12" height="24" rx="6" fill="#ffffff" />
+  <path d="M 36 40 V 46 C 36 53.7 42.3 60 50 60 C 57.7 60 64 53.7 64 46 V 40" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" />
+  <line x1="50" y1="60" x2="50" y2="70" stroke="#ffffff" stroke-width="4" stroke-linecap="round" />
+  <line x1="40" y1="70" x2="60" y2="70" stroke="#ffffff" stroke-width="4" stroke-linecap="round" />
+</svg>
